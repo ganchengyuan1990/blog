@@ -54,26 +54,22 @@
   </entry>
   
   <entry>
-    <title>Hello World</title>
+    <title>搭好了我的博客</title>
     <link href="https://ganchengyuan1990.github.io/blog/2017/01/16/hello-world/"/>
     <id>https://ganchengyuan1990.github.io/blog/2017/01/16/hello-world/</id>
     <published>2017-01-16T08:12:12.622Z</published>
-    <updated>2017-01-16T08:12:12.622Z</updated>
+    <updated>2017-01-16T11:04:23.246Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <content type="html"><![CDATA[<p>最近这两天工作并不忙，因此有很多时间自学，今天也是用Hexo和Github搭建了这个个人的技术博客，希望以后可以多写点东西，多长进！<br>列一下这段时间准备研究的东西</p>
+<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><p>对于一个前前端的全栈工程师来说，Node.js是非常好的语言，并且学习社区非常完善，资料健全，很有意思。</p>
+<h2 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h2><p>Vue是一个很容易上手的框架，单页面应用也是非常好的一个前端网页思路，有效地减少白屏带来的视觉问题。<br>这两天在做搭个人网站的时候用上了Vue，打包完也有2M左右，组件太丰富，选择是一个问题。</p>
+<h2 id="MongoDb"><a href="#MongoDb" class="headerlink" title="MongoDb"></a>MongoDb</h2><p>数据库的选择，效率不错，API也很好使用。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      &lt;p&gt;最近这两天工作并不忙，因此有很多时间自学，今天也是用Hexo和Github搭建了这个个人的技术博客，希望以后可以多写点东西，多长进！&lt;br&gt;列一下这段时间准备研究的东西&lt;/p&gt;
+&lt;h2 id=&quot;Node-js&quot;&gt;&lt;a href=&quot;#Node-js&quot; class=&quot;heade
     
     </summary>
     
