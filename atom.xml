@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
-  
+  <title>时间追逐者</title>
+  <subtitle>前端开发</subtitle>
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ganchengyuan1990.github.io/blog/"/>
@@ -9,7 +9,7 @@
   <id>https://ganchengyuan1990.github.io/blog/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Jason Gan</name>
     
   </author>
   
