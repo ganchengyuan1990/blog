@@ -58,12 +58,13 @@
     <link href="https://ganchengyuan1990.github.io/blog/2017/01/16/hello-world/"/>
     <id>https://ganchengyuan1990.github.io/blog/2017/01/16/hello-world/</id>
     <published>2017-01-16T08:12:12.622Z</published>
-    <updated>2017-01-16T11:04:23.246Z</updated>
+    <updated>2017-01-17T00:51:56.626Z</updated>
     
     <content type="html"><![CDATA[<p>最近这两天工作并不忙，因此有很多时间自学，今天也是用Hexo和Github搭建了这个个人的技术博客，希望以后可以多写点东西，多长进！<br>列一下这段时间准备研究的东西</p>
 <h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><p>对于一个前前端的全栈工程师来说，Node.js是非常好的语言，并且学习社区非常完善，资料健全，很有意思。</p>
 <h2 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h2><p>Vue是一个很容易上手的框架，单页面应用也是非常好的一个前端网页思路，有效地减少白屏带来的视觉问题。<br>这两天在做搭个人网站的时候用上了Vue，打包完也有2M左右，组件太丰富，选择是一个问题。</p>
-<h2 id="MongoDb"><a href="#MongoDb" class="headerlink" title="MongoDb"></a>MongoDb</h2><p>数据库的选择，效率不错，API也很好使用。</p>
+<h2 id="MongoDb"><a href="#MongoDb" class="headerlink" title="MongoDb"></a>MongoDb</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="string">'hello world'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>数据库的选择，效率不错，API也很好使用。</p>
 ]]></content>
     
     <summary type="html">
