@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ganchengyuan1990.github.io/blog/"/>
-  <updated>2017-01-17T00:58:48.271Z</updated>
+  <updated>2017-01-17T03:03:24.146Z</updated>
   <id>https://ganchengyuan1990.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vuex初探</title>
+    <link href="https://ganchengyuan1990.github.io/blog/2017/01/17/vuex%E5%88%9D%E6%8E%A2/"/>
+    <id>https://ganchengyuan1990.github.io/blog/2017/01/17/vuex初探/</id>
+    <published>2017-01-17T02:27:29.000Z</published>
+    <updated>2017-01-17T03:03:24.146Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Vuex的作用是什么"><a href="#Vuex的作用是什么" class="headerlink" title="Vuex的作用是什么"></a>Vuex的作用是什么</h3><p>Vuex主要用来进行状态管理，我的理解就是当你的VUE项目大到一定程度以后，需要一个帮手来帮助你进行组件管理，尤其是多层次的组件进行信息交互时，如果没有这样一个工具，就得维护公共变量或者一层一层传递参数，这个过程是非常令人不愉悦的。</p>
+<h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> actions <span class="keyword">from</span> <span class="string">'./actions'</span>; <span class="comment">//改变状态都得通过这里的方法</span></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> getters <span class="keyword">from</span> <span class="string">'./getters'</span>; <span class="comment">//获取状态值的方法</span></div></pre></td></tr></table></figure>
+<h2 id="store对象"><a href="#store对象" class="headerlink" title="store对象"></a>store对象</h2><p>这个对象就是Vuex创建的实例对象，是重点需要学习的内容。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> store = &#123;</div><div class="line">	<span class="comment">//state对象维护具体状态值</span></div><div class="line">    state: &#123;</div><div class="line">        <span class="attr">isInitData</span>: <span class="literal">true</span>, <span class="comment">//首次刷新页面</span></div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * vuex 2.0 action should be await Vuex规定每个状态值的改变最后都要通过actions函数来操作，并且规定必须是异步，因此调取接口的操作应该都在这里</div><div class="line">     */</div><div class="line">    actions: &#123;</div><div class="line">        <span class="attr">fetchSearchDataAction</span>: <span class="function">(<span class="params">&#123; commit, dispatch &#125;, options</span>) =&gt;</span> &#123;</div><div class="line">            commit(<span class="string">'SET_TOP_LOADING'</span>, &#123; <span class="attr">type</span>: <span class="literal">true</span> &#125;)</div><div class="line">        &#125;,</div><div class="line"></div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * even vuex 2.0 mutations should be async  actions 只是一个架构性的概念，并不是必须的，说到底只是一个函数，你在里面想干嘛都可以，只要最后触发 mutation 就行。</div><div class="line">     */</div><div class="line">    mutations: &#123;</div><div class="line"></div><div class="line">        [types.COMBINE_DETAIL_LIST](state, res) &#123;</div><div class="line"></div><div class="line">            <span class="keyword">let</span> cloneMerchandiseList = [];</div><div class="line"></div><div class="line">            state.merchandiseList.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</div><div class="line"></div><div class="line">                    cloneMerchandiseList.push(<span class="built_in">Object</span>.assign(&#123;&#125;, item, res[item.sm_seq]));</div><div class="line"></div><div class="line">                &#125;)</div><div class="line">                <span class="comment">//combine 合并基础对象和详细属性,重现渲染列表</span></div><div class="line">            state.merchandiseList = cloneMerchandiseList;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    <span class="attr">getters</span>: &#123;</div><div class="line">        <span class="attr">listDownType</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">let</span> type = <span class="string">''</span></div><div class="line">            state.selectListData.filter(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</div><div class="line">                <span class="keyword">if</span>(item.isSelect)&#123;</div><div class="line">                    type = item.sortType</div><div class="line">                &#125;</div><div class="line">            &#125;)</div><div class="line">            <span class="keyword">return</span> type</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<font color="red">注：同步的意义在于这样每一个 mutation 执行完成后都可以对应到一个新的状态（和 reducer 一样），这样 devtools 就可以打个 snapshot 存下来，然后就可以随便 time-travel 了。</font>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Vuex的作用是什么&quot;&gt;&lt;a href=&quot;#Vuex的作用是什么&quot; class=&quot;headerlink&quot; title=&quot;Vuex的作用是什么&quot;&gt;&lt;/a&gt;Vuex的作用是什么&lt;/h3&gt;&lt;p&gt;Vuex主要用来进行状态管理，我的理解就是当你的VUE项目大到一定程度以后，
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>javascript闭包个人理解</title>
