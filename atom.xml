@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ganchengyuan1990.github.io/blog/"/>
-  <updated>2017-01-18T03:37:41.983Z</updated>
+  <updated>2017-01-18T07:09:45.974Z</updated>
   <id>https://ganchengyuan1990.github.io/blog/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>html render &amp; paint</title>
+    <title>html render &amp; paint（重排和重绘）</title>
     <link href="https://ganchengyuan1990.github.io/blog/2017/01/18/html-render-paint/"/>
     <id>https://ganchengyuan1990.github.io/blog/2017/01/18/html-render-paint/</id>
     <published>2017-01-18T03:05:38.000Z</published>
-    <updated>2017-01-18T03:37:41.983Z</updated>
+    <updated>2017-01-18T07:09:45.974Z</updated>
     
     <content type="html"><![CDATA[<p>首先，先吐槽一下weex学习社区的内容真的非常不全面，自学很难，优点是调试相对简单，暂时放一放，以后有空再看看。</p>
 <hr>
