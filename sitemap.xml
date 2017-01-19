@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ganchengyuan1990.github.io/blog/blog/2017/01/19/XSS%E5%92%8CCSRF%E5%AF%B9%E6%AF%94/</loc>
+    
+    <lastmod>2017-01-19T02:09:27.093Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://ganchengyuan1990.github.io/blog/blog/2017/01/18/html-render-paint/</loc>
     
     <lastmod>2017-01-18T09:32:43.462Z</lastmod>
