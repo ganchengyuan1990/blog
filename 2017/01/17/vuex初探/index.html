@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="时间追逐者">
 <meta property="og:description" content="Vuex的作用是什么Vuex主要用来进行状态管理，我的理解就是当你的VUE项目大到一定程度以后，需要一个帮手来帮助你进行组件管理，尤其是多层次的组件进行信息交互时，如果没有这样一个工具，就得维护公共变量或者一层一层传递参数，这个过程是非常令人不愉悦的。
 引入12345import Vuex from &apos;vuex&apos;;import * as actions from &apos;./actions&apos;; //改变">
-<meta property="og:updated_time" content="2017-01-17T03:03:24.146Z">
+<meta property="og:updated_time" content="2017-01-19T05:37:03.142Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vuex初探">
 <meta name="twitter:description" content="Vuex的作用是什么Vuex主要用来进行状态管理，我的理解就是当你的VUE项目大到一定程度以后，需要一个帮手来帮助你进行组件管理，尤其是多层次的组件进行信息交互时，如果没有这样一个工具，就得维护公共变量或者一层一层传递参数，这个过程是非常令人不愉悦的。
@@ -199,6 +199,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -337,7 +352,7 @@
 		open_in_new: false,
 		root: "/blog/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -386,6 +401,22 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

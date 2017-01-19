@@ -18,7 +18,7 @@ XSS：脚本中的不速之客XSS 全称“跨站脚本”，是注入攻击的�
 <meta property="og:description" content="转载：https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/
 
 XSS：脚本中的不速之客XSS 全称“跨站脚本”，是注入攻击的一种。其特点是不对服务器端造成任何伤害，而是通过一些正常的站内交互途径，例如发布评论，提交含有 JavaScript的内容文本。这时服务器端如果没有过滤或转义掉这些脚本，作为内容发布到了页面上，其他用户访问这个页面">
-<meta property="og:updated_time" content="2017-01-19T03:20:34.416Z">
+<meta property="og:updated_time" content="2017-01-19T05:35:03.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XSS和CSRF对比">
 <meta name="twitter:description" content="转载：https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/
@@ -205,6 +205,17 @@ XSS：脚本中的不速之客XSS 全称“跨站脚本”，是注入攻击的�
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -334,7 +345,7 @@ XSS：脚本中的不速之客XSS 全称“跨站脚本”，是注入攻击的�
 		open_in_new: false,
 		root: "/blog/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -383,6 +394,22 @@ XSS：脚本中的不速之客XSS 全称“跨站脚本”，是注入攻击的�
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

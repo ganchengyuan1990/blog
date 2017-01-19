@@ -25,7 +25,7 @@
 这四个概念分别代表什么？先来看一张图，了解一下浏览器页面的渲染过程
 这里要注意的是：要生成Dom Tree和Css Tree以后才会生成render t">
 <meta property="og:image" content="http://images.cnitblog.com/blog/595796/201408/211743255813505.png">
-<meta property="og:updated_time" content="2017-01-18T09:32:43.462Z">
+<meta property="og:updated_time" content="2017-01-19T05:35:28.903Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="html render & paint（重排和重绘）">
 <meta name="twitter:description" content="首先，先吐槽一下weex学习社区的内容真的非常不全面，自学很难，优点是调试相对简单，暂时放一放，以后有空再看看。
@@ -219,6 +219,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -357,7 +368,7 @@
 		open_in_new: false,
 		root: "/blog/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -406,6 +417,22 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
