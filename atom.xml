@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ganchengyuan1990.github.io/blog/"/>
-  <updated>2017-01-19T05:58:38.028Z</updated>
+  <updated>2017-01-20T01:31:22.364Z</updated>
   <id>https://ganchengyuan1990.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,101 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>初识mongodb</title>
+    <link href="https://ganchengyuan1990.github.io/blog/2017/01/20/%E5%88%9D%E8%AF%86mongodb/"/>
+    <id>https://ganchengyuan1990.github.io/blog/2017/01/20/初识mongodb/</id>
+    <published>2017-01-20T01:14:53.000Z</published>
+    <updated>2017-01-20T01:31:22.364Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h3><p>传说中的非关系数据库，颠覆了我们在大学时学数据库时的三观，虽说那时并非所有的数据库都是关系型数据库，但起码有一统江湖的感觉。</p>
+<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i mongo</div></pre></td></tr></table></figure>
+<p>另外，还有一个非常重要的步骤，要在命令行中执行 mongod –dbpath “D:\vue\vue-wechat\server”  D:\vue\vue-wechat\server换成需要启动服务的位置，也就是你项目的server文件夹。这个命令相当于打开MONGODB的服务界面，让其进入服务状态。</p>
+<h2 id="server-JS维护"><a href="#server-JS维护" class="headerlink" title="server JS维护"></a>server JS维护</h2><p>```javascript<br>const mongodb = require(‘mongodb’);<br>const  server  = new mongodb.Server(‘localhost’, 27017, {auto_reconnect:true});<br>var  db = new mongodb.Db(‘XXXX’, server, {safe:true}); //XXXX可以改成任意名字</p>
+<p>const hostname = ‘127.0.0.1’;<br>const port = 9001; //port注意不要和已启动的服务端口重合，比如PHP常用的9000，VUE常用的8080</p>
+<p>http.createServer((req, res) =&gt; {<br>  var json;<br>  var _callbackName = req.url.substr(req.url.indexOf(‘=’) + 1);</p>
+<p>  http.get(‘XXXXXXXX’, (response) =&gt; {<br>    response.setEncoding(‘utf8’);<br>    response.on(‘data’, (data) =&gt; {<br>     // json = data;<br>      res.end(_callbackName + “(“ + data + “)”);</p>
+<pre><code>  res._tempData = data;
+
+  db.open( (err, db) =&gt;{
+        if (!err) {
+            console.log(&apos;connect db&apos;);
+            //数据库连接
+            db.createCollection(&apos;test&apos;, { safe: true }, (err, collection) =&gt; {
+                debugger
+                if (err) {
+                    console.log(err);
+                } else {
+                    var tmp1 = JSON.parse(res._tempData);
+                    collection.insert([tmp1], { safe: true }, function(err, result) {
+                        console.log(result);
+                    });
+                    /*collection.remove({title: &quot;world&quot;}, function(err, count) {
+                        // console.log(count);
+                    })*/
+                    collection.find().toArray(function(err, docs) {
+                        console.log(&apos;find&apos;);
+                        console.log(docs);
+                    });
+
+                    db.close();
+                    /*collection.findOne(function(err, doc) {
+                        console.log(&apos;findOne&apos;);
+                        console.log(doc);
+                    });*/
+
+                }
+
+            });
+        } else {
+            console.log(err);
+        }
+  });
+
+});  
+</code></pre><p>  });<br>}).listen(port, hostname, () =&gt; {<br>  console.log(<code>Server running at http://${hostname}:${port}/</code>);<br>});</p>
+<font color="red">总结一下，总的来说非常简单，不知效率如何，我的猜想，应该是比较适合层次较少的JSON数据结构。</font>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;mongodb&quot;&gt;&lt;a href=&quot;#mongodb&quot; class=&quot;headerlink&quot; title=&quot;mongodb&quot;&gt;&lt;/a&gt;mongodb&lt;/h3&gt;&lt;p&gt;传说中的非关系数据库，颠覆了我们在大学时学数据库时的三观，虽说那时并非所有的数据库都是关系型数据库，
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Js 载入defer和async方式的区别</title>
+    <link href="https://ganchengyuan1990.github.io/blog/2017/01/19/Js-%E8%BD%BD%E5%85%A5defer%E5%92%8Casync%E6%96%B9%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>https://ganchengyuan1990.github.io/blog/2017/01/19/Js-载入defer和async方式的区别/</id>
+    <published>2017-01-19T06:06:49.000Z</published>
+    <updated>2017-01-19T06:07:30.385Z</updated>
+    
+    <content type="html"><![CDATA[<p>async加载完便执行，乱序的；defer会等到html解析完再执行，并且是顺序的。</p>
+<ol>
+<li>defer 和 async 在网络读取（下载）这块儿是一样的，都是异步的（相较于 HTML 解析）</li>
+<li>它俩的差别在于脚本下载完之后何时执行，显然 defer 是最接近我们对于应用脚本加载和执行的要求的</li>
+<li>关于 defer，此图未尽之处在于它是按照加载顺序执行脚本的，这一点要善加利用</li>
+<li>async 则是一个乱序执行的主，反正对它来说脚本的加载和执行是紧紧挨着的，所以不管你声明的顺序如何，只要它加载完了就会立刻执行</li>
+<li>仔细想想，async 对于应用脚本的用处不大，因为它完全不考虑依赖（哪怕是最低级的顺序执行），不过它对于那些可以不依赖任何脚本或不被任何脚本依赖的脚本来说却是非常合适的，最典型的例子：Google Analytics</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;async加载完便执行，乱序的；defer会等到html解析完再执行，并且是顺序的。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;defer 和 async 在网络读取（下载）这块儿是一样的，都是异步的（相较于 HTML 解析）&lt;/li&gt;
+&lt;li&gt;它俩的差别在于脚本下载完之后何时执行，显然 
+    
+    </summary>
+    
+    
+      <category term="Javascript" scheme="https://ganchengyuan1990.github.io/blog/tags/Javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>XSS和CSRF对比</title>
