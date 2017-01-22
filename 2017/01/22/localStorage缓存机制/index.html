@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://ganchengyuan1990.github.io/blog">
-  <title>vuex初探 | 时间追逐者</title>
+  <title>localStorage缓存机制 | 时间追逐者</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Vuex的作用是什么Vuex主要用来进行状态管理，我的理解就是当你的VUE项目大到一定程度以后，需要一个帮手来帮助你进行组件管理，尤其是多层次的组件进行信息交互时，如果没有这样一个工具，就得维护公共变量或者一层一层传递参数，这个过程是非常令人不愉悦的。
-引入12345import Vuex from &apos;vuex&apos;;import * as actions from &apos;./actions&apos;; //改变">
+  <meta name="description" content="首先，localStorage的确是可以做JS以及CSS缓存的，详情可以通过F12看http://mp.weixin.qq.com/s?__biz=MzA5NDIzNzY1OQ==&amp;amp;mid=2735610010&amp;amp;idx=1&amp;amp;sn=67e3f0833f1097a279d850e2098956ff&amp;amp;scene=0#wechat_redirect
+按道理说这个机制是非常诱">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vuex初探">
-<meta property="og:url" content="https://ganchengyuan1990.github.io/blog/2017/01/17/vuex初探/index.html">
+<meta property="og:title" content="localStorage缓存机制">
+<meta property="og:url" content="https://ganchengyuan1990.github.io/blog/2017/01/22/localStorage缓存机制/index.html">
 <meta property="og:site_name" content="时间追逐者">
-<meta property="og:description" content="Vuex的作用是什么Vuex主要用来进行状态管理，我的理解就是当你的VUE项目大到一定程度以后，需要一个帮手来帮助你进行组件管理，尤其是多层次的组件进行信息交互时，如果没有这样一个工具，就得维护公共变量或者一层一层传递参数，这个过程是非常令人不愉悦的。
-引入12345import Vuex from &apos;vuex&apos;;import * as actions from &apos;./actions&apos;; //改变">
-<meta property="og:updated_time" content="2017-01-19T05:37:03.142Z">
+<meta property="og:description" content="首先，localStorage的确是可以做JS以及CSS缓存的，详情可以通过F12看http://mp.weixin.qq.com/s?__biz=MzA5NDIzNzY1OQ==&amp;amp;mid=2735610010&amp;amp;idx=1&amp;amp;sn=67e3f0833f1097a279d850e2098956ff&amp;amp;scene=0#wechat_redirect
+按道理说这个机制是非常诱">
+<meta property="og:updated_time" content="2017-01-22T02:13:30.844Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vuex初探">
-<meta name="twitter:description" content="Vuex的作用是什么Vuex主要用来进行状态管理，我的理解就是当你的VUE项目大到一定程度以后，需要一个帮手来帮助你进行组件管理，尤其是多层次的组件进行信息交互时，如果没有这样一个工具，就得维护公共变量或者一层一层传递参数，这个过程是非常令人不愉悦的。
-引入12345import Vuex from &apos;vuex&apos;;import * as actions from &apos;./actions&apos;; //改变">
+<meta name="twitter:title" content="localStorage缓存机制">
+<meta name="twitter:description" content="首先，localStorage的确是可以做JS以及CSS缓存的，详情可以通过F12看http://mp.weixin.qq.com/s?__biz=MzA5NDIzNzY1OQ==&amp;amp;mid=2735610010&amp;amp;idx=1&amp;amp;sn=67e3f0833f1097a279d850e2098956ff&amp;amp;scene=0#wechat_redirect
+按道理说这个机制是非常诱">
   
     <link rel="alternative" href="/atom.xml" title="时间追逐者" type="application/atom+xml">
   
@@ -170,31 +170,56 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-vuex初探" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-localStorage缓存机制" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      vuex初探
+      localStorage缓存机制
     </h1>
   
 
         
-        <a href="/blog/2017/01/17/vuex初探/" class="archive-article-date">
-  	<time datetime="2017-01-17T02:27:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-17</time>
+        <a href="/blog/2017/01/22/localStorage缓存机制/" class="archive-article-date">
+  	<time datetime="2017-01-22T01:26:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Vuex的作用是什么"><a href="#Vuex的作用是什么" class="headerlink" title="Vuex的作用是什么"></a>Vuex的作用是什么</h3><p>Vuex主要用来进行状态管理，我的理解就是当你的VUE项目大到一定程度以后，需要一个帮手来帮助你进行组件管理，尤其是多层次的组件进行信息交互时，如果没有这样一个工具，就得维护公共变量或者一层一层传递参数，这个过程是非常令人不愉悦的。</p>
-<h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> actions <span class="keyword">from</span> <span class="string">'./actions'</span>; <span class="comment">//改变状态都得通过这里的方法</span></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> getters <span class="keyword">from</span> <span class="string">'./getters'</span>; <span class="comment">//获取状态值的方法</span></div></pre></td></tr></table></figure>
-<h2 id="store对象"><a href="#store对象" class="headerlink" title="store对象"></a>store对象</h2><p>这个对象就是Vuex创建的实例对象，是重点需要学习的内容。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> store = &#123;</div><div class="line">	<span class="comment">//state对象维护具体状态值</span></div><div class="line">    state: &#123;</div><div class="line">        <span class="attr">isInitData</span>: <span class="literal">true</span>, <span class="comment">//首次刷新页面</span></div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * vuex 2.0 action should be await Vuex规定每个状态值的改变最后都要通过actions函数来操作，并且规定必须是异步，因此调取接口的操作应该都在这里</div><div class="line">     */</div><div class="line">    actions: &#123;</div><div class="line">        <span class="attr">fetchSearchDataAction</span>: <span class="function">(<span class="params">&#123; commit, dispatch &#125;, options</span>) =&gt;</span> &#123;</div><div class="line">            commit(<span class="string">'SET_TOP_LOADING'</span>, &#123; <span class="attr">type</span>: <span class="literal">true</span> &#125;)</div><div class="line">        &#125;,</div><div class="line"></div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * even vuex 2.0 mutations should be async  actions 只是一个架构性的概念，并不是必须的，说到底只是一个函数，你在里面想干嘛都可以，只要最后触发 mutation 就行。</div><div class="line">     */</div><div class="line">    mutations: &#123;</div><div class="line"></div><div class="line">        [types.COMBINE_DETAIL_LIST](state, res) &#123;</div><div class="line"></div><div class="line">            <span class="keyword">let</span> cloneMerchandiseList = [];</div><div class="line"></div><div class="line">            state.merchandiseList.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</div><div class="line"></div><div class="line">                    cloneMerchandiseList.push(<span class="built_in">Object</span>.assign(&#123;&#125;, item, res[item.sm_seq]));</div><div class="line"></div><div class="line">                &#125;)</div><div class="line">                <span class="comment">//combine 合并基础对象和详细属性,重现渲染列表</span></div><div class="line">            state.merchandiseList = cloneMerchandiseList;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    <span class="attr">getters</span>: &#123;</div><div class="line">        <span class="attr">listDownType</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">let</span> type = <span class="string">''</span></div><div class="line">            state.selectListData.filter(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</div><div class="line">                <span class="keyword">if</span>(item.isSelect)&#123;</div><div class="line">                    type = item.sortType</div><div class="line">                &#125;</div><div class="line">            &#125;)</div><div class="line">            <span class="keyword">return</span> type</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<font color="red">注：同步的意义在于这样每一个 mutation 执行完成后都可以对应到一个新的状态（和 reducer 一样），这样 devtools 就可以打个 snapshot 存下来，然后就可以随便 time-travel 了。</font>
+        <p>首先，localStorage的确是可以做JS以及CSS缓存的，详情可以通过F12看<a href="http://mp.weixin.qq.com/s?__biz=MzA5NDIzNzY1OQ==&amp;mid=2735610010&amp;idx=1&amp;sn=67e3f0833f1097a279d850e2098956ff&amp;scene=0#wechat_redirect" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MzA5NDIzNzY1OQ==&amp;mid=2735610010&amp;idx=1&amp;sn=67e3f0833f1097a279d850e2098956ff&amp;scene=0#wechat_redirect</a></p>
+<p>按道理说这个机制是非常诱人的，毕竟localStorage可存储体积大，并且用户一旦开启便不容易清除，所以从工程师的角度来看这个工具非常适合缓存一些并不经常需要维护更新的脚本和样式文件。</p>
+<p>当然，假如要更新的话，就得好好设计一下更新机制，普通的资源请求，可以根据文件名+md5 <a href="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/moon32ebc4.js或者在资源链接后面加上特定的后缀http://1.ss.faisys.com/js/comm/fai.min.js?v=201612051739做标识来判断是否需要更新资源。如果用localStorage做，则需要一套新的缓存更新机制。" target="_blank" rel="external">http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/moon32ebc4.js或者在资源链接后面加上特定的后缀http://1.ss.faisys.com/js/comm/fai.min.js?v=201612051739做标识来判断是否需要更新资源。如果用localStorage做，则需要一套新的缓存更新机制。</a></p>
+<p>微信的做法是每个文件都单独维护一个localStorage变量，来记录版本号，从而由后台来判断是否需要更新。</p>
+<h2 id="此方案的优点"><a href="#此方案的优点" class="headerlink" title="此方案的优点"></a>此方案的优点</h2><p>对于传统的浏览器缓存（如COOKIE）, 用户主动触发的页面刷新行为（比如刷新按钮、右键刷新、F5等），会导致浏览器放弃本地缓存，使用协商缓存（304缓存），用了LS之后，可以完全避免这种情况，等效于无视用户主动刷新行为的本地强缓存。当LS+eval速度大于304协商速度时，LS方案具有统计上的正收益。</p>
+<p>还有，缓存问题也绝不是一个页面的问题，网站很多页面之间会跳转访问，彼此之间也有共享的静态资源，基于url的缓存让跨页面之间缓存共享问题变得粗粒度。举个例子，有A、B两个页面，彼此有访问路径（比如百度首页和搜索结果页之间的访问），其中：</p>
+<ul>
+<li>A页面使用资源：a, b, c, d</li>
+<li>B页面使用资源：a, b, c, e, f</li>
+</ul>
+<p>假设不考虑并发请求的优化，我们希望尽可能的打包，再假设A页面是主要入口，那么，最合理的方案可能就是a-b-c-d打包（设为[abcd]），e-f打包（设为[ef]），从而使得：</p>
+<ul>
+<li>A页面使用url：[abcd]</li>
+<li>B页面使用url：[abcd]+[ef]</li>
+<li>由于用户大多首次访问A页面，然后会跳转到B页面，所以访问A页面会很快，再跳转到B页面可以从缓存中使用[abcd]包，再只需加载[ef]包即可。为了更大的缓存利用率，我们让B页面复用A页面的url缓存，但多了一个不需要的d资源这也是合理的。也就是说，基于url的缓存利用可能在有些情况下会资源的冗余加载。想想那些通过url直接访问B页面的用户来说，无缓存情况下，页面加载的是[abcd]+[ef]两个资源包，既有冗余，又是两个请求，这并不是最理想的加载策略（这个方案是倾向于优化A页面展现的，虽然B页面首次展现不理想，但B页面大部分pv是从A页面导入，网站总体性能是更好的）。</li>
+</ul>
+<p>而使用combo服务+LS的情况就不同了，假设combo的url的形式是[a,b,c,…]，那么单独访问A、B页面的资源url就是：</p>
+<ul>
+<li>A页面使用url：[a,b,c,d]</li>
+<li>B页面使用url：[a,b,d,e,f]<br>用户由A页面进入网站，加载[a,b,c,d]这个url，然后LS缓存4个资源，再跳转到B页面，缓存控制框架可以知道本地缓存了哪些，然后只发起[e,f]这个请求。其效果基本等效于浏览器基于URL的缓存。而对于那些没有通过A页面直接访问B页面的用户来说，B页面加载的是[a,b,d,e,f]，也是不错的合并策略。LS在这个时候就发挥了那么一点点优势。</li>
+</ul>
+<p>当然，这种优势还不够明显，最能展现LS优势的，其实是单页面应用。因为单页面应用需要完全有JS管理页面状态，并增量加载资源，用户也可能通过带有hash的url直接访问某个单页面中的虚拟页面，同一个页面会有很多种不同的资源请求组合，这个时候，唯有LS+combo才能很好的解决资源加载与缓存问题。对于这种情况，我有一个网站可以用于展示效果：</p>
+<p>Scrat - webapp模块化开发体系<a href="http://scrat.io/#!/index" target="_blank" rel="external">http://scrat.io/#!/index</a></p>
+<h2 id="方案存在的问题"><a href="#方案存在的问题" class="headerlink" title="方案存在的问题"></a>方案存在的问题</h2><p>首先，对SEO是不友好的。要进行SEO，必须直接输出完整HTML，因此必须让样式在头部以link标签加载。如果先输出HTML，后用js从本地缓存读取样式再插入，会出现严重的阻塞和闪烁问题，相信正常人是不会这么干的。</p>
+<p>兼容性不太好，不支持LS的浏览器比例仍然很大。</p>
+<p>在未来，HTTP2时代的到来应该会完美绝杀这种黑科技，因此，工程化的具体实施方法必然要与时俱进，不过工程化的方法论不会过时，无论在哪个时代，我们都应该全面、科学的分析工程问题，结合当前的浏览器环境和技术手段来做方案，保持网站的性能。</p>
+<p>其次，引入localStorage中的缓存文件不像<script>标签插入JS那样可以自执行，因此需要一些技巧，常见的方法是写eval()函数，把所有的代码都执行出来，但是这有一个问题，就是不便于压缩。因此也可以用另一个方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line"><span class="keyword">var</span> code = <span class="string">'!function()&#123;'</span> + getCodeFromLocalStorage() + <span class="string">'\n&#125;();'</span>;</div><div class="line">script.appendChild(<span class="built_in">document</span>.createTextNode(code));</div><div class="line"><span class="built_in">document</span>.head.appendChild(script);</div></pre></td></tr></table></figure>
+<p>容易出现安全问题，一旦有xss漏洞就会被人利用，将恶意代码注入到LS中导致即便修复了xss恶意代码也存在的问题。所以我们现在采用的策略是每次部署新版本就会清除全部缓存。这会导致缓存利用率的下降，不过至少还有部分浏览器缓存在呢，算是一个折中处理。</p>
+</script></p>
       
 
       
@@ -229,10 +254,6 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
         		</li>
       		
 		</ul>
@@ -288,7 +309,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://ganchengyuan1990.github.io/blog/2017/01/17/vuex初探/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://ganchengyuan1990.github.io/blog/2017/01/22/localStorage缓存机制/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -302,18 +323,9 @@
   
 <nav id="article-nav">
   
-    <a href="/blog/2017/01/18/html-render-paint/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          html render &amp; paint（重排和重绘）
-        
-      </div>
-    </a>
   
-  
-    <a href="/blog/2017/01/17/javascript闭包个人理解/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">javascript闭包个人理解</div>
+    <a href="/blog/2017/01/20/初识mongodb/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">初识mongodb</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -327,7 +339,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="vuex初探" data-title="vuex初探" data-url="https://ganchengyuan1990.github.io/blog/blog/2017/01/17/vuex初探/"></div>
+	<div class="ds-thread" data-thread-key="localStorage缓存机制" data-title="localStorage缓存机制" data-url="https://ganchengyuan1990.github.io/blog/blog/2017/01/22/localStorage缓存机制/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
