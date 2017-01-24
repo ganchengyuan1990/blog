@@ -168,6 +168,288 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-javascript小技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/01/24/javascript小技巧/">javascript小技巧</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2017/01/24/javascript小技巧/" class="archive-article-date">
+  	<time datetime="2017-01-24T02:52:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>计算最小值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">smallest</span>(<span class="params">array</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.min.apply(<span class="built_in">Math</span>, array);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(smallest([<span class="number">9</span>,<span class="number">13</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">33</span>])); <span class="comment">//7</span></div></pre></td></tr></table></figure>
+<p>巧用call方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function useCall() &#123;</div><div class="line">    [].forEach.call(arguments, function(val, key) &#123;</div><div class="line">        console.log(key, val)</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">useCall(&apos;Bob Dylan&apos;, &apos;Bob Marley&apos;, &apos;Steve Vai&apos;);//Bob Dylan, Bob Marley, Steve Vai</div></pre></td></tr></table></figure>
+<p>如何理解Vue中的setter和getter<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Coder = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            get name()&#123;</div><div class="line">                <span class="keyword">if</span>(that.name)&#123;</div><div class="line">                    <span class="keyword">return</span> that.name</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> <span class="string">'你还没有取名'</span></div><div class="line">            &#125;,</div><div class="line">            set name(val)&#123;</div><div class="line">                <span class="built_in">console</span>.log(<span class="string">'你把名字修成了'</span>+val)</div><div class="line">                that.name = val</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> isMe = <span class="keyword">new</span> Coder()</div><div class="line">    <span class="built_in">console</span>.log(isMe.name)</div><div class="line">    isMe.name = <span class="string">'周神'</span></div><div class="line">    <span class="built_in">console</span>.log(isMe.name)</div><div class="line">    <span class="built_in">console</span>.log(isMe)</div><div class="line"></div><div class="line"><span class="keyword">var</span> Coder = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    &#125;</div><div class="line">    Coder.prototype.__defineGetter__(<span class="string">'name'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.name) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.name</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">'你还没有取名'</span></div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">    Coder.prototype.__defineSetter__(<span class="string">'name'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = val</div><div class="line">    &#125;)</div><div class="line">    <span class="keyword">var</span> isMe = <span class="keyword">new</span> Coder()</div><div class="line">    <span class="built_in">console</span>.log(isMe.name)</div><div class="line">    isMe.name = <span class="string">'周神'</span></div><div class="line">    <span class="built_in">console</span>.log(isMe.name)</div><div class="line">    <span class="built_in">console</span>.log(isMe)</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/01/24/javascript小技巧/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Restful-API初识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/01/24/Restful-API初识/">Restful API初识</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2017/01/24/Restful-API初识/" class="archive-article-date">
+  	<time datetime="2017-01-24T01:57:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>转载：<a href="http://scarletsky.github.io/2016/11/30/error-handling-in-restful-api/" target="_blank" rel="external">http://scarletsky.github.io/2016/11/30/error-handling-in-restful-api/</a></p>
+<p>Restful API这个概念是我这几天看博客才接触到的，但其实在日常开发中这个思想始终都占据着重要地位。</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>随着移动开发和前端开发的崛起，越来越多的 Web 后端应用都倾向于实现 Restful API。<br>Restful API 是一个简单易用的前后端分离方案，它只需要对客户端请求进行处理，然后返回结果即可， 无需考虑页面渲染，一定程度上减轻了后端开发人员的负担。<br>不过，这也意味着，有一些工作就必须由前端来完成了，比如错误处理。</p>
+<p>当 Restful API 需要抛出错误的时候，我们要考虑的是：这个错误应该包含哪些信息。<br>我们先看看 Github, Google, Facebook, Twitter, Twilio 的错误信息是怎样的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Github</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"message"</span>: <span class="string">"Validation Failed"</span>,</div><div class="line">  <span class="string">"errors"</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="string">"resource"</span>: <span class="string">"Issue"</span>,</div><div class="line">      <span class="string">"field"</span>: <span class="string">"title"</span>,</div><div class="line">      <span class="string">"code"</span>: <span class="string">"missing_field"</span></div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//Google</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"error"</span>: &#123;</div><div class="line">    <span class="string">"errors"</span>: [</div><div class="line">      &#123;</div><div class="line">        <span class="string">"domain"</span>: <span class="string">"global"</span>,</div><div class="line">        <span class="string">"reason"</span>: <span class="string">"insufficientFilePermissions"</span>,</div><div class="line">        <span class="string">"message"</span>: <span class="string">"The user does not have sufficient permissions for file &#123;fileId&#125;."</span></div><div class="line">      &#125;</div><div class="line">    ],</div><div class="line">    <span class="string">"code"</span>: <span class="number">403</span>,</div><div class="line">    <span class="string">"message"</span>: <span class="string">"The user does not have sufficient permissions for file &#123;fileId&#125;."</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//Facebook</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"error"</span>: &#123;</div><div class="line">    <span class="string">"message"</span>: <span class="string">"Message describing the error"</span>, </div><div class="line">    <span class="string">"type"</span>: <span class="string">"OAuthException"</span>,</div><div class="line">    <span class="string">"code"</span>: <span class="number">190</span>,</div><div class="line">    <span class="string">"error_subcode"</span>: <span class="number">460</span>,</div><div class="line">    <span class="string">"error_user_title"</span>: <span class="string">"A title"</span>,</div><div class="line">    <span class="string">"error_user_msg"</span>: <span class="string">"A message"</span>,</div><div class="line">    <span class="string">"fbtrace_id"</span>: <span class="string">"EJplcsCHuLu"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>观察这些结构可以发现它们都有一些共同的地方：</p>
+<ul>
+<li>都利用了 Http 状态码</li>
+<li>有些返回了业务错误码</li>
+<li>都提供了给用户看的错误提示信息</li>
+<li>有些提供了给开发者看的错误信息</li>
+</ul>
+<h3 id="设计错误类型"><a href="#设计错误类型" class="headerlink" title="设计错误类型"></a>设计错误类型</h3><p>我们刚才提到过，可以利用 Http 状态码来为错误类型进行分类。<br>通常我们所说的分类通常是对客户端错误进行分类， 即 4xx 类型的错误。</p>
+<p>而这些错误类型中，我们最常用的是：</p>
+<ol>
+<li><p>400 Bad Request<br>由于包含语法错误，当前请求无法被服务器理解。除非进行修改，否则客户端不应该重复提交这个请求。<br>通常在请求参数不合法或格式错误的时候可以返回这个状态码。</p>
+</li>
+<li><p>401 Unauthorized<br>当前请求需要用户验证。<br>通常在没有登录的状态下访问一些受保护的 API 时会用到这个状态码。</p>
+</li>
+<li><p>403 Forbidden<br>服务器已经理解请求，但是拒绝执行它。与401响应不同的是，身份验证并不能提供任何帮助。<br>通常在没有权限操作资源时(如修改/删除一个不属于该用户的资源时)会用到这个状态码。</p>
+</li>
+<li><p>404 Not Found<br>请求失败，请求所希望得到的资源未被在服务器上发现。<br>通常在找不到资源时返回这个状态码。</p>
+</li>
+</ol>
+<p>我个人习惯把错误分成以下几种类型：</p>
+<ul>
+<li>格式错误 (FORMAT_INVALID)</li>
+<li>数据不存在 (DATA_NOT_FOUND)</li>
+<li>数据已存在 (DATA_EXISTED)</li>
+<li>数据无效 (DATA_INVALID)</li>
+<li>登录错误 (LOGIN_REQUIRED)</li>
+<li>权限不足 (PERMISSION_DENIED)</li>
+</ul>
+<p>错误分类之后，我们抛错误的时候就变得更加直观了：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (!res.body.title) &#123;</div><div class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(ERROR.FORMAT_INVALID)</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span> (!user) &#123;</div><div class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(ERROR.LOGIN_REQUIRED)</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span> (!post) &#123;</div><div class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(ERROR.DATA_NOT_FOUND)</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span> (post.creator.id !== user.id) &#123;</div><div class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(ERROR.PERMISSION_DENIED)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">后端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/01/24/Restful-API初识/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-跨域问题整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/01/23/跨域问题整理/">跨域问题整理</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2017/01/23/跨域问题整理/" class="archive-article-date">
+  	<time datetime="2017-01-23T01:22:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>跨域，是一个前端开发者必须掌握的概念，这篇文章就从几个基本问题出发，来理解这个概念。</p>
+<h3 id="首先，什么是跨域？为何会有跨域？"><a href="#首先，什么是跨域？为何会有跨域？" class="headerlink" title="首先，什么是跨域？为何会有跨域？"></a>首先，什么是跨域？为何会有跨域？</h3><p>跨域一词从字面意思看，就是跨域名嘛，但实际上跨域的范围绝对不止那么狭隘。具体概念如下：只要协议、域名、端口有任何一个不同，都被当作是不同的域。所以说，如果你的后端用的是NODEJS，然后端口设置采用了默认的3000，还是会产生跨域的。之所以会产生跨域这个问题呢，其实也很容易想明白，要是随便引用外部文件，不同标签下的页面引用类似的彼此的文件，浏览器很容易懵逼的，安全也得不到保障了就。什么事，都是安全第一嘛。但在安全限制的同时也给注入iframe或是ajax应用上带来了不少麻烦。所以我们要通过一些方法使本域的js能够操作其他域的页面对象或者使其他域的js能操作本域的页面对象（iframe之间）。下面是具体的跨域情况详解：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">URL                      <span class="comment">//说明       是否允许通信</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/b.js     //同一域名下   允许</span></div><div class="line">http:<span class="comment">//www.a.com/lab/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/script/b.js //同一域名下不同文件夹 允许</span></div><div class="line">http:<span class="comment">//www.a.com:8000/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/b.js     //同一域名，不同端口  不允许</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">https:<span class="comment">//www.a.com/b.js //同一域名，不同协议 不允许</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//70.32.92.74/b.js //域名和域名对应ip 不允许</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//script.a.com/b.js //主域相同，子域不同 不允许（cookie这种情况下也不允许访问）</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//a.com/b.js //同一域名，不同二级域名（同上） 不允许（cookie这种情况下也不允许访问）</span></div><div class="line">http:<span class="comment">//www.cnblogs.com/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/b.js //不同域名 不允许</span></div></pre></td></tr></table></figure>
+<h3 id="那么跨域方法有哪些呢？"><a href="#那么跨域方法有哪些呢？" class="headerlink" title="那么跨域方法有哪些呢？"></a>那么跨域方法有哪些呢？</h3><p>既然有跨域这种限制，我们要怎么绕过它呢？</p>
+<h2 id="1-通过document-domain跨域"><a href="#1-通过document-domain跨域" class="headerlink" title="1. 通过document.domain跨域"></a>1. 通过document.domain跨域</h2><p>前面说过了，浏览器有一个同源策略，其限制之一是不能通过ajax的方法去请求不同源中的文档。 第二个限制是浏览器中不同域的框架之间是不能进行js的交互操作的。不同的框架之间是可以获取window对象的，但却无法获取相应的属性和方法。比如，有一个页面，它的地址是<a href="http://www.damonare.cn/a.html" target="_blank" rel="external">http://www.damonare.cn/a.html</a> ， 在这个页面里面有一个iframe，它的src是<a href="http://damonare.cn/b.html" target="_blank" rel="external">http://damonare.cn/b.html</a>, 很显然，这个页面与它里面的iframe框架是不同域的，所以我们是无法通过在页面中书写js代码来获取iframe中的东西的：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> iframe = <span class="built_in">document</span>.getElementById(<span class="string">'iframe'</span>);</div><div class="line">        <span class="keyword">var</span> win = iframe.contentWindow;<span class="comment">//可以获取到iframe里的window对象，但该window对象的属性和方法几乎是不可用的</span></div><div class="line">        <span class="keyword">var</span> doc = win.document;<span class="comment">//这里获取不到iframe里的document对象</span></div><div class="line">        <span class="keyword">var</span> name = win.name;<span class="comment">//这里同样获取不到window对象的name属性</span></div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span> = <span class="string">"iframe"</span> <span class="attr">src</span>=<span class="string">"http://damonare.cn/b.html"</span> <span class="attr">onload</span> = <span class="string">"test()"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这个时候，document.domain就可以派上用场了，<font color="blue">我们只要把<a href="http://www.damonare.cn/a.html和http://damonare.cn/b.html这两个页面的document.domain都设成相同的域名就可以了。但要注意的是，document.domain的设置是有限制的，我们只能把document.domain设置成自身或更高一级的父域，且主域必须相同。" target="_blank" rel="external">http://www.damonare.cn/a.html和http://damonare.cn/b.html这两个页面的document.domain都设成相同的域名就可以了。但要注意的是，document.domain的设置是有限制的，我们只能把document.domain设置成自身或更高一级的父域，且主域必须相同。</a></font></p>
+<ul>
+<li>在页面<a href="http://www.damonare.cn/a.html" target="_blank" rel="external">http://www.damonare.cn/a.html</a> 中设置document.domain:</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span> = <span class="string">"iframe"</span> <span class="attr">src</span>=<span class="string">"http://damonare.cn/b.html"</span> <span class="attr">onload</span> = <span class="string">"test()"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="built_in">document</span>.domain = <span class="string">'damonare.cn'</span>;<span class="comment">//设置成主域</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(<span class="built_in">document</span>.getElementById(<span class="string">'￼iframe'</span>).contentWindow);<span class="comment">//contentWindow 可取得子窗口的 window 对象</span></div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>在页面<a href="http://damonare.cn/b.html" target="_blank" rel="external">http://damonare.cn/b.html</a> 中也设置document.domain:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="built_in">document</span>.domain = <span class="string">'damonare.cn'</span>;<span class="comment">//在iframe载入这个页面也设置document.domain，使之与主页面的document.domain相同</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<font color="red">修改document.domain的方法只适用于不同子域的框架间的交互。</font>
+
+<h3 id="2-通过location-hash跨域"><a href="#2-通过location-hash跨域" class="headerlink" title="2. 通过location.hash跨域"></a>2. 通过location.hash跨域</h3><p>因为父窗口可以对iframe进行URL读写，iframe也可以读写父窗口的URL，URL有一部分被称为hash，就是#号及其后面的字符，它一般用于浏览器锚点定位，Server端并不关心这部分，应该说HTTP请求过程中不会携带hash，所以这部分的修改不会产生HTTP请求，但是会产生浏览器历史记录。此方法的原理就是改变URL的hash部分来进行双向通信。每个window通过改变其他 window的location来发送消息（由于两个页面不在同一个域下IE、Chrome不允许修改parent.location.hash的值，所以要借助于父窗口域名下的一个代理iframe），并通过监听自己的URL的变化来接收消息。这个方式的通信会造成一些不必要的浏览器历史记录，而且有些浏览器不支持onhashchange事件，需要轮询来获知URL的改变，最后，这样做也存在缺点，诸如数据直接暴露在了url中，数据容量和类型都有限等。下面举例说明：</p>
+<p>假如父页面是baidu.com/a.html,iframe嵌入的页面为google.cob.html（此处省略了域名等url属性），要实现此两个页面间的通信可以通过以下方法。</p>
+<ul>
+<li><p>a.html传送数据到b.html<br><strong> a.html下修改iframe的src为google.com/b.html#paco
+</strong> b.html监听到url发生变化，触发相应操作</p>
+</li>
+<li><p>b.html传送数据到a.html，由于两个页面不在同一个域下IE、Chrome不允许修改parent.location.hash的值，所以要借助于父窗口域名下的一个代理iframe<br><strong> b.html下创建一个隐藏的iframe，此iframe的src是baidu.com域下的，并挂上要传送的hash数据，如src=”<a href="http://www.baidu.com/proxy.html#data" target="_blank" rel="external">http://www.baidu.com/proxy.html#data</a>“
+</strong> proxy.html监听到url发生变化，修改a.html的url（因为a.html和proxy.html同域，所以proxy.html可修改a.html的url hash）<br>** a.html监听到url发生变化，触发相应操作</p>
+</li>
+</ul>
+<p>b.html关键代码是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;  </div><div class="line">    parent.location.hash = <span class="string">'data'</span>;  </div><div class="line">&#125; <span class="keyword">catch</span> (e) &#123;  </div><div class="line">    <span class="comment">// ie、chrome的安全机制无法修改parent.location.hash，  </span></div><div class="line">    <span class="keyword">var</span> ifrproxy = <span class="built_in">document</span>.createElement(<span class="string">'iframe'</span>);  </div><div class="line">    ifrproxy.style.display = <span class="string">'none'</span>;  </div><div class="line">    ifrproxy.src = <span class="string">"http://www.baidu.com/proxy.html#data"</span>;  </div><div class="line">    <span class="built_in">document</span>.body.appendChild(ifrproxy);  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>总的来说，这两个方法都是非常hacky的，所以目前来说广泛应用的场景非常少。重点是下面三种方式</p>
+<h3 id="3-通过HTML5的postMessage方法跨域"><a href="#3-通过HTML5的postMessage方法跨域" class="headerlink" title="3. 通过HTML5的postMessage方法跨域"></a>3. 通过HTML5的postMessage方法跨域</h3><p>高级浏览器Internet Explorer 8+, chrome，Firefox , Opera 和 Safari 都将支持这个功能。这个功能主要包括接受信息的”message”事件和发送消息的”postMessage”方法。比如damonare.cn域的A页面通过iframe嵌入了一个google.com域的B页面，可以通过以下方法实现A和B的通信。</p>
+<p>A页面通过postMessage方法发送消息：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </div><div class="line">    <span class="keyword">var</span> ifr = <span class="built_in">document</span>.getElementById(<span class="string">'ifr'</span>);  </div><div class="line">    <span class="keyword">var</span> targetOrigin = <span class="string">"http://www.google.com"</span>;  </div><div class="line">    ifr.contentWindow.postMessage(<span class="string">'hello world!'</span>, targetOrigin);  </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>B页面通过message事件监听并接受消息:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;  </div><div class="line">  <span class="keyword">var</span> data = event.data;<span class="comment">//消息  </span></div><div class="line">  <span class="keyword">var</span> origin = event.origin;<span class="comment">//消息来源地址  </span></div><div class="line">  <span class="keyword">var</span> source = event.source;<span class="comment">//源Window对象  </span></div><div class="line">  <span class="keyword">if</span>(origin==<span class="string">"http://www.baidu.com"</span>)&#123;  </div><div class="line">	<span class="built_in">console</span>.log(data);<span class="comment">//hello world!  </span></div><div class="line">  &#125;  </div><div class="line">&#125;;  </div><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span>.addEventListener != <span class="string">'undefined'</span>) &#123;  </div><div class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">'message'</span>, onmessage, <span class="literal">false</span>);  </div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span>.attachEvent != <span class="string">'undefined'</span>) &#123;  </div><div class="line">  <span class="comment">//for ie  </span></div><div class="line">  <span class="built_in">window</span>.attachEvent(<span class="string">'onmessage'</span>, onmessage);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>此方案也得建立一个隐藏的iframe，并且H5的兼容性也是一个问题，移动端可以尝试。</p>
+<h3 id="4-JSONP方法跨域"><a href="#4-JSONP方法跨域" class="headerlink" title="4. JSONP方法跨域"></a>4. JSONP方法跨域</h3><p>刚才说的这几种都是双向通信的，即两个iframe，页面与iframe或是页面与页面之间的，下面说几种单项跨域的（一般用来获取数据），因为通过script标签引入的js是不受同源策略的限制的。所以我们可以通过script标签引入一个js或者是一个其他后缀形式（如php，jsp等）的文件，此文件返回一个js函数的调用。<br>比如，有个a.html页面，它里面的代码需要利用ajax获取一个不同域上的json数据，假设这个json数据地址是<a href="http://damonare.cn/data.php,那么a.html中的代码就可以这样：" target="_blank" rel="external">http://damonare.cn/data.php,那么a.html中的代码就可以这样：</a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$callback = $_GET[<span class="string">'callback'</span>];<span class="comment">//得到回调函数名</span></div><div class="line">$data = <span class="keyword">array</span>(<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>);<span class="comment">//要返回的数据</span></div><div class="line"><span class="keyword">echo</span> $callback.<span class="string">'('</span>.json_encode($data).<span class="string">')'</span>;<span class="comment">//输出</span></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p>jquery会自动生成一个全局函数来替换callback=?中的问号，之后获取到数据后又会自动销毁，实际上就是起一个临时代理函数的作用。$.getJSON方法会自动判断是否跨域，不跨域的话，就调用普通的ajax方法；跨域的话，则会以异步加载js文件的形式来调用jsonp的回调函数。</p>
+<p>JSONP的优缺点:</p>
+<ul>
+<li>JSONP的优点是：它不像XMLHttpRequest对象实现的Ajax请求那样受到同源策略的限制；它的兼容性更好，在更加古老的浏览器中都可以运行，不需要XMLHttpRequest或ActiveX的支持；并且在请求完毕后可以通过调用callback的方式回传结果。</li>
+<li>JSONP的缺点则是：它只支持GET请求而不支持POST等其它类型的HTTP请求；它只支持跨域HTTP请求这种情况，不能解决不同域的两个页面之间如何进行JavaScript调用的问题。</li>
+</ul>
+<h3 id="5-通过CORS跨域"><a href="#5-通过CORS跨域" class="headerlink" title="5. 通过CORS跨域"></a>5. 通过CORS跨域</h3><p>CORS（Cross-Origin Resource Sharing）跨域资源共享，定义了必须在访问跨域资源时，浏览器与服务器应该如何沟通。CORS背后的基本思想就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是失败。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。整个CORS通信过程，都是浏览器自动完成，不需要用户参与。对于开发者来说，CORS通信与同源的AJAX通信没有差别，代码完全一样。浏览器一旦发现AJAX请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。</p>
+<p>一言不合上代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">    xhr.open(<span class="string">"￼GET"</span>, <span class="string">"http://segmentfault.com/u/trigkit4/"</span>,<span class="literal">true</span>);</div><div class="line">    xhr.send();</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>服务器端对于CORS的支持，主要就是通过设置Access-Control-Allow-Origin来实现的。如果浏览器检测到相应的设置，就可以允许Ajax进行跨域的访问。</p>
+<p>相比于JSON，它有以下特点：</p>
+<ol>
+<li>JSONP只能实现GET请求，而CORS支持所有类型的HTTP请求。</li>
+<li>使用CORS，开发者可以使用普通的XMLHttpRequest发起请求和获得数据，比起JSONP有更好的错误处理。</li>
+<li>JSONP主要被老的浏览器支持，它们往往不支持CORS，而绝大多数现代浏览器都已经支持了CORS）。</li>
+</ol>
+<p>CORS更类似于一个高级的协议，只要服务器端和客户端都遵照这个协议来，就可以进行通信。</p>
+<p>这个方案的主要工作量在于服务器端的配置，浏览器不需要任何额外工作。</p>
+<ol>
+<li><p>在PHP文件中设置：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span>  </div><div class="line"> header(<span class="string">"Access-Control-Allow-Origin:*"</span>);  </div><div class="line"> <span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>设置各服务器的配置文件，详见<a href="http://blog.csdn.net/ownfire/article/details/46707229" target="_blank" rel="external">http://blog.csdn.net/ownfire/article/details/46707229</a></p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/01/23/跨域问题整理/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-localStorage缓存机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -704,130 +986,10 @@
 
 
   
-    <article id="post-第一篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/01/16/第一篇/">Vue个人网站搭建</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/01/16/第一篇/" class="archive-article-date">
-  	<time datetime="2017-01-16T09:13:04.353Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  自学Vue也有将近一个月了，想做个简单的小作品，正好这段时间自己的阿里云服务器闲置着，而且个人域名一直缺一个主页面，自然就想到做一个小项目来改装一下门庭。</p>
-<p>###手机预览(website)<br>  废话不多说，上预览，<a href="http://www.jasongan.cn" target="_blank" rel="external">http://www.jasongan.cn</a></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h1 id="install-dependencies"><a href="#install-dependencies" class="headerlink" title="install dependencies"></a>install dependencies</h1><p>npm install</p>
-<h1 id="serve-with-hot-reload-at-localhost-8080"><a href="#serve-with-hot-reload-at-localhost-8080" class="headerlink" title="serve with hot reload at localhost:8080"></a>serve with hot reload at localhost:8080</h1><p>npm run dev</p>
-<h1 id="build-for-production-with-minification"><a href="#build-for-production-with-minification" class="headerlink" title="build for production with minification"></a>build for production with minification</h1><p>npm run build</p>
-<p>```</p>
-<h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><p>  vue-wechat是主要在利用Vue.js。</p>
-<p>  此demo在实现上使用了以下技术</p>
-<ul>
-<li>“vue”: “^1.0.21”,  考虑到Vue2.0组件还不够丰富，因此就还是想用1.0+的版本。</li>
-<li>“vue-resource”: “^1.0.0”,   要获取数据就要调API，在requireJs架构中使用Jquery即可，但是毕竟Jquery与Vue的思想是背道而驰的，因此选择使用”vue-resource”这套组件，她提供了非常友好而已用的API，来帮助我们非常快速简单地进行数据请求。</li>
-<li>“mint-ui”: “^1.0.2”  UI组件我选择大名鼎鼎的由饿了么前端团队出品的Mint-ui，这套组件文档丰富，更新快（现已完全支持Vue2.0+），能够满足80%左右前端UI的需求。</li>
-<li>“vue-echarts”: “^1.0.0”,  Echarts我原来就很喜欢了，百度的产品，有非常丰富的图表类型可供选择。原本使用的是Vue-chartjs，但是最后发现”vue-echarts”对”vue-resource”的支持更好（选择组件的过程中发现，一个好的组件，一定要做到对常用其他组件的支持，否则就失去存在意思，会被淘汰）。</li>
-<li>vue-animated-list</li>
-<li>“vuex”: “^1.0.0-rc.2”,  这个组件的意义在于清晰地状态管理，结合Chrome上的调试工具，玩法很多。</li>
-<li>vue-router</li>
-<li>fastclick</li>
-</ul>
-<p>注：在这边要提醒一下，一定要保持各组件之间的版本对应，必须时在npm安装时可以简单地在后面加上@X（版本号）来安装对应版本。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/01/16/第一篇/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/01/16/hello-world/">搭好了我的博客</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/01/16/hello-world/" class="archive-article-date">
-  	<time datetime="2017-01-16T08:12:12.622Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近这两天工作并不忙，因此有很多时间自学，今天也是用Hexo和Github搭建了这个个人的技术博客，希望以后可以多写点东西，多长进！<br>列一下这段时间准备研究的东西</p>
-<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><p>对于一个前前端的全栈工程师来说，Node.js是非常好的语言，并且学习社区非常完善，资料健全，很有意思。</p>
-<h2 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h2><p>Vue是一个很容易上手的框架，单页面应用也是非常好的一个前端网页思路，有效地减少白屏带来的视觉问题。<br>这两天在做搭个人网站的时候用上了Vue，打包完也有2M左右，组件太丰富，选择是一个问题。</p>
-<h2 id="MongoDb"><a href="#MongoDb" class="headerlink" title="MongoDb"></a>MongoDb</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="string">'hello world'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>数据库的选择，效率不错，API也很好使用。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/01/16/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="extend next" rel="next" href="/blog/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -909,11 +1071,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -921,11 +1083,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后端</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
             
             <div class="clearfix"></div>

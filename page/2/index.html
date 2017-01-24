@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://ganchengyuan1990.github.io/blog">
-  <title>Tag: 网络相关 | 时间追逐者</title>
+  <title>时间追逐者</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="你好">
 <meta property="og:type" content="website">
 <meta property="og:title" content="时间追逐者">
-<meta property="og:url" content="https://ganchengyuan1990.github.io/blog/tags/网络相关/index.html">
+<meta property="og:url" content="https://ganchengyuan1990.github.io/blog/page/2/index.html">
 <meta property="og:site_name" content="时间追逐者">
 <meta property="og:description" content="你好">
 <meta name="twitter:card" content="summary">
@@ -168,58 +168,135 @@
           <div id="js-content" class="content-ll">
             
   
-  
+    <article id="post-第一篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/blog/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/blog/2017/01/19/XSS和CSRF对比/" class="archive-article-date">
-  	<time datetime="2017-01-19T01:11:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-19</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2017/01/19/XSS和CSRF对比/">XSS和CSRF对比</a>
+      <a class="article-title" href="/blog/2017/01/16/第一篇/">Vue个人网站搭建</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        <a href="/blog/2017/01/16/第一篇/" class="archive-article-date">
+  	<time datetime="2017-01-16T09:13:04.353Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>  自学Vue也有将近一个月了，想做个简单的小作品，正好这段时间自己的阿里云服务器闲置着，而且个人域名一直缺一个主页面，自然就想到做一个小项目来改装一下门庭。</p>
+<p>###手机预览(website)<br>  废话不多说，上预览，<a href="http://www.jasongan.cn" target="_blank" rel="external">http://www.jasongan.cn</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h1 id="install-dependencies"><a href="#install-dependencies" class="headerlink" title="install dependencies"></a>install dependencies</h1><p>npm install</p>
+<h1 id="serve-with-hot-reload-at-localhost-8080"><a href="#serve-with-hot-reload-at-localhost-8080" class="headerlink" title="serve with hot reload at localhost:8080"></a>serve with hot reload at localhost:8080</h1><p>npm run dev</p>
+<h1 id="build-for-production-with-minification"><a href="#build-for-production-with-minification" class="headerlink" title="build for production with minification"></a>build for production with minification</h1><p>npm run build</p>
+<p>```</p>
+<h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><p>  vue-wechat是主要在利用Vue.js。</p>
+<p>  此demo在实现上使用了以下技术</p>
+<ul>
+<li>“vue”: “^1.0.21”,  考虑到Vue2.0组件还不够丰富，因此就还是想用1.0+的版本。</li>
+<li>“vue-resource”: “^1.0.0”,   要获取数据就要调API，在requireJs架构中使用Jquery即可，但是毕竟Jquery与Vue的思想是背道而驰的，因此选择使用”vue-resource”这套组件，她提供了非常友好而已用的API，来帮助我们非常快速简单地进行数据请求。</li>
+<li>“mint-ui”: “^1.0.2”  UI组件我选择大名鼎鼎的由饿了么前端团队出品的Mint-ui，这套组件文档丰富，更新快（现已完全支持Vue2.0+），能够满足80%左右前端UI的需求。</li>
+<li>“vue-echarts”: “^1.0.0”,  Echarts我原来就很喜欢了，百度的产品，有非常丰富的图表类型可供选择。原本使用的是Vue-chartjs，但是最后发现”vue-echarts”对”vue-resource”的支持更好（选择组件的过程中发现，一个好的组件，一定要做到对常用其他组件的支持，否则就失去存在意思，会被淘汰）。</li>
+<li>vue-animated-list</li>
+<li>“vuex”: “^1.0.0-rc.2”,  这个组件的意义在于清晰地状态管理，结合Chrome上的调试工具，玩法很多。</li>
+<li>vue-router</li>
+<li>fastclick</li>
+</ul>
+<p>注：在这边要提醒一下，一定要保持各组件之间的版本对应，必须时在npm安装时可以简单地在后面加上@X（版本号）来安装对应版本。</p>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/01/16/第一篇/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+
+
+
+
+
+
+
   
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
-    </div></section>
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/01/16/hello-world/">搭好了我的博客</a>
+    </h1>
   
 
+        
+        <a href="/blog/2017/01/16/hello-world/" class="archive-article-date">
+  	<time datetime="2017-01-16T08:12:12.622Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-16</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近这两天工作并不忙，因此有很多时间自学，今天也是用Hexo和Github搭建了这个个人的技术博客，希望以后可以多写点东西，多长进！<br>列一下这段时间准备研究的东西</p>
+<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><p>对于一个前前端的全栈工程师来说，Node.js是非常好的语言，并且学习社区非常完善，资料健全，很有意思。</p>
+<h2 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h2><p>Vue是一个很容易上手的框架，单页面应用也是非常好的一个前端网页思路，有效地减少白屏带来的视觉问题。<br>这两天在做搭个人网站的时候用上了Vue，打包完也有2M左右，组件太丰富，选择是一个问题。</p>
+<h2 id="MongoDb"><a href="#MongoDb" class="headerlink" title="MongoDb"></a>MongoDb</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="string">'hello world'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>数据库的选择，效率不错，API也很好使用。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/01/16/hello-world/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span>
+    </nav>
+  
 
 
           </div>
@@ -241,10 +318,10 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
+		isHome: true,
 		isPost: false,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/blog/",
