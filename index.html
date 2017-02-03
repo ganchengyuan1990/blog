@@ -168,6 +168,81 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Weex首秀-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/02/03/Weex首秀-2/">Weex首秀(2)</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2017/02/03/Weex首秀-2/" class="archive-article-date">
+  	<time datetime="2017-02-03T01:13:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先祝各位鸡年大吉，开工大吉！<br>趁着今天刚开公，工作任务还不多，可以继续学些Weex。</p>
+<p>春节在家无聊的时候，继续跟进了一下Weex的学习，主要把“关于我”这个Page进行了一些优化，这里主要是一些体力活，并没有太多可说的，简单总结以下几点：</p>
+<ol>
+<li>Weex中所有的文字都要放在<text></text>这个标签里，在普通的网页开发甚至Vue开发中，我偶尔会直接把文字放在div标签里，但是Weex中并不识别这样的语法。</li>
+<li>Weex的页面布局虽然也使用css语法，但是与Vue以及普通页面并不完全相同，我试验了一下，text-align：center必须用在text标签上，才能使文字居中，但是因为HTML并没有这个标签，所以要加载文字所在的父标签上，这个要注意，另外就是建议在Weex中多应用flex布局。</li>
+</ol>
+<p><img src="https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxgetmsgimg?&MsgID=2139303078991437021&skey=%40crypt_472542a3_b6b3c065237c2db63a8092be298fbb9c" alt=""></p>
+<h2 id="外部链接问题"><a href="#外部链接问题" class="headerlink" title="外部链接问题"></a>外部链接问题</h2><p>在“关于我”这个page中，有一个需求，就是链接到外部网站，因为之前缺少APP开发经验，所以我想当然地认为这个问题非常简单，只需要价格a标签，或者像Vue一样采用Router的方法就可以了，但是后来发现这样并不能正常work。</p>
+<p>仔细一看，Demo中所有Router都是链接到项目内部页面的，看地址栏上每个页面其实都是一个经过build的Js文件，这点应该和Vue是类似的，但这个并不符合我的需求，并且外部网站是传统的静态页面，因此还是需要解决。</p>
+<p>首先抓包看看访问的URL是否正确:<br><img src="https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxgetmsgimg?&MsgID=6428966141898621484&skey=%40crypt_472542a3_b6b3c065237c2db63a8092be298fbb9c" alt=""><br>由上图看”<a href="http://m.feiniu.com/my/order/index.html&quot;这个请求地址应该没有错，所以有可能是兼容问题。" target="_blank" rel="external">http://m.feiniu.com/my/order/index.html&quot;这个请求地址应该没有错，所以有可能是兼容问题。</a></p>
+<p>于是尝试捕捉error<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> &lt;web <span class="class"><span class="keyword">class</span></span>=<span class="string">"content"</span> id=<span class="string">"webview"</span> src=<span class="string">'https://m.taobao.com/?spm=0.0.0.0&amp;v=0#index'</span> onpagestart=<span class="string">"startload"</span> onpagefinish=<span class="string">"finishload"</span> onerror=<span class="string">"failload"</span>&gt;&lt;/web&gt;</div><div class="line"></div><div class="line">startload: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: <span class="string">'pagestart'</span> &#125;)</div><div class="line">&#125;,</div><div class="line"><span class="attr">finishload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: <span class="string">'finishload'</span> &#125;)</div><div class="line">&#125;,</div><div class="line"><span class="attr">failload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: event &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用不同的机器进行测试，安卓手机触发到了finishload事件，而IPHONE触发了failload事件，但是两个手机都无法正常显示网页。</p>
+<p>最后我在官方文档中查到这个：<br><img src="https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxgetmsgimg?&MsgID=6508215180713760987&skey=%40crypt_472542a3_b6b3c065237c2db63a8092be298fbb9c" alt=""><br>web组件要求的weex版本是v0.5+，但是我的项目中用的是v0.32的，所以说看起来还是得仔细查查手册啊，之前在Vue项目中也碰到过这种组件兼容性问题。<br><img src="https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxgetmsgimg?&MsgID=1747607576204062505&skey=%40crypt_472542a3_b6b3c065237c2db63a8092be298fbb9c" alt=""></p>
+<p>目前怀疑就是这个问题导致无法正常使用webview（未完待续）。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/02/03/Weex首秀-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Weex首秀" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -923,75 +998,6 @@
 
 
   
-    <article id="post-vuex初探" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/01/17/vuex初探/">vuex初探</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/01/17/vuex初探/" class="archive-article-date">
-  	<time datetime="2017-01-17T02:27:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Vuex的作用是什么"><a href="#Vuex的作用是什么" class="headerlink" title="Vuex的作用是什么"></a>Vuex的作用是什么</h3><p>Vuex主要用来进行状态管理，我的理解就是当你的VUE项目大到一定程度以后，需要一个帮手来帮助你进行组件管理，尤其是多层次的组件进行信息交互时，如果没有这样一个工具，就得维护公共变量或者一层一层传递参数，这个过程是非常令人不愉悦的。</p>
-<h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> actions <span class="keyword">from</span> <span class="string">'./actions'</span>; <span class="comment">//改变状态都得通过这里的方法</span></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> getters <span class="keyword">from</span> <span class="string">'./getters'</span>; <span class="comment">//获取状态值的方法</span></div></pre></td></tr></table></figure>
-<h2 id="store对象"><a href="#store对象" class="headerlink" title="store对象"></a>store对象</h2><p>这个对象就是Vuex创建的实例对象，是重点需要学习的内容。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> store = &#123;</div><div class="line">	<span class="comment">//state对象维护具体状态值</span></div><div class="line">    state: &#123;</div><div class="line">        <span class="attr">isInitData</span>: <span class="literal">true</span>, <span class="comment">//首次刷新页面</span></div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * vuex 2.0 action should be await Vuex规定每个状态值的改变最后都要通过actions函数来操作，并且规定必须是异步，因此调取接口的操作应该都在这里</div><div class="line">     */</div><div class="line">    actions: &#123;</div><div class="line">        <span class="attr">fetchSearchDataAction</span>: <span class="function">(<span class="params">&#123; commit, dispatch &#125;, options</span>) =&gt;</span> &#123;</div><div class="line">            commit(<span class="string">'SET_TOP_LOADING'</span>, &#123; <span class="attr">type</span>: <span class="literal">true</span> &#125;)</div><div class="line">        &#125;,</div><div class="line"></div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * even vuex 2.0 mutations should be async  actions 只是一个架构性的概念，并不是必须的，说到底只是一个函数，你在里面想干嘛都可以，只要最后触发 mutation 就行。</div><div class="line">     */</div><div class="line">    mutations: &#123;</div><div class="line"></div><div class="line">        [types.COMBINE_DETAIL_LIST](state, res) &#123;</div><div class="line"></div><div class="line">            <span class="keyword">let</span> cloneMerchandiseList = [];</div><div class="line"></div><div class="line">            state.merchandiseList.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</div><div class="line"></div><div class="line">                    cloneMerchandiseList.push(<span class="built_in">Object</span>.assign(&#123;&#125;, item, res[item.sm_seq]));</div><div class="line"></div><div class="line">                &#125;)</div><div class="line">                <span class="comment">//combine 合并基础对象和详细属性,重现渲染列表</span></div><div class="line">            state.merchandiseList = cloneMerchandiseList;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    <span class="attr">getters</span>: &#123;</div><div class="line">        <span class="attr">listDownType</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">let</span> type = <span class="string">''</span></div><div class="line">            state.selectListData.filter(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</div><div class="line">                <span class="keyword">if</span>(item.isSelect)&#123;</div><div class="line">                    type = item.sortType</div><div class="line">                &#125;</div><div class="line">            &#125;)</div><div class="line">            <span class="keyword">return</span> type</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<font color="red">注：同步的意义在于这样每一个 mutation 执行完成后都可以对应到一个新的状态（和 reducer 一样），这样 devtools 就可以打个 snapshot 存下来，然后就可以随便 time-travel 了。</font>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/01/17/vuex初探/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="extend next" rel="next" href="/blog/page/2/">Next &raquo;</a>
@@ -1081,11 +1087,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后端</a>
+                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1093,7 +1099,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
             
             <div class="clearfix"></div>
