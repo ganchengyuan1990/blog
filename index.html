@@ -168,6 +168,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-函数式编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/02/04/函数式编程/">函数式编程</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2017/02/04/函数式编程/" class="archive-article-date">
+  	<time datetime="2017-02-04T01:48:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>转帖：<a href="http://www.zcfy.cc/article/master-the-javascript-interview-what-is-function-composition-2160.html">http://www.zcfy.cc/article/master-the-javascript-interview-what-is-function-composition-2160.html</a></p>
+<blockquote>
+<p>函数式编程正在接管 JavaScript 世界。就在几年前，只有少数 JavaScript 程序员知道函数式编程是什么。然而，在过去 3 年内，我所看到的每个大型应用程序代码库都大量用到了函数式编程理念。</p>
+</blockquote>
+<p>函数组合就是<font color=red><code>组合两到多个函数来生成一个新函数</code></font>的过程。将函数组合在一起，就像将一连串管道扣合在一起，让数据流过一样。</p>
+<p>简而言之，函数 f 和 g 的组合可以被定义为 f(g(x))，从内到外（从右到左）求值。也就是说，求值顺序是：</p>
+<ul>
+<li>1.x</li>
+<li>2.g</li>
+<li>3.f</li>
+</ul>
+<p>下面我们在代码中更近距离观察一下这个概念。假如你想把用户的全名转换为 URL Slug，给每个用户一个个人信息页面。为了实现此需求，你需要经历一连串的步骤：</p>
+<ul>
+<li>1.将姓名根据空格分拆（split）到一个数组中</li>
+<li>2.将姓名映射（map）为小写</li>
+<li>3.用破折号连接（join）</li>
+<li>4.编码 URI 组件</li>
+</ul>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/02/04/函数式编程/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Weex首秀-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -764,72 +843,6 @@
 
 
   
-    <article id="post-html-render-paint" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/01/18/html-render-paint/">html render &amp; paint（重排和重绘）</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/01/18/html-render-paint/" class="archive-article-date">
-  	<time datetime="2017-01-18T03:05:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先，先吐槽一下weex学习社区的内容真的非常不全面，自学很难，优点是调试相对简单，暂时放一放，以后有空再看看。</p>
-<hr>
-<p>接下来进入正题，讲一讲昨天刚复习的有关<font color=red>浏览器页面渲染</font>的知识点。</p>
-<p>##repaint、reflow/relayout、restyle</p>
-<p>这四个概念分别代表什么？先来看一张图，了解一下浏览器页面的渲染过程<br><img src="http://images.cnitblog.com/blog/595796/201408/211743255813505.png" /></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/01/18/html-render-paint/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="extend next" rel="next" href="/blog/page/2/">Next &raquo;</a>
@@ -915,10 +928,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
@@ -932,6 +941,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
             
             <div class="clearfix"></div>

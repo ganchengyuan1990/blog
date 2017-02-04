@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ganchengyuan1990.github.io/blog/"/>
-  <updated>2017-02-04T01:44:01.783Z</updated>
+  <updated>2017-02-04T02:22:31.359Z</updated>
   <id>https://ganchengyuan1990.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,115 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>函数式编程</title>
+    <link href="https://ganchengyuan1990.github.io/blog/2017/02/04/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+    <id>https://ganchengyuan1990.github.io/blog/2017/02/04/函数式编程/</id>
+    <published>2017-02-04T01:48:39.000Z</published>
+    <updated>2017-02-04T02:22:31.359Z</updated>
+    
+    <content type="html"><![CDATA[<p>转帖：<a href="http://www.zcfy.cc/article/master-the-javascript-interview-what-is-function-composition-2160.html" target="_blank" rel="external">http://www.zcfy.cc/article/master-the-javascript-interview-what-is-function-composition-2160.html</a></p>
+<blockquote>
+<p>函数式编程正在接管 JavaScript 世界。就在几年前，只有少数 JavaScript 程序员知道函数式编程是什么。然而，在过去 3 年内，我所看到的每个大型应用程序代码库都大量用到了函数式编程理念。</p>
+</blockquote>
+<p>函数组合就是<font color="red"><code>组合两到多个函数来生成一个新函数</code></font>的过程。将函数组合在一起，就像将一连串管道扣合在一起，让数据流过一样。</p>
+<p>简而言之，函数 f 和 g 的组合可以被定义为 f(g(x))，从内到外（从右到左）求值。也就是说，求值顺序是：</p>
+<ul>
+<li>1.x</li>
+<li>2.g</li>
+<li>3.f</li>
+</ul>
+<p>下面我们在代码中更近距离观察一下这个概念。假如你想把用户的全名转换为 URL Slug，给每个用户一个个人信息页面。为了实现此需求，你需要经历一连串的步骤：</p>
+<ul>
+<li>1.将姓名根据空格分拆（split）到一个数组中</li>
+<li>2.将姓名映射（map）为小写</li>
+<li>3.用破折号连接（join）</li>
+<li>4.编码 URI 组件</li>
+</ul>
+<a id="more"></a>
+<p>如下是一个简单的实现：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> toSlug = <span class="function"><span class="params">input</span> =&gt;</span> <span class="built_in">encodeURIComponent</span>(</div><div class="line">  input.split(<span class="string">' '</span>)</div><div class="line">    .map(<span class="function"><span class="params">str</span> =&gt;</span> str.toLowerCase())</div><div class="line">    .join(<span class="string">'-'</span>)</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>还不赖…但是假如我告诉你可读性还可以更强一点会怎么样呢？</p>
+<p>假设每个操作都有一个对应的可组合的函数。上述代码就可以被写为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> toSlug = <span class="function"><span class="params">input</span> =&gt;</span> <span class="built_in">encodeURIComponent</span>(</div><div class="line">  join(<span class="string">'-'</span>)(</div><div class="line">    map(toLowerCase)(</div><div class="line">      split(<span class="string">' '</span>)(</div><div class="line">        input</div><div class="line">      )</div><div class="line">    )</div><div class="line">  )</div><div class="line">);</div><div class="line"> </div><div class="line"><span class="built_in">console</span>.log(toSlug(<span class="string">'JS Cheerleader'</span>)); <span class="comment">// 'js-cheerleader'</span></div></pre></td></tr></table></figure>
+<p>这看起来比我们的第一次尝试更难读懂，但是先忍一下，我们就要解决。</p>
+<p>为了实现上述代码，我们将组合几种常用的工具，比如 split()、join() 和 map()。如下是实现：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> curry = <span class="function"><span class="params">fn</span> =&gt;</span> (...args) =&gt; fn.bind(<span class="literal">null</span>, ...args);</div><div class="line"> </div><div class="line"><span class="keyword">const</span> map = curry(<span class="function">(<span class="params">fn, arr</span>) =&gt;</span> arr.map(fn));</div><div class="line"> </div><div class="line"><span class="keyword">const</span> join = curry(<span class="function">(<span class="params">str, arr</span>) =&gt;</span> arr.join(str));</div><div class="line"> </div><div class="line"><span class="keyword">const</span> toLowerCase = <span class="function"><span class="params">str</span> =&gt;</span> str.toLowerCase();</div><div class="line"> </div><div class="line"><span class="keyword">const</span> split = curry(<span class="function">(<span class="params">splitOn, str</span>) =&gt;</span> str.split(splitOn));</div></pre></td></tr></table></figure>
+<p>除了 toLowerCase() 外，所有这些函数经产品测试的版本都可以从 Lodash/fp 中得到。可以像这样导入它们(类似vue的语法)：</p>
+<blockquote>
+<p>import { curry, map, join, split } from ‘lodash/fp’;</p>
+</blockquote>
+<p>也可以用CommonJS模式引入：</p>
+<blockquote>
+<p>const curry = require(‘lodash/fp/curry’);<br>const map = require(‘lodash/fp/map’);</p>
+</blockquote>
+<p>这里我偷了点懒。注意这个 curry 从技术上来说，并不是一个真正的柯里化函数。真正的柯里化函数总会生成一个一元函数。这里的 curry 只是一个偏函数应用。请参考“柯里化和偏函数应用之间的区别是什么？”这篇文章。不过，这里只是为了演示用途，我们就把它当作一个真正的柯里化函数好了。<br>回到我们的 toSlug() 实现，这里有一些东西真的让我很烦：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> toSlug = <span class="function"><span class="params">input</span> =&gt;</span> <span class="built_in">encodeURIComponent</span>(</div><div class="line">  join(<span class="string">'-'</span>)(</div><div class="line">    map(toLowerCase)(</div><div class="line">      split(<span class="string">' '</span>)(</div><div class="line">        input</div><div class="line">      )</div><div class="line">    )</div><div class="line">  )</div><div class="line">);</div><div class="line"> </div><div class="line"><span class="built_in">console</span>.log(toSlug(<span class="string">'JS Cheerleader'</span>)); <span class="comment">// 'js-cheerleader'</span></div></pre></td></tr></table></figure>
+<p>对我来说，这里的嵌套太多了，读起来有点让人摸不着头脑。我们可以用一个会自动组合这些函数的函数来扁平化嵌套，就是说，这个函数会从一个函数得到输出，并自动将它传递给下一个函数作为输入，直到得到最终值为止。</p>
+<p>细想一下，好像数组中有一个函数可以做差不多的事情。这个函数就是 reduce()，它用一系列值为参数，对每个值应用一个函数，最后累加成一个结果。值本身也可以函数。但是 reduce() 是从左到右递减，为了匹配上面的组合行为，我们需要它从右到左缩减。</p>
+<p>好事情是刚好数组也有一个 reduceRight() 方法可以干这事：</p>
+<blockquote>
+<p>const compose = (…fns) =&gt; x =&gt; fns.reduceRight((v, f) =&gt; f(v), x);</p>
+</blockquote>
+<p>像 .reduce() 一样，数组的 .reduceRight() 方法带有一个 reducer 函数和一个初始值（x）为参数。我们可以用它从右到左迭代数组，将函数依次应用到每个数组元素上，最后得到累加值（v）。</p>
+<p>用 compose，我们就可以不需要嵌套来重写上面的组合：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> toSlug = compose(</div><div class="line">  <span class="built_in">encodeURIComponent</span>,</div><div class="line">  join(<span class="string">'-'</span>),</div><div class="line">  map(toLowerCase),</div><div class="line">  split(<span class="string">' '</span>)</div><div class="line">);</div><div class="line"> </div><div class="line"><span class="built_in">console</span>.log(toSlug(<span class="string">'JS Cheerleader'</span>)); <span class="comment">// 'js-cheerleader'</span></div></pre></td></tr></table></figure></p>
+<p>当然，lodash/fp 也提供了 compose()：</p>
+<blockquote>
+<p>import { compose } from ‘lodash/fp’;</p>
+</blockquote>
+<p>当以数学形式的组合从内到外的角度来思考时，compose 是不错的。不过，如果想以从左到右的顺序的角度来思考，又该怎么办呢？</p>
+<p>还有另外一种形式，通常称为 pipe()。Lodash 称之为 flow():</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> pipe = <span class="function">(<span class="params">...fns</span>) =&gt;</span> x =&gt; fns.reduce(<span class="function">(<span class="params">v, f</span>) =&gt;</span> f(v), x);</div><div class="line"> </div><div class="line"><span class="keyword">const</span> fn1 = <span class="function"><span class="params">s</span> =&gt;</span> s.toLowerCase();</div><div class="line"><span class="keyword">const</span> fn2 = <span class="function"><span class="params">s</span> =&gt;</span> s.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>);</div><div class="line"><span class="keyword">const</span> fn3 = <span class="function"><span class="params">s</span> =&gt;</span> s + <span class="string">'!'</span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> newFunc = pipe(fn1, fn2, fn3);</div><div class="line"><span class="keyword">const</span> result = newFunc(<span class="string">'Time'</span>); <span class="comment">// emit!</span></div></pre></td></tr></table></figure>
+<p>可以看到，这个实现与 compose() 几乎完全一样。唯一的不同之处是，这里是用 .reduce()，而不是 .reduceRight()，即是从左到右缩减，而不是从右到左。</p>
+<p>下面我们来看看用 pipe() 实现的 toSlug() 函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> toSlug = pipe(</div><div class="line">  split(<span class="string">' '</span>),</div><div class="line">  map(toLowerCase),</div><div class="line">  join(<span class="string">'-'</span>),</div><div class="line">  <span class="built_in">encodeURIComponent</span></div><div class="line">);</div><div class="line"> </div><div class="line"><span class="built_in">console</span>.log(toSlug(<span class="string">'JS Cheerleader'</span>)); <span class="comment">// 'js-cheerleader'</span></div></pre></td></tr></table></figure>
+<p>对于我来说，这要更容易读懂一些。</p>
+<p>骨灰级的函数式程序员用函数组合定义他们的整个应用程序。而我经常用它来消除临时变量。仔细看看 pipe() 版本的 toSlug()，你会发现一些特殊之处。</p>
+<p>在命令式编程中，在一些变量上执行转换时，在转换的每个步骤中都会找到对变量的引用。而上面的 pipe() 实现是用无点的风格写的，就是说完全找不到它要操作的参数。</p>
+<p>我经常将管道（pipe）用在像单元测试和 Redux 状态 reducer 这类事情上，用来消除中间变量。中间变量的存在只用来保存一个操作到下一个操作之间的临时值。</p>
+<p>这玩意开始听起来会比较古怪，不过随着你用它练习，会发现在函数式编程中，你是在和相当抽象、广义的函数打交道，而在这样的函数中，事物的名称没那么重要。名称只会碍事。你会开始把变量当作是多余的样板。</p>
+<p>就是说，我认为无点风格可能会被用过头。它可能会变得太密集，较难理解。但是如果你搞糊涂了，这里有一个小窍门…你可以利用 flow 来跟踪是怎么回事：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> trace = curry(<span class="function">(<span class="params">label, x</span>) =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`== <span class="subst">$&#123; label &#125;</span>:  <span class="subst">$&#123; x &#125;</span>`</span>);</div><div class="line">  <span class="keyword">return</span> x;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>如下是你用它来跟踪的方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> toSlug = pipe(</div><div class="line">  trace(<span class="string">'input'</span>),</div><div class="line">  split(<span class="string">' '</span>),</div><div class="line">  map(toLowerCase),</div><div class="line">  trace(<span class="string">'after map'</span>),</div><div class="line">  join(<span class="string">'-'</span>),</div><div class="line">  <span class="built_in">encodeURIComponent</span></div><div class="line">);</div><div class="line"> </div><div class="line"><span class="built_in">console</span>.log(toSlug(<span class="string">'JS Cheerleader'</span>));</div><div class="line"><span class="comment">// '== input:  JS Cheerleader'</span></div><div class="line"><span class="comment">// '== after map:  js,cheerleader'</span></div><div class="line"><span class="comment">// 'js-cheerleader'</span></div></pre></td></tr></table></figure>
+<p>trace() 只是更通用的 tap() 的一种特殊形式，它可以让你对流过管道的每个值执行一些行为。明白了么？管道（Pipe）？水龙头(Tap)？可以像下面这样编写 tap()：</p>
+<blockquote>
+<p>const tap = curry((fn, x) =&gt; {<br>  fn(x);<br>  return x;<br>});</p>
+</blockquote>
+<p>现在你可以看到为嘛 trace() 只是一个特殊情况下的 tap() 了：</p>
+<blockquote>
+<p>const trace = label =&gt; {<br>  return tap(x =&gt; console.log(<code>== ${ label }:  ${ x }</code>));<br>};</p>
+</blockquote>
+<p>你应该开始对函数式编程是什么样子，以及偏函数应用和柯里化如何与函数组合协作，来帮助你编写可读性更强的程序有点感觉了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;转帖：&lt;a href=&quot;http://www.zcfy.cc/article/master-the-javascript-interview-what-is-function-composition-2160.html&quot;&gt;http://www.zcfy.cc/article/master-the-javascript-interview-what-is-function-composition-2160.html&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;函数式编程正在接管 JavaScript 世界。就在几年前，只有少数 JavaScript 程序员知道函数式编程是什么。然而，在过去 3 年内，我所看到的每个大型应用程序代码库都大量用到了函数式编程理念。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;函数组合就是&lt;font color=red&gt;&lt;code&gt;组合两到多个函数来生成一个新函数&lt;/code&gt;&lt;/font&gt;的过程。将函数组合在一起，就像将一连串管道扣合在一起，让数据流过一样。&lt;/p&gt;
+&lt;p&gt;简而言之，函数 f 和 g 的组合可以被定义为 f(g(x))，从内到外（从右到左）求值。也就是说，求值顺序是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.x&lt;/li&gt;
+&lt;li&gt;2.g&lt;/li&gt;
+&lt;li&gt;3.f&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面我们在代码中更近距离观察一下这个概念。假如你想把用户的全名转换为 URL Slug，给每个用户一个个人信息页面。为了实现此需求，你需要经历一连串的步骤：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.将姓名根据空格分拆（split）到一个数组中&lt;/li&gt;
+&lt;li&gt;2.将姓名映射（map）为小写&lt;/li&gt;
+&lt;li&gt;3.用破折号连接（join）&lt;/li&gt;
+&lt;li&gt;4.编码 URI 组件&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="Javascript" scheme="https://ganchengyuan1990.github.io/blog/tags/Javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>Weex首秀(2)</title>
