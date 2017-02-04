@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="时间追逐者">
 <meta property="og:description" content="计算最小值12345function smallest(array) &amp;#123;  return Math.min.apply(Math, array);&amp;#125;console.log(smallest([9,13,7,8,33])); //7
 巧用call方法1234567function useCall() &amp;#123;    [].forEach.call(arguments, fu">
-<meta property="og:updated_time" content="2017-01-24T07:33:48.423Z">
+<meta property="og:updated_time" content="2017-02-04T01:41:25.160Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript小技巧">
 <meta name="twitter:description" content="计算最小值12345function smallest(array) &amp;#123;  return Math.min.apply(Math, array);&amp;#125;console.log(smallest([9,13,7,8,33])); //7
@@ -193,6 +193,9 @@
         <blockquote>
 <p><code>计算最小值</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">smallest</span>(<span class="params">array</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.min.apply(<span class="built_in">Math</span>, array);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(smallest([<span class="number">9</span>,<span class="number">13</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">33</span>])); <span class="comment">//7</span></div></pre></td></tr></table></figure></p>
 <p><code>巧用call方法</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function useCall() &#123;</div><div class="line">    [].forEach.call(arguments, function(val, key) &#123;</div><div class="line">        console.log(key, val)</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">useCall(&apos;Bob Dylan&apos;, &apos;Bob Marley&apos;, &apos;Steve Vai&apos;);//Bob Dylan, Bob Marley, Steve Vai</div></pre></td></tr></table></figure></p>
+</blockquote>
+<a id="more"></a>
+<blockquote>
 <p><code>如何理解Vue中的setter和getter</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Coder = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            get name()&#123;</div><div class="line">                <span class="keyword">if</span>(that.name)&#123;</div><div class="line">                    <span class="keyword">return</span> that.name</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> <span class="string">'你还没有取名'</span></div><div class="line">            &#125;,</div><div class="line">            set name(val)&#123;</div><div class="line">                <span class="built_in">console</span>.log(<span class="string">'你把名字修成了'</span>+val)</div><div class="line">                that.name = val</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> isMe = <span class="keyword">new</span> Coder()</div><div class="line">    <span class="built_in">console</span>.log(isMe.name)</div><div class="line">    isMe.name = <span class="string">'周神'</span></div><div class="line">    <span class="built_in">console</span>.log(isMe.name)</div><div class="line">    <span class="built_in">console</span>.log(isMe)</div><div class="line"></div><div class="line"><span class="keyword">var</span> Coder = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    &#125;</div><div class="line">    Coder.prototype.__defineGetter__(<span class="string">'name'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.name) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.name</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">'你还没有取名'</span></div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">    Coder.prototype.__defineSetter__(<span class="string">'name'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = val</div><div class="line">    &#125;)</div><div class="line">    <span class="keyword">var</span> isMe = <span class="keyword">new</span> Coder()</div><div class="line">    <span class="built_in">console</span>.log(isMe.name)</div><div class="line">    isMe.name = <span class="string">'周神'</span></div><div class="line">    <span class="built_in">console</span>.log(isMe.name)</div><div class="line">    <span class="built_in">console</span>.log(isMe)</div></pre></td></tr></table></figure></p>
 </blockquote>
 
@@ -424,10 +427,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
              
@@ -436,11 +435,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
             
             <div class="clearfix"></div>

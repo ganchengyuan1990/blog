@@ -191,8 +191,7 @@
         <h3 id="Vuex的作用是什么"><a href="#Vuex的作用是什么" class="headerlink" title="Vuex的作用是什么"></a>Vuex的作用是什么</h3><p>Vuex主要用来进行状态管理，我的理解就是当你的VUE项目大到一定程度以后，需要一个帮手来帮助你进行组件管理，尤其是多层次的组件进行信息交互时，如果没有这样一个工具，就得维护公共变量或者一层一层传递参数，这个过程是非常令人不愉悦的。</p>
 <h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> actions <span class="keyword">from</span> <span class="string">'./actions'</span>; <span class="comment">//改变状态都得通过这里的方法</span></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> getters <span class="keyword">from</span> <span class="string">'./getters'</span>; <span class="comment">//获取状态值的方法</span></div></pre></td></tr></table></figure>
 <h2 id="store对象"><a href="#store对象" class="headerlink" title="store对象"></a>store对象</h2><p>这个对象就是Vuex创建的实例对象，是重点需要学习的内容。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> store = &#123;</div><div class="line">	<span class="comment">//state对象维护具体状态值</span></div><div class="line">    state: &#123;</div><div class="line">        <span class="attr">isInitData</span>: <span class="literal">true</span>, <span class="comment">//首次刷新页面</span></div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * vuex 2.0 action should be await Vuex规定每个状态值的改变最后都要通过actions函数来操作，并且规定必须是异步，因此调取接口的操作应该都在这里</div><div class="line">     */</div><div class="line">    actions: &#123;</div><div class="line">        <span class="attr">fetchSearchDataAction</span>: <span class="function">(<span class="params">&#123; commit, dispatch &#125;, options</span>) =&gt;</span> &#123;</div><div class="line">            commit(<span class="string">'SET_TOP_LOADING'</span>, &#123; <span class="attr">type</span>: <span class="literal">true</span> &#125;)</div><div class="line">        &#125;,</div><div class="line"></div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * even vuex 2.0 mutations should be async  actions 只是一个架构性的概念，并不是必须的，说到底只是一个函数，你在里面想干嘛都可以，只要最后触发 mutation 就行。</div><div class="line">     */</div><div class="line">    mutations: &#123;</div><div class="line"></div><div class="line">        [types.COMBINE_DETAIL_LIST](state, res) &#123;</div><div class="line"></div><div class="line">            <span class="keyword">let</span> cloneMerchandiseList = [];</div><div class="line"></div><div class="line">            state.merchandiseList.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</div><div class="line"></div><div class="line">                    cloneMerchandiseList.push(<span class="built_in">Object</span>.assign(&#123;&#125;, item, res[item.sm_seq]));</div><div class="line"></div><div class="line">                &#125;)</div><div class="line">                <span class="comment">//combine 合并基础对象和详细属性,重现渲染列表</span></div><div class="line">            state.merchandiseList = cloneMerchandiseList;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    <span class="attr">getters</span>: &#123;</div><div class="line">        <span class="attr">listDownType</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">let</span> type = <span class="string">''</span></div><div class="line">            state.selectListData.filter(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</div><div class="line">                <span class="keyword">if</span>(item.isSelect)&#123;</div><div class="line">                    type = item.sortType</div><div class="line">                &#125;</div><div class="line">            &#125;)</div><div class="line">            <span class="keyword">return</span> type</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<font color="red">注：同步的意义在于这样每一个 mutation 执行完成后都可以对应到一个新的状态（和 reducer 一样），这样 devtools 就可以打个 snapshot 存下来，然后就可以随便 time-travel 了。</font>
+        
       
 
       
@@ -205,11 +204,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
         		</li>
       		
 		</ul>
@@ -320,25 +319,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>  自学Vue也有将近一个月了，想做个简单的小作品，正好这段时间自己的阿里云服务器闲置着，而且个人域名一直缺一个主页面，自然就想到做一个小项目来改装一下门庭。</p>
-<p>###手机预览(website)<br>  废话不多说，上预览，<a href="http://www.jasongan.cn" target="_blank" rel="external">http://www.jasongan.cn</a></p>
+<p>###手机预览(website)<br>  废话不多说，上预览，<a href="http://www.jasongan.cn">http://www.jasongan.cn</a></p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h1 id="install-dependencies"><a href="#install-dependencies" class="headerlink" title="install dependencies"></a>install dependencies</h1><p>npm install</p>
 <h1 id="serve-with-hot-reload-at-localhost-8080"><a href="#serve-with-hot-reload-at-localhost-8080" class="headerlink" title="serve with hot reload at localhost:8080"></a>serve with hot reload at localhost:8080</h1><p>npm run dev</p>
 <h1 id="build-for-production-with-minification"><a href="#build-for-production-with-minification" class="headerlink" title="build for production with minification"></a>build for production with minification</h1><p>npm run build</p>
 <p>```</p>
-<h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><p>  vue-wechat是主要在利用Vue.js。</p>
-<p>  此demo在实现上使用了以下技术</p>
-<ul>
-<li>“vue”: “^1.0.21”,  考虑到Vue2.0组件还不够丰富，因此就还是想用1.0+的版本。</li>
-<li>“vue-resource”: “^1.0.0”,   要获取数据就要调API，在requireJs架构中使用Jquery即可，但是毕竟Jquery与Vue的思想是背道而驰的，因此选择使用”vue-resource”这套组件，她提供了非常友好而已用的API，来帮助我们非常快速简单地进行数据请求。</li>
-<li>“mint-ui”: “^1.0.2”  UI组件我选择大名鼎鼎的由饿了么前端团队出品的Mint-ui，这套组件文档丰富，更新快（现已完全支持Vue2.0+），能够满足80%左右前端UI的需求。</li>
-<li>“vue-echarts”: “^1.0.0”,  Echarts我原来就很喜欢了，百度的产品，有非常丰富的图表类型可供选择。原本使用的是Vue-chartjs，但是最后发现”vue-echarts”对”vue-resource”的支持更好（选择组件的过程中发现，一个好的组件，一定要做到对常用其他组件的支持，否则就失去存在意思，会被淘汰）。</li>
-<li>vue-animated-list</li>
-<li>“vuex”: “^1.0.0-rc.2”,  这个组件的意义在于清晰地状态管理，结合Chrome上的调试工具，玩法很多。</li>
-<li>vue-router</li>
-<li>fastclick</li>
-</ul>
-<p>注：在这边要提醒一下，一定要保持各组件之间的版本对应，必须时在npm安装时可以简单地在后面加上@X（版本号）来安装对应版本。</p>
-
+        
       
 
       
@@ -508,10 +494,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
              
@@ -520,11 +502,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
             
             <div class="clearfix"></div>

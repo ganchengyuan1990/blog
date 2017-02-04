@@ -26,7 +26,7 @@ Weex的页">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V13vDRwo3fkyn1/z5K4m3ngfB3dEJJAuaqBgGcY*iDwjDnPJBrkrYj3XHE!/b/dHgBAAAAAAAA&ek=1&kp=1&pt=0&bo=zAXwAQAAAAADFwo!&tm=1486101600&sce=60-1-1&rf=viewer_4">
 <meta property="og:image" content="http://a2.qpic.cn/psb?/V13vDRwo3fkyn1/uOXEYdzmmH40UAf8AWaITXA3mv3PRAfT8X45fjHXRKM!/b/dHkBAAAAAAAA&ek=1&kp=1&pt=0&bo=IAOIAAAAAAAFF58!&tm=1486101600&sce=60-1-1&rf=viewer_4">
 <meta property="og:image" content="http://a2.qpic.cn/psb?/V13vDRwo3fkyn1/FlzuiCrAAnOljF75iR1DSm2X9wHfLu0X2q6uU83coDc!/b/dHkBAAAAAAAA&ek=1&kp=1&pt=0&bo=gAL1AgAAAAAFF0E!&tm=1486101600&sce=60-1-1&rf=viewer_4">
-<meta property="og:updated_time" content="2017-02-03T06:33:03.907Z">
+<meta property="og:updated_time" content="2017-02-04T01:44:01.783Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Weex首秀(2)">
 <meta name="twitter:description" content="首先祝各位鸡年大吉，开工大吉！趁着今天刚开工，工作任务还不多，可以继续学些Weex。
@@ -211,6 +211,7 @@ Weex的页">
 <li>Weex的页面布局虽然也使用css语法，但是与Vue以及普通页面并不完全相同，我试验了一下，text-align：center必须用在text标签上，才能使文字居中，但是因为HTML并没有这个标签，所以要加载文字所在的父标签上，这个要注意，另外就是建议在Weex中多应用flex布局。</li>
 </ol>
 <p><img src="http://a1.qpic.cn/psb?/V13vDRwo3fkyn1/6E7yWmWrZhjLpXTmocVFN0zQ4uItlntAzvV6pE2IrOQ!/b/dHgBAAAAAAAA&ek=1&kp=1&pt=0&bo=gAJyBAAAAAAFF8A!&tm=1486101600&sce=60-1-1&rf=viewer_4" alt=""></p>
+<a id="more"></a>
 <h2 id="外部链接问题"><a href="#外部链接问题" class="headerlink" title="外部链接问题"></a>外部链接问题</h2><p>在“关于我”这个page中，有一个需求，就是链接到外部网站，因为之前缺少APP开发经验，所以我想当然地认为这个问题非常简单，只需要价格a标签，或者像Vue一样采用Router的方法就可以了，但是后来发现这样并不能正常work。</p>
 <p>仔细一看，Demo中所有Router都是链接到项目内部页面的，看地址栏上每个页面其实都是一个经过build的Js文件，这点应该和Vue是类似的，但这个并不符合我的需求，并且外部网站是传统的静态页面，因此还是需要解决。</p>
 <p>首先抓包看看访问的URL是否正确:<br><img src="http://a1.qpic.cn/psb?/V13vDRwo3fkyn1/z5K4m3ngfB3dEJJAuaqBgGcY*iDwjDnPJBrkrYj3XHE!/b/dHgBAAAAAAAA&ek=1&kp=1&pt=0&bo=zAXwAQAAAAADFwo!&tm=1486101600&sce=60-1-1&rf=viewer_4" alt=""><br>由上图看 <a href="http://m.feiniu.com/my/order/index.html" target="_blank" rel="external">http://m.feiniu.com/my/order/index.html</a> 这个请求地址应该没有错，所以有可能是兼容问题。</p>
@@ -438,10 +439,6 @@ Weex的页">
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
              
@@ -450,11 +447,15 @@ Weex的页">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
             
             <div class="clearfix"></div>

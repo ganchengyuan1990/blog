@@ -18,7 +18,7 @@ Restful API这个概念是我这几天看博客才接触到的，但其实在日
 <meta property="og:description" content="转载：http://scarletsky.github.io/2016/11/30/error-handling-in-restful-api/
 Restful API这个概念是我这几天看博客才接触到的，但其实在日常开发中这个思想始终都占据着重要地位。
 简介随着移动开发和前端开发的崛起，越来越多的 Web 后端应用都倾向于实现 Restful API。Restful API 是一个简单易用的前后端">
-<meta property="og:updated_time" content="2017-01-24T02:16:06.487Z">
+<meta property="og:updated_time" content="2017-02-04T01:44:25.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Restful API初识">
 <meta name="twitter:description" content="转载：http://scarletsky.github.io/2016/11/30/error-handling-in-restful-api/
@@ -197,6 +197,7 @@ Restful API这个概念是我这几天看博客才接触到的，但其实在日
 <p>Restful API这个概念是我这几天看博客才接触到的，但其实在日常开发中这个思想始终都占据着重要地位。</p>
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>随着移动开发和前端开发的崛起，越来越多的 Web 后端应用都倾向于实现 Restful API。<br>Restful API 是一个简单易用的前后端分离方案，它只需要对客户端请求进行处理，然后返回结果即可， 无需考虑页面渲染，一定程度上减轻了后端开发人员的负担。<br>不过，这也意味着，有一些工作就必须由前端来完成了，比如错误处理。</p>
 <p>当 Restful API 需要抛出错误的时候，我们要考虑的是：这个错误应该包含哪些信息。<br>我们先看看 Github, Google, Facebook, Twitter, Twilio 的错误信息是怎样的。</p>
+<a id="more"></a>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Github</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"message"</span>: <span class="string">"Validation Failed"</span>,</div><div class="line">  <span class="string">"errors"</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="string">"resource"</span>: <span class="string">"Issue"</span>,</div><div class="line">      <span class="string">"field"</span>: <span class="string">"title"</span>,</div><div class="line">      <span class="string">"code"</span>: <span class="string">"missing_field"</span></div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//Google</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"error"</span>: &#123;</div><div class="line">    <span class="string">"errors"</span>: [</div><div class="line">      &#123;</div><div class="line">        <span class="string">"domain"</span>: <span class="string">"global"</span>,</div><div class="line">        <span class="string">"reason"</span>: <span class="string">"insufficientFilePermissions"</span>,</div><div class="line">        <span class="string">"message"</span>: <span class="string">"The user does not have sufficient permissions for file &#123;fileId&#125;."</span></div><div class="line">      &#125;</div><div class="line">    ],</div><div class="line">    <span class="string">"code"</span>: <span class="number">403</span>,</div><div class="line">    <span class="string">"message"</span>: <span class="string">"The user does not have sufficient permissions for file &#123;fileId&#125;."</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//Facebook</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"error"</span>: &#123;</div><div class="line">    <span class="string">"message"</span>: <span class="string">"Message describing the error"</span>, </div><div class="line">    <span class="string">"type"</span>: <span class="string">"OAuthException"</span>,</div><div class="line">    <span class="string">"code"</span>: <span class="number">190</span>,</div><div class="line">    <span class="string">"error_subcode"</span>: <span class="number">460</span>,</div><div class="line">    <span class="string">"error_user_title"</span>: <span class="string">"A title"</span>,</div><div class="line">    <span class="string">"error_user_msg"</span>: <span class="string">"A message"</span>,</div><div class="line">    <span class="string">"fbtrace_id"</span>: <span class="string">"EJplcsCHuLu"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>观察这些结构可以发现它们都有一些共同的地方：</p>
 <ul>
@@ -456,10 +457,6 @@ Restful API这个概念是我这几天看博客才接触到的，但其实在日
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
              
@@ -468,11 +465,15 @@ Restful API这个概念是我这几天看博客才接触到的，但其实在日
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
             
             <div class="clearfix"></div>

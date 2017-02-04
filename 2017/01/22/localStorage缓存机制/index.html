@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="时间追逐者">
 <meta property="og:description" content="首先，localStorage的确是可以做JS以及CSS缓存的，详情可以通过F12看http://mp.weixin.qq.com/s?__biz=MzA5NDIzNzY1OQ==&amp;amp;mid=2735610010&amp;amp;idx=1&amp;amp;sn=67e3f0833f1097a279d850e2098956ff&amp;amp;scene=0#wechat_redirect
 按道理说这个机制是非常诱">
-<meta property="og:updated_time" content="2017-01-22T02:13:30.844Z">
+<meta property="og:updated_time" content="2017-02-04T01:44:29.786Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="localStorage缓存机制">
 <meta name="twitter:description" content="首先，localStorage的确是可以做JS以及CSS缓存的，详情可以通过F12看http://mp.weixin.qq.com/s?__biz=MzA5NDIzNzY1OQ==&amp;amp;mid=2735610010&amp;amp;idx=1&amp;amp;sn=67e3f0833f1097a279d850e2098956ff&amp;amp;scene=0#wechat_redirect
@@ -194,6 +194,7 @@
 <p>按道理说这个机制是非常诱人的，毕竟localStorage可存储体积大，并且用户一旦开启便不容易清除，所以从工程师的角度来看这个工具非常适合缓存一些并不经常需要维护更新的脚本和样式文件。</p>
 <p>当然，假如要更新的话，就得好好设计一下更新机制，普通的资源请求，可以根据文件名+md5 <a href="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/moon32ebc4.js或者在资源链接后面加上特定的后缀http://1.ss.faisys.com/js/comm/fai.min.js?v=201612051739做标识来判断是否需要更新资源。如果用localStorage做，则需要一套新的缓存更新机制。" target="_blank" rel="external">http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/moon32ebc4.js或者在资源链接后面加上特定的后缀http://1.ss.faisys.com/js/comm/fai.min.js?v=201612051739做标识来判断是否需要更新资源。如果用localStorage做，则需要一套新的缓存更新机制。</a></p>
 <p>微信的做法是每个文件都单独维护一个localStorage变量，来记录版本号，从而由后台来判断是否需要更新。</p>
+<a id="more"></a>
 <h2 id="此方案的优点"><a href="#此方案的优点" class="headerlink" title="此方案的优点"></a>此方案的优点</h2><p>对于传统的浏览器缓存（如COOKIE）, 用户主动触发的页面刷新行为（比如刷新按钮、右键刷新、F5等），会导致浏览器放弃本地缓存，使用协商缓存（304缓存），用了LS之后，可以完全避免这种情况，等效于无视用户主动刷新行为的本地强缓存。当LS+eval速度大于304协商速度时，LS方案具有统计上的正收益。</p>
 <p>还有，缓存问题也绝不是一个页面的问题，网站很多页面之间会跳转访问，彼此之间也有共享的静态资源，基于url的缓存让跨页面之间缓存共享问题变得粗粒度。举个例子，有A、B两个页面，彼此有访问路径（比如百度首页和搜索结果页之间的访问），其中：</p>
 <ul>
@@ -448,10 +449,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
              
@@ -460,11 +457,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
             
             <div class="clearfix"></div>

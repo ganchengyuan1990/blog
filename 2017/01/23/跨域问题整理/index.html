@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="时间追逐者">
 <meta property="og:description" content="跨域，是一个前端开发者必须掌握的概念，这篇文章就从几个基本问题出发，来理解这个概念。
 首先，什么是跨域？为何会有跨域？跨域一词从字面意思看，就是跨域名嘛，但实际上跨域的范围绝对不止那么狭隘。具体概念如下：只要协议、域名、端口有任何一个不同，都被当作是不同的域。所以说，如果你的后端用的是NODEJS，然后端口设置采用了默认的3000，还是会产生跨域的。之所以会产生跨域这个问题呢，其实也很容易想明白，">
-<meta property="og:updated_time" content="2017-01-23T02:49:49.203Z">
+<meta property="og:updated_time" content="2017-02-04T01:44:56.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="跨域问题整理">
 <meta name="twitter:description" content="跨域，是一个前端开发者必须掌握的概念，这篇文章就从几个基本问题出发，来理解这个概念。
@@ -193,6 +193,7 @@
         <p>跨域，是一个前端开发者必须掌握的概念，这篇文章就从几个基本问题出发，来理解这个概念。</p>
 <h3 id="首先，什么是跨域？为何会有跨域？"><a href="#首先，什么是跨域？为何会有跨域？" class="headerlink" title="首先，什么是跨域？为何会有跨域？"></a>首先，什么是跨域？为何会有跨域？</h3><p>跨域一词从字面意思看，就是跨域名嘛，但实际上跨域的范围绝对不止那么狭隘。具体概念如下：只要协议、域名、端口有任何一个不同，都被当作是不同的域。所以说，如果你的后端用的是NODEJS，然后端口设置采用了默认的3000，还是会产生跨域的。之所以会产生跨域这个问题呢，其实也很容易想明白，要是随便引用外部文件，不同标签下的页面引用类似的彼此的文件，浏览器很容易懵逼的，安全也得不到保障了就。什么事，都是安全第一嘛。但在安全限制的同时也给注入iframe或是ajax应用上带来了不少麻烦。所以我们要通过一些方法使本域的js能够操作其他域的页面对象或者使其他域的js能操作本域的页面对象（iframe之间）。下面是具体的跨域情况详解：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">URL                      <span class="comment">//说明       是否允许通信</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/b.js     //同一域名下   允许</span></div><div class="line">http:<span class="comment">//www.a.com/lab/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/script/b.js //同一域名下不同文件夹 允许</span></div><div class="line">http:<span class="comment">//www.a.com:8000/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/b.js     //同一域名，不同端口  不允许</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">https:<span class="comment">//www.a.com/b.js //同一域名，不同协议 不允许</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//70.32.92.74/b.js //域名和域名对应ip 不允许</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//script.a.com/b.js //主域相同，子域不同 不允许（cookie这种情况下也不允许访问）</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//a.com/b.js //同一域名，不同二级域名（同上） 不允许（cookie这种情况下也不允许访问）</span></div><div class="line">http:<span class="comment">//www.cnblogs.com/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/b.js //不同域名 不允许</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="那么跨域方法有哪些呢？"><a href="#那么跨域方法有哪些呢？" class="headerlink" title="那么跨域方法有哪些呢？"></a>那么跨域方法有哪些呢？</h3><p>既然有跨域这种限制，我们要怎么绕过它呢？</p>
 <h2 id="1-通过document-domain跨域"><a href="#1-通过document-domain跨域" class="headerlink" title="1. 通过document.domain跨域"></a>1. 通过document.domain跨域</h2><p>前面说过了，浏览器有一个同源策略，其限制之一是不能通过ajax的方法去请求不同源中的文档。 第二个限制是浏览器中不同域的框架之间是不能进行js的交互操作的。不同的框架之间是可以获取window对象的，但却无法获取相应的属性和方法。比如，有一个页面，它的地址是<a href="http://www.damonare.cn/a.html" target="_blank" rel="external">http://www.damonare.cn/a.html</a> ， 在这个页面里面有一个iframe，它的src是<a href="http://damonare.cn/b.html" target="_blank" rel="external">http://damonare.cn/b.html</a>, 很显然，这个页面与它里面的iframe框架是不同域的，所以我们是无法通过在页面中书写js代码来获取iframe中的东西的：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> iframe = <span class="built_in">document</span>.getElementById(<span class="string">'iframe'</span>);</div><div class="line">        <span class="keyword">var</span> win = iframe.contentWindow;<span class="comment">//可以获取到iframe里的window对象，但该window对象的属性和方法几乎是不可用的</span></div><div class="line">        <span class="keyword">var</span> doc = win.document;<span class="comment">//这里获取不到iframe里的document对象</span></div><div class="line">        <span class="keyword">var</span> name = win.name;<span class="comment">//这里同样获取不到window对象的name属性</span></div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span> = <span class="string">"iframe"</span> <span class="attr">src</span>=<span class="string">"http://damonare.cn/b.html"</span> <span class="attr">onload</span> = <span class="string">"test()"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -479,10 +480,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
              
@@ -491,11 +488,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
             
             <div class="clearfix"></div>

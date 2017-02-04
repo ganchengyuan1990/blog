@@ -18,7 +18,7 @@
 <meta property="og:description" content="mongodb传说中的非关系数据库，颠覆了我们在大学时学数据库时的三观，虽说那时并非所有的数据库都是关系型数据库，但起码有一统江湖的感觉。
 引入1npm i mongo
 另外，还有一个非常重要的步骤，要在命令行中执行 mongod –dbpath “D:\vue\vue-wechat\server”  D:\vue\vue-wechat\server换成需要启动服务的位置，也就是你项目的serve">
-<meta property="og:updated_time" content="2017-01-20T09:17:24.536Z">
+<meta property="og:updated_time" content="2017-02-04T01:45:13.138Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识mongodb">
 <meta name="twitter:description" content="mongodb传说中的非关系数据库，颠覆了我们在大学时学数据库时的三观，虽说那时并非所有的数据库都是关系型数据库，但起码有一统江湖的感觉。
@@ -196,6 +196,7 @@
         <h3 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h3><p>传说中的非关系数据库，颠覆了我们在大学时学数据库时的三观，虽说那时并非所有的数据库都是关系型数据库，但起码有一统江湖的感觉。</p>
 <h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i mongo</div></pre></td></tr></table></figure>
 <p>另外，还有一个非常重要的步骤，要在命令行中执行 mongod –dbpath “D:\vue\vue-wechat\server”  D:\vue\vue-wechat\server换成需要启动服务的位置，也就是你项目的server文件夹。这个命令相当于打开MONGODB的服务界面，让其进入服务状态。</p>
+<a id="more"></a>
 <h2 id="server-JS维护"><a href="#server-JS维护" class="headerlink" title="server JS维护"></a>server JS维护</h2><p>```javascript<br>const mongodb = require(‘mongodb’);<br>const  server  = new mongodb.Server(‘localhost’, 27017, {auto_reconnect:true});<br>var  db = new mongodb.Db(‘XXXX’, server, {safe:true}); //XXXX可以改成任意名字</p>
 <p>const hostname = ‘127.0.0.1’;<br>const port = 9001; //port注意不要和已启动的服务端口重合，比如PHP常用的9000，VUE常用的8080</p>
 <p>http.createServer((req, res) =&gt; {<br>  var json;<br>  var _callbackName = req.url.substr(req.url.indexOf(‘=’) + 1);</p>
@@ -468,10 +469,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
              
@@ -480,11 +477,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
             
             <div class="clearfix"></div>
