@@ -897,9 +897,9 @@ html {
 
 .left-col #header .header-subtitle {
     text-align: center;
-    color: #999;
+    color: red;
     font-size: 14px;
-    line-height: 25px;
+    line-height: 85px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
