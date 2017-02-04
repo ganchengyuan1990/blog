@@ -170,11 +170,11 @@
     <link href="https://ganchengyuan1990.github.io/blog/2017/01/25/Weex%E9%A6%96%E7%A7%80/"/>
     <id>https://ganchengyuan1990.github.io/blog/2017/01/25/Weex首秀/</id>
     <published>2017-01-25T01:59:15.000Z</published>
-    <updated>2017-01-25T03:03:03.622Z</updated>
+    <updated>2017-02-04T07:14:02.458Z</updated>
     
     <content type="html"><![CDATA[<p>一直想做一个APP，去年也自学过一段时间的<code>React Native</code>, 但是RN相对来说学习曲线比较陡峭，并且很多资源包在下载时都不是那么容易，经常error（这个大家都懂）, 所以这事儿就不了了之了。</p>
 <p>前两天看了weex的会议，觉得阿里又在放大招了，这个工具虽然目前学习社区不多，资源组件不丰富，但是本身调式来发非常便捷，weex playground非常不错，并且因为weex是基于vue的，所以入门简单，<code>npm run build</code>打包以后部署到自己的服务器上，用二维码扫描以后就可以拥有一个自己的APP了，并且是兼容三端的，这一点非常诱人。</p>
-<p>于是，我就从github上找到了一个别人的项目，<a href="https://github.com/dodola/WeexOne" target="_blank" rel="external">https://github.com/dodola/WeexOne</a>，然后改造一个属于自己的APP。<br>总体样式如下：<br><img src="http://wx1.sinaimg.cn/mw690/77e455bfgy1fc2p0orh1pj20k00zk42q.jpg" alt=""></p>
+<p>于是，我就从github上找到了一个别人的项目，<a href="https://github.com/dodola/WeexOne" target="_blank" rel="external">https://github.com/dodola/WeexOne</a>，然后改造一个属于自己的APP。<br>总体样式如下：<br><img src="http://wx1.sinaimg.cn/mw690/77e455bfgy1fc2p0orh1pj20k00zk42q.jpg" alt=""><br><a id="more"></a></p>
 <p>开始动手！</p>
 <p>首先，引入了picker组件，这个组件用来进行时间选择，前端效果不错。<br><img src="http://wx1.sinaimg.cn/mw690/77e455bfgy1fc2p0oo2ajj20k00zkdh6.jpg" alt=""><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">'weex-components'</span>);</div><div class="line">   <span class="keyword">const</span> picker = <span class="built_in">require</span>(<span class="string">'@weex-module/picker'</span>);</div><div class="line"> <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">   data () &#123;</div><div class="line">     <span class="keyword">return</span> &#123;</div><div class="line">       <span class="attr">value</span>: <span class="string">''</span></div><div class="line">     &#125;</div><div class="line">   &#125;,</div><div class="line">   <span class="attr">methods</span>: &#123;</div><div class="line">     pickTime () &#123;</div><div class="line">       picker.pickTime(&#123;</div><div class="line">         <span class="attr">value</span>: <span class="keyword">this</span>.value</div><div class="line">       &#125;, event =&gt; &#123;</div><div class="line">         <span class="keyword">if</span> (event.result === <span class="string">'success'</span>) &#123;</div><div class="line">           <span class="keyword">this</span>.value = event.data</div><div class="line">         &#125;</div><div class="line">       &#125;)</div><div class="line">     &#125;</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
 <p>接下来想尝试一下vue中的组件能否在weex中使用，比如UI组件mint，并且引入API数据。</p>
@@ -184,7 +184,8 @@
     <summary type="html">
     
       &lt;p&gt;一直想做一个APP，去年也自学过一段时间的&lt;code&gt;React Native&lt;/code&gt;, 但是RN相对来说学习曲线比较陡峭，并且很多资源包在下载时都不是那么容易，经常error（这个大家都懂）, 所以这事儿就不了了之了。&lt;/p&gt;
-&lt;p&gt;前两天看了weex的会议，觉得阿
+&lt;p&gt;前两天看了weex的会议，觉得阿里又在放大招了，这个工具虽然目前学习社区不多，资源组件不丰富，但是本身调式来发非常便捷，weex playground非常不错，并且因为weex是基于vue的，所以入门简单，&lt;code&gt;npm run build&lt;/code&gt;打包以后部署到自己的服务器上，用二维码扫描以后就可以拥有一个自己的APP了，并且是兼容三端的，这一点非常诱人。&lt;/p&gt;
+&lt;p&gt;于是，我就从github上找到了一个别人的项目，&lt;a href=&quot;https://github.com/dodola/WeexOne&quot;&gt;https://github.com/dodola/WeexOne&lt;/a&gt;，然后改造一个属于自己的APP。&lt;br&gt;总体样式如下：&lt;br&gt;&lt;img src=&quot;http://wx1.sinaimg.cn/mw690/77e455bfgy1fc2p0orh1pj20k00zk42q.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -603,9 +604,9 @@
     </summary>
     
     
-      <category term="Javascript" scheme="https://ganchengyuan1990.github.io/blog/tags/Javascript/"/>
-    
       <category term="Vue" scheme="https://ganchengyuan1990.github.io/blog/tags/Vue/"/>
+    
+      <category term="Javascript" scheme="https://ganchengyuan1990.github.io/blog/tags/Javascript/"/>
     
   </entry>
   
