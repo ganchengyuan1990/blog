@@ -83,8 +83,9 @@ var o=function(e){if(e.BJ_REPORT)return e.BJ_REPORT;var t=[],n={},o={id:0,uin:0,
 })(window.WDS || (window.WDS = {}));
 
 
-
 console.log(WDS.getStyle(document.getElementsByClassName('profilepic')[0], "background"));
+
+
 
 //窗口失去焦点时改变title
 window.onblur = function (e) {
