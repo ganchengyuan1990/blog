@@ -15,11 +15,78 @@ var o=function(e){if(e.BJ_REPORT)return e.BJ_REPORT;var t=[],n={},o={id:0,uin:0,
 
 
 
+//使用原生方法来获取element的CSS
+
+(function(WDS, undefined){
+   function _camelize(property) {
+		return property.replace(/-(\w)/g, function (strMatch, p1){
+	        return p1.toUpperCase();
+	    });
+	}
+
+	function getStyle(element, property) {
+
+		if(property =='background') property = "background-color";
+
+		if(!element || !property) return false;
+
+		//首先获取内联样式
+		
+		var value = element.style[_camelize(property)];
+
+		if(!value) {
+			if(document.defaultView && document.defaultView.getComputedStyle){
+	            css = document.defaultView.getComputedStyle(element, null);
+	            return value = css ? css.getPropertyValue(property) : null;
+	        }
+		}
+	}
+
+	// 检测获取的背景色是否有效
+	/*function checkBgValue(elem){
+		var value = getStyle(elem, 'background-color'),
+			hasColor = value ? true : false; // 是否有颜色
+
+		// 排除特殊情况
+		if(value == "transparent" || value == "rgba(0, 0, 0, 0)"){
+			// 未设置background-color，或者设置为跟随父节点
+			hasColor = false;
+		}else if(getStyle(elem, 'opacity') == "0"){
+			// dom节点透明度为全透明
+			hasColor = false;
+		}else if(getStyle(elem, 'visibility') == "hidden"){
+			// dom节点不可见
+			hasColor = false;
+		}else if(getStyle(elem, 'display') == "none"){
+			// dom节点不可见
+			hasColor = false;
+		}
+
+		return hasColor;
+	}
+
+	// 获取div最终显示的颜色
+	function getRealStyle(elem){
+		debugger
+		if(checkBgValue(elem)){
+			return getStyle(elem, 'background-color');
+		}else if(elem != document.documentElement){
+			return getRealStyle(elem.parentNode);
+		}
+
+		return '';
+	}*/
+
+	window.WDS.getStyle = getStyle;
+
+
+})(window.WDS || (window.WDS = {}));
 
 
 
+console.log(WDS.getStyle(document.getElementsByClassName('profilepic')[0], "background"));
 
-
+//窗口失去焦点时改变title
 window.onblur = function (e) {
 	document.title = '看这里！看这里!';
 }
