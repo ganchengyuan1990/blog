@@ -977,7 +977,7 @@ html {
     -webkit-transform: scale(0.714);
     transform: scale(0.714);
     width: 140%;
-    z-index: 1;
+    z-index: 10000;
 }
 
 @-webkit-keyframes pulse {
