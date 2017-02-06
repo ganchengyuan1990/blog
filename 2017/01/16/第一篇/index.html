@@ -20,7 +20,7 @@ serve with hot reload at localhost:">
 ###手机预览(website)  废话不多说，上预览，http://www.jasongan.cn
 安装install dependenciesnpm install
 serve with hot reload at localhost:">
-<meta property="og:updated_time" content="2017-02-04T01:45:02.564Z">
+<meta property="og:updated_time" content="2017-02-06T08:43:56.067Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue个人网站搭建">
 <meta name="twitter:description" content="自学Vue也有将近一个月了，想做个简单的小作品，正好这段时间自己的阿里云服务器闲置着，而且个人域名一直缺一个主页面，自然就想到做一个小项目来改装一下门庭。
@@ -206,14 +206,14 @@ serve with hot reload at localhost:">
 <h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><p>  vue-wechat是主要在利用Vue.js。</p>
 <p>  此demo在实现上使用了以下技术</p>
 <ul>
-<li>“vue”: “^1.0.21”,  考虑到Vue2.0组件还不够丰富，因此就还是想用1.0+的版本。</li>
-<li>“vue-resource”: “^1.0.0”,   要获取数据就要调API，在requireJs架构中使用Jquery即可，但是毕竟Jquery与Vue的思想是背道而驰的，因此选择使用”vue-resource”这套组件，她提供了非常友好而已用的API，来帮助我们非常快速简单地进行数据请求。</li>
-<li>“mint-ui”: “^1.0.2”  UI组件我选择大名鼎鼎的由饿了么前端团队出品的Mint-ui，这套组件文档丰富，更新快（现已完全支持Vue2.0+），能够满足80%左右前端UI的需求。</li>
-<li>“vue-echarts”: “^1.0.0”,  Echarts我原来就很喜欢了，百度的产品，有非常丰富的图表类型可供选择。原本使用的是Vue-chartjs，但是最后发现”vue-echarts”对”vue-resource”的支持更好（选择组件的过程中发现，一个好的组件，一定要做到对常用其他组件的支持，否则就失去存在意思，会被淘汰）。</li>
-<li>vue-animated-list</li>
-<li>“vuex”: “^1.0.0-rc.2”,  这个组件的意义在于清晰地状态管理，结合Chrome上的调试工具，玩法很多。</li>
-<li>vue-router</li>
-<li>fastclick</li>
+<li>[x] - vue: “^1.0.21”,  考虑到Vue2.0组件还不够丰富，因此就还是想用1.0+的版本。</li>
+<li>[x] - vue-resource: “^1.0.0”,   要获取数据就要调API，在requireJs架构中使用Jquery即可，但是毕竟Jquery与Vue的思想是背道而驰的，因此选择使用”vue-resource”这套组件，她提供了非常友好而已用的API，来帮助我们非常快速简单地进行数据请求。</li>
+<li>[x] - mint-ui: “^1.0.2”  UI组件我选择大名鼎鼎的由饿了么前端团队出品的Mint-ui，这套组件文档丰富，更新快（现已完全支持Vue2.0+），能够满足80%左右前端UI的需求。</li>
+<li>[x] - vue-echarts: “^1.0.0”,  Echarts我原来就很喜欢了，百度的产品，有非常丰富的图表类型可供选择。原本使用的是Vue-chartjs，但是最后发现”vue-echarts”对”vue-resource”的支持更好（选择组件的过程中发现，一个好的组件，一定要做到对常用其他组件的支持，否则就失去存在意思，会被淘汰）。</li>
+<li>[x] - vue-animated-list</li>
+<li>[x] - vuex: “^1.0.0-rc.2”,  这个组件的意义在于清晰地状态管理，结合Chrome上的调试工具，玩法很多。</li>
+<li>[x] - vue-router</li>
+<li>[x] - fastclick</li>
 </ul>
 <p>注：在这边要提醒一下，一定要保持各组件之间的版本对应，必须时在npm安装时可以简单地在后面加上@X（版本号）来安装对应版本。</p>
 
@@ -439,6 +439,10 @@ serve with hot reload at localhost:">
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
@@ -447,15 +451,11 @@ serve with hot reload at localhost:">
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
               </li>
             
             <div class="clearfix"></div>
