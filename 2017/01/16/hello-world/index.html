@@ -383,6 +383,7 @@ Vue.jsVue是一个很容易上手的框架，单页面应用也是非常好的�
 <script>
 if ("serviceWorker" in navigator) {
 	if(location.href && location.href.indexOf('tags') > 0) {
+		console.log('tags');
 		navigator.serviceWorker.register('../serviceWorker.js', { scope: "./" }) //setting scope of sw
 		.then(function(registration) {
 		  console.info('Service worker is registered!');
