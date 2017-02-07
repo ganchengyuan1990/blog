@@ -108,6 +108,7 @@ function cachedOrOffline(request) {
 
 function offlineResponse(request) {
   log('(offline)', request.method, request.url);
+  console.log('offline!offline!offline!');
   if (request.url.match(/\.(jpg|png|gif|svg|jpeg)(\?.*)?$/)) {
     return caches.match('/offline.svg');
   } else {
