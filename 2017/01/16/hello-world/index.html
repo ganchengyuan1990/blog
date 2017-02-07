@@ -382,7 +382,7 @@ Vue.jsVue是一个很容易上手的框架，单页面应用也是非常好的�
 
 <script>
 if ("serviceWorker" in navigator) {
-	if(location.href && location.href.indexOf('serviceWorker') > 0) {
+	if(location.href && location.href.indexOf('tags') > 0) {
 		navigator.serviceWorker.register('../serviceWorker.js', { scope: "./" }) //setting scope of sw
 		.then(function(registration) {
 		  console.info('Service worker is registered!');
@@ -458,11 +458,11 @@ if ("serviceWorker" in navigator) {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
             
             <div class="clearfix"></div>
