@@ -317,7 +317,7 @@
     <link href="https://ganchengyuan1990.github.io/blog/2017/01/23/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/"/>
     <id>https://ganchengyuan1990.github.io/blog/2017/01/23/跨域问题整理/</id>
     <published>2017-01-23T01:22:43.000Z</published>
-    <updated>2017-02-07T01:12:20.572Z</updated>
+    <updated>2017-02-07T01:26:19.715Z</updated>
     
     <content type="html"><![CDATA[<p>跨域，是一个前端开发者必须掌握的概念，这篇文章就从几个基本问题出发，来理解这个概念。</p>
 <h3 id="首先，什么是跨域？为何会有跨域？"><a href="#首先，什么是跨域？为何会有跨域？" class="headerlink" title="首先，什么是跨域？为何会有跨域？"></a>首先，什么是跨域？为何会有跨域？</h3><p>跨域一词从字面意思看，就是跨域名嘛，但实际上跨域的范围绝对不止那么狭隘。具体概念如下：只要协议、域名、端口有任何一个不同，都被当作是不同的域。所以说，如果你的后端用的是NODEJS，然后端口设置采用了默认的3000，还是会产生跨域的。之所以会产生跨域这个问题呢，其实也很容易想明白，要是随便引用外部文件，不同标签下的页面引用类似的彼此的文件，浏览器很容易懵逼的，安全也得不到保障了就。什么事，都是安全第一嘛。但在安全限制的同时也给注入iframe或是ajax应用上带来了不少麻烦。所以我们要通过一些方法使本域的js能够操作其他域的页面对象或者使其他域的js能操作本域的页面对象（iframe之间）。下面是具体的跨域情况详解：</p>
@@ -374,10 +374,10 @@
 <p>CORS更类似于一个高级的协议，只要服务器端和客户端都遵照这个协议来，就可以进行通信。</p>
 <p>这个方案的主要工作量在于服务器端的配置，浏览器不需要任何额外工作。</p>
 <ol>
-<li><p>在PHP文件中设置：</p>
+<li><p>在PHP文件中设置(亲测有效)：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span>  </div><div class="line"> header(<span class="string">"Access-Control-Allow-Origin:*"</span>);  </div><div class="line"> <span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
 </li>
-<li><p>NodeJs配置：</p>
+<li><p>NodeJs配置(亲测有效)：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//To allow cross origin request</span></div><div class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">  res.header(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">'*'</span>);</div><div class="line">  res.header(<span class="string">'Access-Control-Allow-Headers'</span>, <span class="string">'Origin, X-Requested-With, Content-Type, Accept'</span>);</div><div class="line">  next();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -634,9 +634,9 @@
     </summary>
     
     
-      <category term="Javascript" scheme="https://ganchengyuan1990.github.io/blog/tags/Javascript/"/>
-    
       <category term="Vue" scheme="https://ganchengyuan1990.github.io/blog/tags/Vue/"/>
+    
+      <category term="Javascript" scheme="https://ganchengyuan1990.github.io/blog/tags/Javascript/"/>
     
   </entry>
   
