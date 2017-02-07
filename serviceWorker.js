@@ -42,7 +42,6 @@ function updateStaticCache() {
 // Fetch
 ////////
 function onFetch(event) {
-  debugger
   const request = event.request;
 
   if (shouldAlwaysFetch(request)) {
