@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ganchengyuan1990.github.io/blog/blog/2017/01/25/Weex%E9%A6%96%E7%A7%80/</loc>
+    
+    <lastmod>2017-02-07T06:02:38.491Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://ganchengyuan1990.github.io/blog/blog/2017/02/03/Weex%E9%A6%96%E7%A7%80-2/</loc>
+    
+    <lastmod>2017-02-07T06:01:36.730Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://ganchengyuan1990.github.io/blog/blog/2017/02/07/PWA%E5%88%9D%E4%BD%93%E9%AA%8C/</loc>
     
-    <lastmod>2017-02-07T05:37:38.070Z</lastmod>
+    <lastmod>2017-02-07T05:59:36.181Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://ganchengyuan1990.github.io/blog/blog/2017/01/18/html-render-paint/</loc>
+    
+    <lastmod>2017-02-07T05:56:53.491Z</lastmod>
     
   </url>
   
@@ -30,13 +51,6 @@
   </url>
   
   <url>
-    <loc>https://ganchengyuan1990.github.io/blog/blog/2017/01/25/Weex%E9%A6%96%E7%A7%80/</loc>
-    
-    <lastmod>2017-02-04T07:14:02.458Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://ganchengyuan1990.github.io/blog/blog/2017/02/04/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</loc>
     
     <lastmod>2017-02-04T02:22:31.359Z</lastmod>
@@ -47,13 +61,6 @@
     <loc>https://ganchengyuan1990.github.io/blog/blog/2017/01/20/%E5%88%9D%E8%AF%86mongodb/</loc>
     
     <lastmod>2017-02-04T01:45:13.138Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ganchengyuan1990.github.io/blog/blog/2017/01/18/html-render-paint/</loc>
-    
-    <lastmod>2017-02-04T01:44:45.554Z</lastmod>
     
   </url>
   
@@ -82,13 +89,6 @@
     <loc>https://ganchengyuan1990.github.io/blog/blog/2017/01/19/XSS%E5%92%8CCSRF%E5%AF%B9%E6%AF%94/</loc>
     
     <lastmod>2017-02-04T01:44:11.126Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ganchengyuan1990.github.io/blog/blog/2017/02/03/Weex%E9%A6%96%E7%A7%80-2/</loc>
-    
-    <lastmod>2017-02-04T01:44:01.783Z</lastmod>
     
   </url>
   
