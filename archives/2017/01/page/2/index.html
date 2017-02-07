@@ -324,13 +324,24 @@
 
 <script>
 if ("serviceWorker" in navigator) {
-	navigator.serviceWorker.register('./serviceWorker.js', { scope: "./" }) //setting scope of sw
-	.then(function(registration) {
-	  console.info('Service worker is registered!');
-	})
-	.catch(function(error) {
-	  console.error('Service worker failed ', error);
-	});
+	if(location.href && location.href.indexOf('serviceWorker') > 0) {
+		navigator.serviceWorker.register('../serviceWorker.js', { scope: "./" }) //setting scope of sw
+		.then(function(registration) {
+		  console.info('Service worker is registered!');
+		})
+		.catch(function(error) {
+		  console.error('Service worker failed ', error);
+		});
+	} else {
+		navigator.serviceWorker.register('./serviceWorker.js', { scope: "./" }) //setting scope of sw
+		.then(function(registration) {
+		  console.info('Service worker is registered!');
+		})
+		.catch(function(error) {
+		  console.error('Service worker failed ', error);
+		});
+	}
+	
 }
 </script>
     
@@ -377,7 +388,7 @@ if ("serviceWorker" in navigator) {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -389,11 +400,11 @@ if ("serviceWorker" in navigator) {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
             
             <div class="clearfix"></div>
