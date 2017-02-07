@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="时间追逐者">
 <meta property="og:description" content="跨域，是一个前端开发者必须掌握的概念，这篇文章就从几个基本问题出发，来理解这个概念。
 首先，什么是跨域？为何会有跨域？跨域一词从字面意思看，就是跨域名嘛，但实际上跨域的范围绝对不止那么狭隘。具体概念如下：只要协议、域名、端口有任何一个不同，都被当作是不同的域。所以说，如果你的后端用的是NODEJS，然后端口设置采用了默认的3000，还是会产生跨域的。之所以会产生跨域这个问题呢，其实也很容易想明白，">
-<meta property="og:updated_time" content="2017-02-04T01:44:56.116Z">
+<meta property="og:updated_time" content="2017-02-07T01:12:20.572Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="跨域问题整理">
 <meta name="twitter:description" content="跨域，是一个前端开发者必须掌握的概念，这篇文章就从几个基本问题出发，来理解这个概念。
@@ -255,7 +255,8 @@
 <li><p>在PHP文件中设置：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span>  </div><div class="line"> header(<span class="string">"Access-Control-Allow-Origin:*"</span>);  </div><div class="line"> <span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
 </li>
-<li><p>设置各服务器的配置文件，详见<a href="http://blog.csdn.net/ownfire/article/details/46707229" target="_blank" rel="external">http://blog.csdn.net/ownfire/article/details/46707229</a></p>
+<li><p>NodeJs配置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//To allow cross origin request</span></div><div class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">  res.header(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">'*'</span>);</div><div class="line">  res.header(<span class="string">'Access-Control-Allow-Headers'</span>, <span class="string">'Origin, X-Requested-With, Content-Type, Accept'</span>);</div><div class="line">  next();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
 </ol>
 
@@ -492,19 +493,19 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
