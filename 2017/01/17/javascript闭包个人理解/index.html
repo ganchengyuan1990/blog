@@ -393,7 +393,7 @@
 if ("serviceWorker" in navigator) {
 	if(location.href && location.href.indexOf('tags') > 0) {
 		console.log('tags');
-		navigator.serviceWorker.register('../serviceWorker.js', { scope: "./" }) //setting scope of sw
+		navigator.serviceWorker.register('../../serviceWorker.js', { scope: "./" }) //setting scope of sw
 		.then(function(registration) {
 		  console.info('Service worker is registered!');
 		})
