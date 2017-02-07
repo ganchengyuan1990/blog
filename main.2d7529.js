@@ -532,11 +532,7 @@
             n = window.location.search.substr(1).match(t);
         return null != n ? unescape(n[2]) : null }
     var r = n(90);
-    if (n(80), window.BJ_REPORT) { BJ_REPORT.init({ id: 1 });
-        var i = window.location.host,
-            a = top === window,
-            u = !(/localhost/i.test(i) || /127.0.0.1/i.test(i) || /0.0.0.0/i.test(i));
-        a && u && BJ_REPORT.report("yilia-" + window.location.host);
+    if (n(80), window.BJ_REPORT) { 
         var l = o("f"),
             s = "yilia-from";
         l ? (a && BJ_REPORT.report("from-" + l), r.set(s, l)) : document.referrer.indexOf(window.location.host) >= 0 ? (l = r.get(s), l && a && BJ_REPORT.report("from-" + l)) : r.remove(s) }
