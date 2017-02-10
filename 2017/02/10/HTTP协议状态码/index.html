@@ -13,17 +13,27 @@
   <meta name="application-name" content="时间追逐者">
   <meta name="application-TileImage" content="./img/avater.jpg">
   <link rel="dns-prefetch" href="https://ganchengyuan1990.github.io/blog">
-  <title>Archives: 2017 | 时间追逐者</title>
+  <title>HTTP协议状态码 | 时间追逐者</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="你好">
-<meta property="og:type" content="website">
-<meta property="og:title" content="时间追逐者">
-<meta property="og:url" content="https://ganchengyuan1990.github.io/blog/archives/2017/index.html">
+  <meta name="description" content="今天在写自己的小项目。遇到一个问题。
+用nodejs写的后端，Vue前端，后端逻辑非常简单，就是从第三方接口查信息，然后通过Mongodb存储到本地数据库，并且把信息返回。
+这个工作只花了20分钟就在本地测试通过了，然后开始部署到自己的阿里云服务器上。结果上去以后就有问题，获取不到！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP协议状态码">
+<meta property="og:url" content="https://ganchengyuan1990.github.io/blog/2017/02/10/HTTP协议状态码/index.html">
 <meta property="og:site_name" content="时间追逐者">
-<meta property="og:description" content="你好">
+<meta property="og:description" content="今天在写自己的小项目。遇到一个问题。
+用nodejs写的后端，Vue前端，后端逻辑非常简单，就是从第三方接口查信息，然后通过Mongodb存储到本地数据库，并且把信息返回。
+这个工作只花了20分钟就在本地测试通过了，然后开始部署到自己的阿里云服务器上。结果上去以后就有问题，获取不到！">
+<meta property="og:image" content="https://ganchengyuan1990.github.io/blog/img/20170210.jpg">
+<meta property="og:image" content="https://ganchengyuan1990.github.io/blog/img/20170210.png">
+<meta property="og:updated_time" content="2017-02-10T07:00:48.411Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="时间追逐者">
-<meta name="twitter:description" content="你好">
+<meta name="twitter:title" content="HTTP协议状态码">
+<meta name="twitter:description" content="今天在写自己的小项目。遇到一个问题。
+用nodejs写的后端，Vue前端，后端逻辑非常简单，就是从第三方接口查信息，然后通过Mongodb存储到本地数据库，并且把信息返回。
+这个工作只花了20分钟就在本地测试通过了，然后开始部署到自己的阿里云服务器上。结果上去以后就有问题，获取不到！">
+<meta name="twitter:image" content="https://ganchengyuan1990.github.io/blog/img/20170210.jpg">
   
     <link rel="alternative" href="/atom.xml" title="时间追逐者" type="application/atom+xml">
   
@@ -173,36 +183,74 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-HTTP协议状态码" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/blog/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/blog/2017/02/10/HTTP协议状态码/" class="archive-article-date">
-  	<time datetime="2017-02-10T02:41:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2017/02/10/HTTP协议状态码/">HTTP协议状态码</a>
+    <h1 class="article-title" itemprop="name">
+      HTTP协议状态码
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/blog/2017/02/10/HTTP协议状态码/" class="archive-article-date">
+  	<time datetime="2017-02-10T02:41:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天在写自己的小项目。遇到一个问题。</p>
+<p>用nodejs写的后端，Vue前端，后端逻辑非常简单，就是从第三方接口查信息，然后通过Mongodb存储到本地数据库，并且把信息返回。</p>
+<p>这个工作只花了20分钟就在本地测试通过了，然后开始部署到自己的阿里云服务器上。结果上去以后就有问题，获取不到！</p>
+<p><img src="https://ganchengyuan1990.github.io/blog/img/20170210.jpg" alt=""></p>
+<a id="more"></a>
+<p>写的是一个Jsonp的跨域请求，但其实已经不是跨域了，因为请求发起地址是”<a href="http://jasongan.cn/&quot;，response地址是&quot;http://jasongan.cn:9001&quot;。" target="_blank" rel="external">http://jasongan.cn/&quot;，response地址是&quot;http://jasongan.cn:9001&quot;。</a></p>
+<p>在node.js中也写了header，启用了CORS来应对跨域问题</p>
+<blockquote>
+<p>res.setHeader(‘Access-Control-Allow-Origin’, ‘*’);<br> res.setHeader(‘Access-Control-Allow-Headers’, ‘Origin, X-Requested-With, Content-Type, Accept’);</p>
+</blockquote>
+<p>这都没什么奇怪的，问题是让我把测试机通过公司的代理服务器再发HTTP请求时，居然获得了response！</p>
+<p><img src="https://ganchengyuan1990.github.io/blog/img/20170210.png" alt=""></p>
+<p>来看一下此时HTTP的请求信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">Request URL:http://jasongan.cn:9001/?callback=_jsonprjvoxbwo27h0lgel5a0s5rk9</div><div class="line">Request Method:GET</div><div class="line">Status Code:200 OK</div><div class="line">Remote Address:10.200.70.3:8080</div><div class="line"></div><div class="line">Response Headers</div><div class="line">view source</div><div class="line">Access-Control-Allow-Headers:Origin, X-Requested-With, Content-Type, Accept</div><div class="line">Access-Control-Allow-Methods:PUT, POST, GET, DELETE, OPTIONS</div><div class="line">Access-Control-Allow-Origin:*</div><div class="line">Connection:keep-alive</div><div class="line">Content-Length:184</div><div class="line">Date:Fri, 10 Feb 2017 06:44:54 GMT</div><div class="line">Via:1.1 proxy3.fn.com (squid/3.4.4)</div><div class="line">X-Cache:MISS from proxy3.fn.com</div><div class="line">X-Cache-Lookup:MISS from proxy3.fn.com:8080</div><div class="line"></div><div class="line">Request Headers</div><div class="line">view source</div><div class="line">Accept:*/*</div><div class="line">Accept-Encoding:gzip, deflate, sdch</div><div class="line">Accept-Language:zh-CN,zh;q=0.8</div><div class="line">Cache-Control:no-cache</div><div class="line">Host:jasongan.cn:9001</div><div class="line">Pragma:no-cache</div><div class="line">Proxy-Connection:keep-alive</div><div class="line">Referer:http://jasongan.cn/</div><div class="line">User-Agent:Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1</div><div class="line"></div><div class="line">callback:_jsonprjvoxbwo27h0lgel5a0s5rk9</div></pre></td></tr></table></figure></p>
+<p>Response Headers里X-Cache表示你的 http request 是由 proxy server 回的 .MISS 表 proxy无资料,代理动作, HIT 表 proxy 直接回应</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://wx1.sinaimg.cn/mw690/77e455bfgy1fcgkbz7zuxj20my0uajsk.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -214,153 +262,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://ganchengyuan1990.github.io/blog/2017/02/10/HTTP协议状态码/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/blog/2017/02/09/Cache-Storage如何可控/" class="archive-article-date">
-  	<time datetime="2017-02-09T01:40:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-09</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2017/02/09/Cache-Storage如何可控/">Cache Storage如何可控</a>
-    </h1>
+  
+    <a href="/blog/2017/02/09/Cache-Storage如何可控/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Cache Storage如何可控</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="HTTP协议状态码" data-title="HTTP协议状态码" data-url="https://ganchengyuan1990.github.io/blog/blog/2017/02/10/HTTP协议状态码/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"jasongan0915"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javacsript</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/blog/2017/02/07/PWA初体验/" class="archive-article-date">
-  	<time datetime="2017-02-07T01:33:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2017/02/07/PWA初体验/">PWA初体验</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/blog/2017/02/06/今日休整，简单修改样式/" class="archive-article-date">
-  	<time datetime="2017-02-06T06:53:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2017/02/06/今日休整，简单修改样式/">今日休整，简单修改样式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/blog/2017/02/04/函数式编程/" class="archive-article-date">
-  	<time datetime="2017-02-04T01:48:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2017/02/04/函数式编程/">函数式编程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/blog/archives/2017/page/2/">2</a><a class="page-number" href="/blog/archives/2017/page/3/">3</a><a class="page-number" href="/blog/archives/2017/page/4/">4</a><a class="extend next" rel="next" href="/blog/archives/2017/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -383,8 +384,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

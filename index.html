@@ -175,6 +175,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-HTTP协议状态码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/02/10/HTTP协议状态码/">HTTP协议状态码</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2017/02/10/HTTP协议状态码/" class="archive-article-date">
+  	<time datetime="2017-02-10T02:41:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天在写自己的小项目。遇到一个问题。</p>
+<p>用nodejs写的后端，Vue前端，后端逻辑非常简单，就是从第三方接口查信息，然后通过Mongodb存储到本地数据库，并且把信息返回。</p>
+<p>这个工作只花了20分钟就在本地测试通过了，然后开始部署到自己的阿里云服务器上。结果上去以后就有问题，获取不到！</p>
+<p><img src="https://ganchengyuan1990.github.io/blog/img/20170210.jpg" alt=""></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/02/10/HTTP协议状态码/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Cache-Storage如何可控" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -430,74 +495,6 @@
 
 
   
-    <article id="post-Weex首秀-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/02/03/Weex首秀-2/">Weex首秀(2)</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/02/03/Weex首秀-2/" class="archive-article-date">
-  	<time datetime="2017-02-03T01:13:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先祝各位鸡年大吉，开工大吉！<br>趁着今天刚开工，工作任务还不多，可以继续学些Weex。</p>
-<p>春节在家无聊的时候，继续跟进了一下Weex的学习，主要把“关于我”这个Page进行了一些优化，这里主要是一些体力活，并没有太多可说的，简单总结以下几点：</p>
-<ol>
-<li>Weex中所有的文字都要放在<text></text>这个标签里，在普通的网页开发甚至Vue开发中，我偶尔会直接把文字放在div标签里，但是Weex中并不识别这样的语法。</li>
-<li>Weex的页面布局虽然也使用css语法，但是与Vue以及普通页面并不完全相同，我试验了一下，text-align：center必须用在text标签上，才能使文字居中，但是因为HTML并没有这个标签，所以要加载文字所在的父标签上，这个要注意，另外就是建议在Weex中多应用flex布局。</li>
-</ol>
-<p><img src="https://ganchengyuan1990.github.io/blog/img/psb.jpg" alt=""></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/02/03/Weex首秀-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/2/">Next &raquo;</a>
@@ -562,6 +559,14 @@ if ("serviceWorker" in navigator) {
 	}
 	
 }
+
+var URL = 'http://jasongan.cn/php/hello1.php';
+
+fetch(URL).then(function(response2) {
+    return response2.json();
+}).then(function(json) {
+    alert(JSON.stringify(json));
+});
 </script>
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
@@ -611,7 +616,15 @@ if ("serviceWorker" in navigator) {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,15 +632,7 @@ if ("serviceWorker" in navigator) {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
               </li>
             
             <div class="clearfix"></div>

@@ -175,6 +175,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Weex首秀-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/02/03/Weex首秀-2/">Weex首秀(2)</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2017/02/03/Weex首秀-2/" class="archive-article-date">
+  	<time datetime="2017-02-03T01:13:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先祝各位鸡年大吉，开工大吉！<br>趁着今天刚开工，工作任务还不多，可以继续学些Weex。</p>
+<p>春节在家无聊的时候，继续跟进了一下Weex的学习，主要把“关于我”这个Page进行了一些优化，这里主要是一些体力活，并没有太多可说的，简单总结以下几点：</p>
+<ol>
+<li>Weex中所有的文字都要放在<text></text>这个标签里，在普通的网页开发甚至Vue开发中，我偶尔会直接把文字放在div标签里，但是Weex中并不识别这样的语法。</li>
+<li>Weex的页面布局虽然也使用css语法，但是与Vue以及普通页面并不完全相同，我试验了一下，text-align：center必须用在text标签上，才能使文字居中，但是因为HTML并没有这个标签，所以要加载文字所在的父标签上，这个要注意，另外就是建议在Weex中多应用flex布局。</li>
+</ol>
+<p><img src="https://ganchengyuan1990.github.io/blog/img/psb.jpg" alt=""></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/02/03/Weex首秀-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Weex首秀" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -433,71 +501,6 @@
 
 
   
-    <article id="post-localStorage缓存机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/01/22/localStorage缓存机制/">localStorage缓存机制</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/01/22/localStorage缓存机制/" class="archive-article-date">
-  	<time datetime="2017-01-22T01:26:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先，localStorage的确是可以做JS以及CSS缓存的，详情可以通过F12看<a href="http://mp.weixin.qq.com/s?__biz=MzA5NDIzNzY1OQ==&amp;mid=2735610010&amp;idx=1&amp;sn=67e3f0833f1097a279d850e2098956ff&amp;scene=0#wechat_redirect">http://mp.weixin.qq.com/s?__biz=MzA5NDIzNzY1OQ==&amp;mid=2735610010&amp;idx=1&amp;sn=67e3f0833f1097a279d850e2098956ff&amp;scene=0#wechat_redirect</a></p>
-<p>按道理说这个机制是非常诱人的，毕竟localStorage可存储体积大，并且用户一旦开启便不容易清除，所以从工程师的角度来看这个工具非常适合缓存一些并不经常需要维护更新的脚本和样式文件。</p>
-<p>当然，假如要更新的话，就得好好设计一下更新机制，普通的资源请求，可以根据文件名+md5 <a href="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/moon32ebc4.js或者在资源链接后面加上特定的后缀http://1.ss.faisys.com/js/comm/fai.min.js?v=201612051739做标识来判断是否需要更新资源。如果用localStorage做，则需要一套新的缓存更新机制。">http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/moon32ebc4.js或者在资源链接后面加上特定的后缀http://1.ss.faisys.com/js/comm/fai.min.js?v=201612051739做标识来判断是否需要更新资源。如果用localStorage做，则需要一套新的缓存更新机制。</a></p>
-<p>微信的做法是每个文件都单独维护一个localStorage变量，来记录版本号，从而由后台来判断是否需要更新。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/01/22/localStorage缓存机制/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/3/">Next &raquo;</a>
@@ -562,6 +565,14 @@ if ("serviceWorker" in navigator) {
 	}
 	
 }
+
+var URL = 'http://jasongan.cn/php/hello1.php';
+
+fetch(URL).then(function(response2) {
+    return response2.json();
+}).then(function(json) {
+    alert(JSON.stringify(json));
+});
 </script>
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
@@ -611,7 +622,15 @@ if ("serviceWorker" in navigator) {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,15 +638,7 @@ if ("serviceWorker" in navigator) {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
               </li>
             
             <div class="clearfix"></div>
