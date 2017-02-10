@@ -157,11 +157,11 @@
   </entry>
   
   <entry>
-    <title>函数式编程</title>
+    <title>ZT-函数式编程</title>
     <link href="https://ganchengyuan1990.github.io/blog/2017/02/04/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
     <id>https://ganchengyuan1990.github.io/blog/2017/02/04/函数式编程/</id>
     <published>2017-02-04T01:48:39.000Z</published>
-    <updated>2017-02-04T02:22:31.359Z</updated>
+    <updated>2017-02-10T10:59:57.344Z</updated>
     
     <content type="html"><![CDATA[<p>转帖：<a href="http://www.zcfy.cc/article/master-the-javascript-interview-what-is-function-composition-2160.html" target="_blank" rel="external">http://www.zcfy.cc/article/master-the-javascript-interview-what-is-function-composition-2160.html</a></p>
 <blockquote>
@@ -283,7 +283,7 @@
 <h2 id="外部链接问题"><a href="#外部链接问题" class="headerlink" title="外部链接问题"></a>外部链接问题</h2><p>在“关于我”这个page中，有一个需求，就是链接到外部网站，因为之前缺少APP开发经验，所以我想当然地认为这个问题非常简单，只需要价格a标签，或者像Vue一样采用Router的方法就可以了，但是后来发现这样并不能正常work。</p>
 <p>仔细一看，Demo中所有Router都是链接到项目内部页面的，看地址栏上每个页面其实都是一个经过build的Js文件，这点应该和Vue是类似的，但这个并不符合我的需求，并且外部网站是传统的静态页面，因此还是需要解决。</p>
 <p>首先抓包看看访问的URL是否正确:<br><img src="https://ganchengyuan1990.github.io/blog/img/psb2.png" alt=""><br>由上图看 <a href="http://m.feiniu.com/my/order/index.html" target="_blank" rel="external">http://m.feiniu.com/my/order/index.html</a> 这个请求地址应该没有错，所以有可能是兼容问题。</p>
-<p>于是尝试捕捉error<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> &lt;web <span class="class"><span class="keyword">class</span></span>=<span class="string">"content"</span> id=<span class="string">"webview"</span> src=<span class="string">'https://m.taobao.com/?spm=0.0.0.0&amp;v=0#index'</span> onpagestart=<span class="string">"startload"</span> onpagefinish=<span class="string">"finishload"</span> onerror=<span class="string">"failload"</span>&gt;&lt;/web&gt;</div><div class="line"></div><div class="line">startload: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: <span class="string">'pagestart'</span> &#125;)</div><div class="line">&#125;,</div><div class="line"><span class="attr">finishload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: <span class="string">'finishload'</span> &#125;)</div><div class="line">&#125;,</div><div class="line"><span class="attr">failload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: event &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>于是尝试捕捉error<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> &lt;web <span class="class"><span class="keyword">class</span></span>=<span class="string">"content"</span> id=<span class="string">"webview"</span> src=<span class="string">'https://m.taobao.com/?spm=0.0.0.0&amp;v=0#index'</span> onpagestart=<span class="string">"startload"</span> onpagefinish=<span class="string">"finishload"</span> onerror=<span class="string">"failload"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">web</span>&gt;</span></span></div><div class="line"></div><div class="line">startload: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: <span class="string">'pagestart'</span> &#125;)</div><div class="line">&#125;,</div><div class="line"><span class="attr">finishload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: <span class="string">'finishload'</span> &#125;)</div><div class="line">&#125;,</div><div class="line"><span class="attr">failload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: event &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>使用不同的机器进行测试，安卓手机触发到了finishload事件，而IPHONE触发了failload事件，但是两个手机都无法正常显示网页。</p>
 <p>最后我在官方文档中查到这个：<br><img src="https://ganchengyuan1990.github.io/blog/img/psb2.jpg" alt=""><br>web组件要求的weex版本是v0.5+，但是我的项目中用的是v0.32的，所以说看起来还是得仔细查查手册啊，之前在Vue项目中也碰到过这种组件兼容性问题。<br><img src="https://ganchengyuan1990.github.io/blog/img/psb3.jpg" alt=""><br>目前怀疑就是这个问题导致无法正常使用webview（未完待续）。</p>
 ]]></content>
@@ -335,11 +335,11 @@
   </entry>
   
   <entry>
-    <title>javascript小技巧</title>
+    <title>ZT-javascript小技巧</title>
     <link href="https://ganchengyuan1990.github.io/blog/2017/01/24/javascript%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
     <id>https://ganchengyuan1990.github.io/blog/2017/01/24/javascript小技巧/</id>
     <published>2017-01-24T02:52:27.000Z</published>
-    <updated>2017-02-04T01:41:25.160Z</updated>
+    <updated>2017-02-10T11:00:32.240Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p><code>计算最小值</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">smallest</span>(<span class="params">array</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.min.apply(<span class="built_in">Math</span>, array);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(smallest([<span class="number">9</span>,<span class="number">13</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">33</span>])); <span class="comment">//7</span></div></pre></td></tr></table></figure></p>
@@ -366,11 +366,11 @@
   </entry>
   
   <entry>
-    <title>Restful API初识</title>
+    <title>ZT-Restful API初识</title>
     <link href="https://ganchengyuan1990.github.io/blog/2017/01/24/Restful-API%E5%88%9D%E8%AF%86/"/>
     <id>https://ganchengyuan1990.github.io/blog/2017/01/24/Restful-API初识/</id>
     <published>2017-01-24T01:57:30.000Z</published>
-    <updated>2017-02-04T01:44:25.112Z</updated>
+    <updated>2017-02-10T11:00:56.824Z</updated>
     
     <content type="html"><![CDATA[<p>转载：<a href="http://scarletsky.github.io/2016/11/30/error-handling-in-restful-api/" target="_blank" rel="external">http://scarletsky.github.io/2016/11/30/error-handling-in-restful-api/</a></p>
 <p>Restful API这个概念是我这几天看博客才接触到的，但其实在日常开发中这个思想始终都占据着重要地位。</p>
@@ -424,11 +424,11 @@
   </entry>
   
   <entry>
-    <title>跨域问题整理</title>
+    <title>ZT-跨域问题整理</title>
     <link href="https://ganchengyuan1990.github.io/blog/2017/01/23/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/"/>
     <id>https://ganchengyuan1990.github.io/blog/2017/01/23/跨域问题整理/</id>
     <published>2017-01-23T01:22:43.000Z</published>
-    <updated>2017-02-07T01:26:19.715Z</updated>
+    <updated>2017-02-10T11:00:14.388Z</updated>
     
     <content type="html"><![CDATA[<p>跨域，是一个前端开发者必须掌握的概念，这篇文章就从几个基本问题出发，来理解这个概念。</p>
 <h3 id="首先，什么是跨域？为何会有跨域？"><a href="#首先，什么是跨域？为何会有跨域？" class="headerlink" title="首先，什么是跨域？为何会有跨域？"></a>首先，什么是跨域？为何会有跨域？</h3><p>跨域一词从字面意思看，就是跨域名嘛，但实际上跨域的范围绝对不止那么狭隘。具体概念如下：只要协议、域名、端口有任何一个不同，都被当作是不同的域。所以说，如果你的后端用的是NODEJS，然后端口设置采用了默认的3000，还是会产生跨域的。之所以会产生跨域这个问题呢，其实也很容易想明白，要是随便引用外部文件，不同标签下的页面引用类似的彼此的文件，浏览器很容易懵逼的，安全也得不到保障了就。什么事，都是安全第一嘛。但在安全限制的同时也给注入iframe或是ajax应用上带来了不少麻烦。所以我们要通过一些方法使本域的js能够操作其他域的页面对象或者使其他域的js能操作本域的页面对象（iframe之间）。下面是具体的跨域情况详解：</p>
@@ -508,11 +508,11 @@
   </entry>
   
   <entry>
-    <title>localStorage缓存机制</title>
+    <title>ZT-localStorage缓存机制</title>
     <link href="https://ganchengyuan1990.github.io/blog/2017/01/22/localStorage%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/"/>
     <id>https://ganchengyuan1990.github.io/blog/2017/01/22/localStorage缓存机制/</id>
     <published>2017-01-22T01:26:17.000Z</published>
-    <updated>2017-02-04T01:44:29.786Z</updated>
+    <updated>2017-02-10T11:00:52.566Z</updated>
     
     <content type="html"><![CDATA[<p>首先，localStorage的确是可以做JS以及CSS缓存的，详情可以通过F12看<a href="http://mp.weixin.qq.com/s?__biz=MzA5NDIzNzY1OQ==&amp;mid=2735610010&amp;idx=1&amp;sn=67e3f0833f1097a279d850e2098956ff&amp;scene=0#wechat_redirect" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MzA5NDIzNzY1OQ==&amp;mid=2735610010&amp;idx=1&amp;sn=67e3f0833f1097a279d850e2098956ff&amp;scene=0#wechat_redirect</a></p>
 <p>按道理说这个机制是非常诱人的，毕竟localStorage可存储体积大，并且用户一旦开启便不容易清除，所以从工程师的角度来看这个工具非常适合缓存一些并不经常需要维护更新的脚本和样式文件。</p>
@@ -630,11 +630,11 @@
   </entry>
   
   <entry>
-    <title>Js 载入defer和async方式的区别</title>
+    <title>ZT- Js载入defer和async方式的区别</title>
     <link href="https://ganchengyuan1990.github.io/blog/2017/01/19/Js-%E8%BD%BD%E5%85%A5defer%E5%92%8Casync%E6%96%B9%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
     <id>https://ganchengyuan1990.github.io/blog/2017/01/19/Js-载入defer和async方式的区别/</id>
     <published>2017-01-19T06:06:49.000Z</published>
-    <updated>2017-01-19T06:07:30.385Z</updated>
+    <updated>2017-02-10T11:00:44.962Z</updated>
     
     <content type="html"><![CDATA[<p>async加载完便执行，乱序的；defer会等到html解析完再执行，并且是顺序的。</p>
 <ol>
@@ -661,11 +661,11 @@
   </entry>
   
   <entry>
-    <title>XSS和CSRF对比</title>
+    <title>ZT-XSS和CSRF对比</title>
     <link href="https://ganchengyuan1990.github.io/blog/2017/01/19/XSS%E5%92%8CCSRF%E5%AF%B9%E6%AF%94/"/>
     <id>https://ganchengyuan1990.github.io/blog/2017/01/19/XSS和CSRF对比/</id>
     <published>2017-01-19T01:11:30.000Z</published>
-    <updated>2017-02-04T01:44:11.126Z</updated>
+    <updated>2017-02-10T11:01:02.923Z</updated>
     
     <content type="html"><![CDATA[<font color="grey">转载：<a href="https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/" target="_blank" rel="external">https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/</a></font>
 
