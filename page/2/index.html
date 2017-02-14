@@ -175,6 +175,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-函数式编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/02/04/函数式编程/">ZT-函数式编程</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2017/02/04/函数式编程/" class="archive-article-date">
+  	<time datetime="2017-02-04T01:48:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>转帖：<a href="http://www.zcfy.cc/article/master-the-javascript-interview-what-is-function-composition-2160.html">http://www.zcfy.cc/article/master-the-javascript-interview-what-is-function-composition-2160.html</a></p>
+<blockquote>
+<p>函数式编程正在接管 JavaScript 世界。就在几年前，只有少数 JavaScript 程序员知道函数式编程是什么。然而，在过去 3 年内，我所看到的每个大型应用程序代码库都大量用到了函数式编程理念。</p>
+</blockquote>
+<p>函数组合就是<font color=red><code>组合两到多个函数来生成一个新函数</code></font>的过程。将函数组合在一起，就像将一连串管道扣合在一起，让数据流过一样。</p>
+<p>简而言之，函数 f 和 g 的组合可以被定义为 f(g(x))，从内到外（从右到左）求值。也就是说，求值顺序是：</p>
+<ul>
+<li>1.x</li>
+<li>2.g</li>
+<li>3.f</li>
+</ul>
+<p>下面我们在代码中更近距离观察一下这个概念。假如你想把用户的全名转换为 URL Slug，给每个用户一个个人信息页面。为了实现此需求，你需要经历一连串的步骤：</p>
+<ul>
+<li>1.将姓名根据空格分拆（split）到一个数组中</li>
+<li>2.将姓名映射（map）为小写</li>
+<li>3.用破折号连接（join）</li>
+<li>4.编码 URI 组件</li>
+</ul>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/02/04/函数式编程/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Weex首秀-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -437,70 +516,6 @@
 
 
   
-    <article id="post-跨域问题整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/01/23/跨域问题整理/">ZT-跨域问题整理</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/01/23/跨域问题整理/" class="archive-article-date">
-  	<time datetime="2017-01-23T01:22:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>跨域，是一个前端开发者必须掌握的概念，这篇文章就从几个基本问题出发，来理解这个概念。</p>
-<h3 id="首先，什么是跨域？为何会有跨域？"><a href="#首先，什么是跨域？为何会有跨域？" class="headerlink" title="首先，什么是跨域？为何会有跨域？"></a>首先，什么是跨域？为何会有跨域？</h3><p>跨域一词从字面意思看，就是跨域名嘛，但实际上跨域的范围绝对不止那么狭隘。具体概念如下：只要协议、域名、端口有任何一个不同，都被当作是不同的域。所以说，如果你的后端用的是NODEJS，然后端口设置采用了默认的3000，还是会产生跨域的。之所以会产生跨域这个问题呢，其实也很容易想明白，要是随便引用外部文件，不同标签下的页面引用类似的彼此的文件，浏览器很容易懵逼的，安全也得不到保障了就。什么事，都是安全第一嘛。但在安全限制的同时也给注入iframe或是ajax应用上带来了不少麻烦。所以我们要通过一些方法使本域的js能够操作其他域的页面对象或者使其他域的js能操作本域的页面对象（iframe之间）。下面是具体的跨域情况详解：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">URL                      <span class="comment">//说明       是否允许通信</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/b.js     //同一域名下   允许</span></div><div class="line">http:<span class="comment">//www.a.com/lab/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/script/b.js //同一域名下不同文件夹 允许</span></div><div class="line">http:<span class="comment">//www.a.com:8000/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/b.js     //同一域名，不同端口  不允许</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">https:<span class="comment">//www.a.com/b.js //同一域名，不同协议 不允许</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//70.32.92.74/b.js //域名和域名对应ip 不允许</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//script.a.com/b.js //主域相同，子域不同 不允许（cookie这种情况下也不允许访问）</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//a.com/b.js //同一域名，不同二级域名（同上） 不允许（cookie这种情况下也不允许访问）</span></div><div class="line">http:<span class="comment">//www.cnblogs.com/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/b.js //不同域名 不允许</span></div></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/01/23/跨域问题整理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/3/">Next &raquo;</a>
@@ -618,6 +633,10 @@ fetch(URL).then(function(response2) {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javacsript</a>
               </li>
              
@@ -630,15 +649,11 @@ fetch(URL).then(function(response2) {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
             
             <div class="clearfix"></div>
