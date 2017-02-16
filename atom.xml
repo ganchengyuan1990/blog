@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ganchengyuan1990.github.io/blog/"/>
-  <updated>2017-02-14T02:17:59.499Z</updated>
+  <updated>2017-02-16T06:19:40.999Z</updated>
   <id>https://ganchengyuan1990.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Weex首秀</title>
+    <link href="https://ganchengyuan1990.github.io/blog/2017/02/16/Weex%E9%A6%96%E7%A7%80/"/>
+    <id>https://ganchengyuan1990.github.io/blog/2017/02/16/Weex首秀/</id>
+    <published>2017-02-16T05:54:46.000Z</published>
+    <updated>2017-02-16T06:19:40.999Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="第一部分-2017-01-25"><a href="#第一部分-2017-01-25" class="headerlink" title="第一部分 2017-01-25"></a>第一部分 2017-01-25</h3><p>一直想做一个APP，去年也自学过一段时间的<code>React Native</code>, 但是RN相对来说学习曲线比较陡峭，并且很多资源包在下载时都不是那么容易，经常error（这个大家都懂）, 所以这事儿就不了了之了。</p>
+<p>前两天看了weex的会议，觉得阿里又在放大招了，这个工具虽然目前学习社区不多，资源组件不丰富，但是本身调式来发非常便捷，weex playground非常不错，并且因为weex是基于vue的，所以入门简单，<code>npm run build</code>打包以后部署到自己的服务器上，用二维码扫描以后就可以拥有一个自己的APP了，并且是兼容三端的，这一点非常诱人。</p>
+<p>于是，我就从github上找到了一个别人的项目，<a href="https://github.com/dodola/WeexOne" target="_blank" rel="external">https://github.com/dodola/WeexOne</a>，然后改造一个属于自己的APP。<br>总体样式如下：<br><img src="https://ganchengyuan1990.github.io/blog/img/weex.jpg" alt=""><br><a id="more"></a></p>
+<p>开始动手！</p>
+<p>首先，引入了picker组件，这个组件用来进行时间选择，前端效果不错。<br><img src="https://ganchengyuan1990.github.io/blog/img/weex2.jpg" alt=""><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">'weex-components'</span>);</div><div class="line">   <span class="keyword">const</span> picker = <span class="built_in">require</span>(<span class="string">'@weex-module/picker'</span>);</div><div class="line"> <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">   data () &#123;</div><div class="line">     <span class="keyword">return</span> &#123;</div><div class="line">       <span class="attr">value</span>: <span class="string">''</span></div><div class="line">     &#125;</div><div class="line">   &#125;,</div><div class="line">   <span class="attr">methods</span>: &#123;</div><div class="line">     pickTime () &#123;</div><div class="line">       picker.pickTime(&#123;</div><div class="line">         <span class="attr">value</span>: <span class="keyword">this</span>.value</div><div class="line">       &#125;, event =&gt; &#123;</div><div class="line">         <span class="keyword">if</span> (event.result === <span class="string">'success'</span>) &#123;</div><div class="line">           <span class="keyword">this</span>.value = event.data</div><div class="line">         &#125;</div><div class="line">       &#125;)</div><div class="line">     &#125;</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="第二部分-2017-02-03"><a href="#第二部分-2017-02-03" class="headerlink" title="第二部分 2017-02-03"></a>第二部分 2017-02-03</h3><p>首先祝各位鸡年大吉，开工大吉！<br>趁着今天刚开工，工作任务还不多，可以继续学些Weex。</p>
+<p>春节在家无聊的时候，继续跟进了一下Weex的学习，主要把“关于我”这个Page进行了一些优化，这里主要是一些体力活，并没有太多可说的，简单总结以下几点：</p>
+<ol>
+<li>Weex中所有的文字都要放在<text></text>这个标签里，在普通的网页开发甚至Vue开发中，我偶尔会直接把文字放在div标签里，但是Weex中并不识别这样的语法。</li>
+<li>Weex的页面布局虽然也使用css语法，但是与Vue以及普通页面并不完全相同，我试验了一下，text-align：center必须用在text标签上，才能使文字居中，但是因为HTML并没有这个标签，所以要加载文字所在的父标签上，这个要注意，另外就是建议在Weex中多应用flex布局。</li>
+</ol>
+<p><img src="https://ganchengyuan1990.github.io/blog/img/psb.jpg" alt=""></p>
+<h2 id="外部链接问题"><a href="#外部链接问题" class="headerlink" title="外部链接问题"></a>外部链接问题</h2><p>在“关于我”这个page中，有一个需求，就是链接到外部网站，因为之前缺少APP开发经验，所以我想当然地认为这个问题非常简单，只需要价格a标签，或者像Vue一样采用Router的方法就可以了，但是后来发现这样并不能正常work。</p>
+<p>仔细一看，Demo中所有Router都是链接到项目内部页面的，看地址栏上每个页面其实都是一个经过build的Js文件，这点应该和Vue是类似的，但这个并不符合我的需求，并且外部网站是传统的静态页面，因此还是需要解决。</p>
+<p>首先抓包看看访问的URL是否正确:<br><img src="https://ganchengyuan1990.github.io/blog/img/psb2.png" alt=""><br>由上图看 <a href="http://m.feiniu.com/my/order/index.html" target="_blank" rel="external">http://m.feiniu.com/my/order/index.html</a> 这个请求地址应该没有错，所以有可能是兼容问题。</p>
+<p>于是尝试捕捉error<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> &lt;web <span class="class"><span class="keyword">class</span></span>=<span class="string">"content"</span> id=<span class="string">"webview"</span> src=<span class="string">'https://m.taobao.com/?spm=0.0.0.0&amp;v=0#index'</span> onpagestart=<span class="string">"startload"</span> onpagefinish=<span class="string">"finishload"</span> onerror=<span class="string">"failload"</span>&gt;&lt;/web&gt;</div><div class="line"></div><div class="line">startload: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: <span class="string">'pagestart'</span> &#125;)</div><div class="line">&#125;,</div><div class="line"><span class="attr">finishload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: <span class="string">'finishload'</span> &#125;)</div><div class="line">&#125;,</div><div class="line"><span class="attr">failload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: event &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用不同的机器进行测试，安卓手机触发到了finishload事件，而IPHONE触发了failload事件，但是两个手机都无法正常显示网页。</p>
+<p>最后我在官方文档中查到这个：<br><img src="https://ganchengyuan1990.github.io/blog/img/psb2.jpg" alt=""><br>web组件要求的weex版本是v0.5+，但是我的项目中用的是v0.32的，所以说看起来还是得仔细查查手册啊，之前在Vue项目中也碰到过这种组件兼容性问题。<br><img src="https://ganchengyuan1990.github.io/blog/img/psb3.jpg" alt=""><br>目前怀疑就是这个问题导致无法正常使用webview（未完待续）。</p>
+<h3 id="第三部分-2017-02-16"><a href="#第三部分-2017-02-16" class="headerlink" title="第三部分 2017-02-16"></a>第三部分 2017-02-16</h3><p>在Weex中，不能直接像HTML中那样用a标签链接打开一个页面，也无法使用Router进行路由，因此需要用到Webview。</p>
+<p>Weex官方提供了一个<code>web</code>组件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;web class=&quot;content&quot; id=&quot;webview&quot; src=&apos;https://ganchengyuan1990.github.io/blog/&apos; onpagestart=&quot;startload&quot; onpagefinish=&quot;finishload&quot; onerror=&quot;failload&quot;&gt;&lt;/web&gt;</div></pre></td></tr></table></figure></p>
+<p>要注意的一点是，在本地server中无法正常在webview中打开页面，但是部署到服务器就好了。<br>然后打包部署提交到服务器以后看，就OK啦：</p>
+<p><img src="https://ganchengyuan1990.github.io/blog/img/weex20170216.png" alt="">    </p>
+<p>所以说总结起来就是一句话，要多看官方文档，接下来的事儿，就是多在不同环境里试试。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;第一部分-2017-01-25&quot;&gt;&lt;a href=&quot;#第一部分-2017-01-25&quot; class=&quot;headerlink&quot; title=&quot;第一部分 2017-01-25&quot;&gt;&lt;/a&gt;第一部分 2017-01-25&lt;/h3&gt;&lt;p&gt;一直想做一个APP，去年也自学过一段时间的&lt;code&gt;React Native&lt;/code&gt;, 但是RN相对来说学习曲线比较陡峭，并且很多资源包在下载时都不是那么容易，经常error（这个大家都懂）, 所以这事儿就不了了之了。&lt;/p&gt;
+&lt;p&gt;前两天看了weex的会议，觉得阿里又在放大招了，这个工具虽然目前学习社区不多，资源组件不丰富，但是本身调式来发非常便捷，weex playground非常不错，并且因为weex是基于vue的，所以入门简单，&lt;code&gt;npm run build&lt;/code&gt;打包以后部署到自己的服务器上，用二维码扫描以后就可以拥有一个自己的APP了，并且是兼容三端的，这一点非常诱人。&lt;/p&gt;
+&lt;p&gt;于是，我就从github上找到了一个别人的项目，&lt;a href=&quot;https://github.com/dodola/WeexOne&quot;&gt;https://github.com/dodola/WeexOne&lt;/a&gt;，然后改造一个属于自己的APP。&lt;br&gt;总体样式如下：&lt;br&gt;&lt;img src=&quot;https://ganchengyuan1990.github.io/blog/img/weex.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="https://ganchengyuan1990.github.io/blog/tags/Vue/"/>
+    
+  </entry>
   
   <entry>
     <title>微信面试题--lazyMan实现</title>
@@ -285,75 +330,6 @@
     
     
       <category term="Javascript" scheme="https://ganchengyuan1990.github.io/blog/tags/Javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Weex首秀(2)</title>
-    <link href="https://ganchengyuan1990.github.io/blog/2017/02/03/Weex%E9%A6%96%E7%A7%80-2/"/>
-    <id>https://ganchengyuan1990.github.io/blog/2017/02/03/Weex首秀-2/</id>
-    <published>2017-02-03T01:13:58.000Z</published>
-    <updated>2017-02-07T06:01:36.730Z</updated>
-    
-    <content type="html"><![CDATA[<p>首先祝各位鸡年大吉，开工大吉！<br>趁着今天刚开工，工作任务还不多，可以继续学些Weex。</p>
-<p>春节在家无聊的时候，继续跟进了一下Weex的学习，主要把“关于我”这个Page进行了一些优化，这里主要是一些体力活，并没有太多可说的，简单总结以下几点：</p>
-<ol>
-<li>Weex中所有的文字都要放在<text></text>这个标签里，在普通的网页开发甚至Vue开发中，我偶尔会直接把文字放在div标签里，但是Weex中并不识别这样的语法。</li>
-<li>Weex的页面布局虽然也使用css语法，但是与Vue以及普通页面并不完全相同，我试验了一下，text-align：center必须用在text标签上，才能使文字居中，但是因为HTML并没有这个标签，所以要加载文字所在的父标签上，这个要注意，另外就是建议在Weex中多应用flex布局。</li>
-</ol>
-<p><img src="https://ganchengyuan1990.github.io/blog/img/psb.jpg" alt=""></p>
-<a id="more"></a>
-<h2 id="外部链接问题"><a href="#外部链接问题" class="headerlink" title="外部链接问题"></a>外部链接问题</h2><p>在“关于我”这个page中，有一个需求，就是链接到外部网站，因为之前缺少APP开发经验，所以我想当然地认为这个问题非常简单，只需要价格a标签，或者像Vue一样采用Router的方法就可以了，但是后来发现这样并不能正常work。</p>
-<p>仔细一看，Demo中所有Router都是链接到项目内部页面的，看地址栏上每个页面其实都是一个经过build的Js文件，这点应该和Vue是类似的，但这个并不符合我的需求，并且外部网站是传统的静态页面，因此还是需要解决。</p>
-<p>首先抓包看看访问的URL是否正确:<br><img src="https://ganchengyuan1990.github.io/blog/img/psb2.png" alt=""><br>由上图看 <a href="http://m.feiniu.com/my/order/index.html" target="_blank" rel="external">http://m.feiniu.com/my/order/index.html</a> 这个请求地址应该没有错，所以有可能是兼容问题。</p>
-<p>于是尝试捕捉error<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> &lt;web <span class="class"><span class="keyword">class</span></span>=<span class="string">"content"</span> id=<span class="string">"webview"</span> src=<span class="string">'https://m.taobao.com/?spm=0.0.0.0&amp;v=0#index'</span> onpagestart=<span class="string">"startload"</span> onpagefinish=<span class="string">"finishload"</span> onerror=<span class="string">"failload"</span>&gt;&lt;/web&gt;</div><div class="line"></div><div class="line">startload: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: <span class="string">'pagestart'</span> &#125;)</div><div class="line">&#125;,</div><div class="line"><span class="attr">finishload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: <span class="string">'finishload'</span> &#125;)</div><div class="line">&#125;,</div><div class="line"><span class="attr">failload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: event &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>使用不同的机器进行测试，安卓手机触发到了finishload事件，而IPHONE触发了failload事件，但是两个手机都无法正常显示网页。</p>
-<p>最后我在官方文档中查到这个：<br><img src="https://ganchengyuan1990.github.io/blog/img/psb2.jpg" alt=""><br>web组件要求的weex版本是v0.5+，但是我的项目中用的是v0.32的，所以说看起来还是得仔细查查手册啊，之前在Vue项目中也碰到过这种组件兼容性问题。<br><img src="https://ganchengyuan1990.github.io/blog/img/psb3.jpg" alt=""><br>目前怀疑就是这个问题导致无法正常使用webview（未完待续）。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;首先祝各位鸡年大吉，开工大吉！&lt;br&gt;趁着今天刚开工，工作任务还不多，可以继续学些Weex。&lt;/p&gt;
-&lt;p&gt;春节在家无聊的时候，继续跟进了一下Weex的学习，主要把“关于我”这个Page进行了一些优化，这里主要是一些体力活，并没有太多可说的，简单总结以下几点：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Weex中所有的文字都要放在&lt;text&gt;&lt;/text&gt;这个标签里，在普通的网页开发甚至Vue开发中，我偶尔会直接把文字放在div标签里，但是Weex中并不识别这样的语法。&lt;/li&gt;
-&lt;li&gt;Weex的页面布局虽然也使用css语法，但是与Vue以及普通页面并不完全相同，我试验了一下，text-align：center必须用在text标签上，才能使文字居中，但是因为HTML并没有这个标签，所以要加载文字所在的父标签上，这个要注意，另外就是建议在Weex中多应用flex布局。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;https://ganchengyuan1990.github.io/blog/img/psb.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Vue" scheme="https://ganchengyuan1990.github.io/blog/tags/Vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Weex首秀(1)</title>
-    <link href="https://ganchengyuan1990.github.io/blog/2017/01/25/Weex%E9%A6%96%E7%A7%80/"/>
-    <id>https://ganchengyuan1990.github.io/blog/2017/01/25/Weex首秀/</id>
-    <published>2017-01-25T01:59:15.000Z</published>
-    <updated>2017-02-07T06:02:38.491Z</updated>
-    
-    <content type="html"><![CDATA[<p>一直想做一个APP，去年也自学过一段时间的<code>React Native</code>, 但是RN相对来说学习曲线比较陡峭，并且很多资源包在下载时都不是那么容易，经常error（这个大家都懂）, 所以这事儿就不了了之了。</p>
-<p>前两天看了weex的会议，觉得阿里又在放大招了，这个工具虽然目前学习社区不多，资源组件不丰富，但是本身调式来发非常便捷，weex playground非常不错，并且因为weex是基于vue的，所以入门简单，<code>npm run build</code>打包以后部署到自己的服务器上，用二维码扫描以后就可以拥有一个自己的APP了，并且是兼容三端的，这一点非常诱人。</p>
-<p>于是，我就从github上找到了一个别人的项目，<a href="https://github.com/dodola/WeexOne" target="_blank" rel="external">https://github.com/dodola/WeexOne</a>，然后改造一个属于自己的APP。<br>总体样式如下：<br><img src="https://ganchengyuan1990.github.io/blog/img/weex.jpg" alt=""><br><a id="more"></a></p>
-<p>开始动手！</p>
-<p>首先，引入了picker组件，这个组件用来进行时间选择，前端效果不错。<br><img src="https://ganchengyuan1990.github.io/blog/img/weex2.jpg" alt=""><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">'weex-components'</span>);</div><div class="line">   <span class="keyword">const</span> picker = <span class="built_in">require</span>(<span class="string">'@weex-module/picker'</span>);</div><div class="line"> <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">   data () &#123;</div><div class="line">     <span class="keyword">return</span> &#123;</div><div class="line">       <span class="attr">value</span>: <span class="string">''</span></div><div class="line">     &#125;</div><div class="line">   &#125;,</div><div class="line">   <span class="attr">methods</span>: &#123;</div><div class="line">     pickTime () &#123;</div><div class="line">       picker.pickTime(&#123;</div><div class="line">         <span class="attr">value</span>: <span class="keyword">this</span>.value</div><div class="line">       &#125;, event =&gt; &#123;</div><div class="line">         <span class="keyword">if</span> (event.result === <span class="string">'success'</span>) &#123;</div><div class="line">           <span class="keyword">this</span>.value = event.data</div><div class="line">         &#125;</div><div class="line">       &#125;)</div><div class="line">     &#125;</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
-<p>接下来想尝试一下vue中的组件能否在weex中使用，比如UI组件mint，并且引入API数据。</p>
-<p>未完待续。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;一直想做一个APP，去年也自学过一段时间的&lt;code&gt;React Native&lt;/code&gt;, 但是RN相对来说学习曲线比较陡峭，并且很多资源包在下载时都不是那么容易，经常error（这个大家都懂）, 所以这事儿就不了了之了。&lt;/p&gt;
-&lt;p&gt;前两天看了weex的会议，觉得阿里又在放大招了，这个工具虽然目前学习社区不多，资源组件不丰富，但是本身调式来发非常便捷，weex playground非常不错，并且因为weex是基于vue的，所以入门简单，&lt;code&gt;npm run build&lt;/code&gt;打包以后部署到自己的服务器上，用二维码扫描以后就可以拥有一个自己的APP了，并且是兼容三端的，这一点非常诱人。&lt;/p&gt;
-&lt;p&gt;于是，我就从github上找到了一个别人的项目，&lt;a href=&quot;https://github.com/dodola/WeexOne&quot;&gt;https://github.com/dodola/WeexOne&lt;/a&gt;，然后改造一个属于自己的APP。&lt;br&gt;总体样式如下：&lt;br&gt;&lt;img src=&quot;https://ganchengyuan1990.github.io/blog/img/weex.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="Vue" scheme="https://ganchengyuan1990.github.io/blog/tags/Vue/"/>
     
   </entry>
   
@@ -768,9 +744,9 @@
     </summary>
     
     
-      <category term="Javascript" scheme="https://ganchengyuan1990.github.io/blog/tags/Javascript/"/>
-    
       <category term="Vue" scheme="https://ganchengyuan1990.github.io/blog/tags/Vue/"/>
+    
+      <category term="Javascript" scheme="https://ganchengyuan1990.github.io/blog/tags/Javascript/"/>
     
   </entry>
   

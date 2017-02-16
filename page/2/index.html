@@ -175,6 +175,60 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-今日休整，简单修改样式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/02/06/今日休整，简单修改样式/">今日休整，简单修改样式</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2017/02/06/今日休整，简单修改样式/" class="archive-article-date">
+  	<time datetime="2017-02-06T06:53:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如题，今日没有阅读到特别好的文章，简单记两笔。</p>
+<p><img src="https://ganchengyuan1990.github.io/blog/img/avater.gif" alt=""></p>
+<p>首先，把Theme优化了一下，给头像图片以及文章DOM加了动画，不得不说Hexo还是非常友好的工具，二次开发比较方便，但是在npm install时出现了一些问题，暂时没有找到合适的解，现已上github发帖询问 <a href="https://github.com/sass/node-sass/issues/1884">https://github.com/sass/node-sass/issues/1884</a>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">npm ERR! node-sass@3.13.1 postinstall: `node scripts/bu</div><div class="line">npm ERR! Exit status 1</div><div class="line">npm ERR!</div><div class="line">npm ERR! Failed at the node-sass@3.13.1 postinstall scr</div><div class="line">npm ERR! Make sure you have the latest version of node.</div><div class="line">npm ERR! If you do, this is most likely a problem with</div><div class="line">npm ERR! not with npm itself.</div><div class="line">npm ERR! Tell the author that this fails on your system</div><div class="line">npm ERR!     node scripts/build.js</div><div class="line">npm ERR! You can get information on how to open an issu</div><div class="line">npm ERR!     npm bugs node-sass</div><div class="line">npm ERR! Or if that isn&apos;t available, you can get their</div><div class="line">npm ERR!     npm owner ls node-sass</div><div class="line">npm ERR! There is likely additional logging output abov</div><div class="line"></div><div class="line">npm ERR! Please include the following file with any sup</div><div class="line">npm ERR!     D:\nodejs\hexo\themes\yilia\npm-debug.log</div></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/02/06/今日休整，简单修改样式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-函数式编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -237,138 +291,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/blog/2017/02/04/函数式编程/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Weex首秀-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/02/03/Weex首秀-2/">Weex首秀(2)</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/02/03/Weex首秀-2/" class="archive-article-date">
-  	<time datetime="2017-02-03T01:13:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先祝各位鸡年大吉，开工大吉！<br>趁着今天刚开工，工作任务还不多，可以继续学些Weex。</p>
-<p>春节在家无聊的时候，继续跟进了一下Weex的学习，主要把“关于我”这个Page进行了一些优化，这里主要是一些体力活，并没有太多可说的，简单总结以下几点：</p>
-<ol>
-<li>Weex中所有的文字都要放在<text></text>这个标签里，在普通的网页开发甚至Vue开发中，我偶尔会直接把文字放在div标签里，但是Weex中并不识别这样的语法。</li>
-<li>Weex的页面布局虽然也使用css语法，但是与Vue以及普通页面并不完全相同，我试验了一下，text-align：center必须用在text标签上，才能使文字居中，但是因为HTML并没有这个标签，所以要加载文字所在的父标签上，这个要注意，另外就是建议在Weex中多应用flex布局。</li>
-</ol>
-<p><img src="https://ganchengyuan1990.github.io/blog/img/psb.jpg" alt=""></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/02/03/Weex首秀-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Weex首秀" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/01/25/Weex首秀/">Weex首秀(1)</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/01/25/Weex首秀/" class="archive-article-date">
-  	<time datetime="2017-01-25T01:59:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一直想做一个APP，去年也自学过一段时间的<code>React Native</code>, 但是RN相对来说学习曲线比较陡峭，并且很多资源包在下载时都不是那么容易，经常error（这个大家都懂）, 所以这事儿就不了了之了。</p>
-<p>前两天看了weex的会议，觉得阿里又在放大招了，这个工具虽然目前学习社区不多，资源组件不丰富，但是本身调式来发非常便捷，weex playground非常不错，并且因为weex是基于vue的，所以入门简单，<code>npm run build</code>打包以后部署到自己的服务器上，用二维码扫描以后就可以拥有一个自己的APP了，并且是兼容三端的，这一点非常诱人。</p>
-<p>于是，我就从github上找到了一个别人的项目，<a href="https://github.com/dodola/WeexOne">https://github.com/dodola/WeexOne</a>，然后改造一个属于自己的APP。<br>总体样式如下：<br><img src="https://ganchengyuan1990.github.io/blog/img/weex.jpg" alt=""><br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/01/25/Weex首秀/">展开全文 >></a>
         </p>
       
 
@@ -516,6 +438,70 @@
 
 
   
+    <article id="post-跨域问题整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/01/23/跨域问题整理/">ZT-跨域问题整理</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2017/01/23/跨域问题整理/" class="archive-article-date">
+  	<time datetime="2017-01-23T01:22:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>跨域，是一个前端开发者必须掌握的概念，这篇文章就从几个基本问题出发，来理解这个概念。</p>
+<h3 id="首先，什么是跨域？为何会有跨域？"><a href="#首先，什么是跨域？为何会有跨域？" class="headerlink" title="首先，什么是跨域？为何会有跨域？"></a>首先，什么是跨域？为何会有跨域？</h3><p>跨域一词从字面意思看，就是跨域名嘛，但实际上跨域的范围绝对不止那么狭隘。具体概念如下：只要协议、域名、端口有任何一个不同，都被当作是不同的域。所以说，如果你的后端用的是NODEJS，然后端口设置采用了默认的3000，还是会产生跨域的。之所以会产生跨域这个问题呢，其实也很容易想明白，要是随便引用外部文件，不同标签下的页面引用类似的彼此的文件，浏览器很容易懵逼的，安全也得不到保障了就。什么事，都是安全第一嘛。但在安全限制的同时也给注入iframe或是ajax应用上带来了不少麻烦。所以我们要通过一些方法使本域的js能够操作其他域的页面对象或者使其他域的js能操作本域的页面对象（iframe之间）。下面是具体的跨域情况详解：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">URL                      <span class="comment">//说明       是否允许通信</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/b.js     //同一域名下   允许</span></div><div class="line">http:<span class="comment">//www.a.com/lab/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/script/b.js //同一域名下不同文件夹 允许</span></div><div class="line">http:<span class="comment">//www.a.com:8000/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/b.js     //同一域名，不同端口  不允许</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">https:<span class="comment">//www.a.com/b.js //同一域名，不同协议 不允许</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//70.32.92.74/b.js //域名和域名对应ip 不允许</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//script.a.com/b.js //主域相同，子域不同 不允许（cookie这种情况下也不允许访问）</span></div><div class="line">http:<span class="comment">//www.a.com/a.js</span></div><div class="line">http:<span class="comment">//a.com/b.js //同一域名，不同二级域名（同上） 不允许（cookie这种情况下也不允许访问）</span></div><div class="line">http:<span class="comment">//www.cnblogs.com/a.js</span></div><div class="line">http:<span class="comment">//www.a.com/b.js //不同域名 不允许</span></div></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/01/23/跨域问题整理/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/3/">Next &raquo;</a>
@@ -633,19 +619,11 @@ fetch(URL).then(function(response2) {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javacsript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后端</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javacsript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -653,7 +631,15 @@ fetch(URL).then(function(response2) {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
             
             <div class="clearfix"></div>
