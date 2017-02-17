@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ganchengyuan1990.github.io/blog/"/>
-  <updated>2017-02-16T06:23:55.509Z</updated>
+  <updated>2017-02-17T06:13:02.117Z</updated>
   <id>https://ganchengyuan1990.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>蒙托卡罗模拟算法计算面积</title>
+    <link href="https://ganchengyuan1990.github.io/blog/2017/02/17/%E8%92%99%E6%89%98%E5%8D%A1%E7%BD%97%E6%A8%A1%E6%8B%9F%E7%AE%97%E6%B3%95%E8%AE%A1%E7%AE%97%E9%9D%A2%E7%A7%AF/"/>
+    <id>https://ganchengyuan1990.github.io/blog/2017/02/17/蒙托卡罗模拟算法计算面积/</id>
+    <published>2017-02-17T06:06:05.000Z</published>
+    <updated>2017-02-17T06:13:02.117Z</updated>
+    
+    <content type="html"><![CDATA[<p>给大家看一个小学数学题，这个怎么来做呢？<br><img src="https://www.baidufe.com/upload/images/2016-08-03_19-05-09_5.jpg" alt=""></p>
+<p>当然，这道题可以用纯数学的方式来做，比如加一条辅助线<br><img src="https://www.baidufe.com/upload/images/2016-08-03_19-05-22_6.jpg" alt=""></p>
+<p>但是呢，其实可以尝试一下启发式算法：蒙特卡洛模拟</p>
+<p>它的具体定义是：</p>
+<blockquote>
+<p>在广场上画一个边长一米的正方形，在正方形内部随意用粉笔画一个不规则的形状，现在要计算这个不规则图形的面积，怎么计算列?蒙特卡洛(Monte Carlo)方法告诉我们，均匀的向该正方形内撒N（N是一个很大的自然数）个黄豆，随后数数有多少个黄豆在这个不规则几何形状内部，比如说有M个，那么，这个奇怪形状的面积便近似于M/N，N越大，算出来的值便越精确。在这里我们要假定豆子都在一个平面上，相互之间没有重叠。…<br>蒙特卡洛方法可用于近似计算圆周率：让计算机每次随机生成两个0到1之间的数，看这两个实数是否在单位圆内。生成一系列随机点，统计单位圆内的点数与总点数，（圆面积和正方形面积之比为PI:1，PI为圆周率），当随机点取得越多（但即使取10的9次方个随机点时，其结果也仅在前4位与圆周率吻合）时，其结果越接近于圆周率。</p>
+</blockquote>
+<p>上JS代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 给图形画一个坐标,检测(x,y)点是否落入阴影区域部分</div><div class="line"> * @param &#123;float&#125; x 横坐标</div><div class="line"> * @param &#123;float&#125; y 纵坐标</div><div class="line"> * @returns &#123;boolean&#125; 落入阴影:true,否则:false</div><div class="line"> */</div><div class="line">var detectFallIn = function (x, y) &#123;</div><div class="line"></div><div class="line">    return (x / y &lt; 2 || x &lt; 5) ? false :</div><div class="line">        (Math.sqrt(Math.pow(x - 5, 2) + Math.pow(y - 5, 2)) &gt;= 5 &amp;&amp;</div><div class="line">        Math.sqrt(Math.pow(x - 15, 2) + Math.pow(y - 5, 2)) &gt;= 5);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 利用「蒙特卡洛方法」计算阴影(不规则图形)部分的面积</div><div class="line"> * @param &#123;int&#125; soyaNums 黄豆的数量</div><div class="line"> */</div><div class="line">var calShadowArea = function (soyaNums) &#123;</div><div class="line">    var x, y, fallIn = 0;</div><div class="line">    for (var i = 0; i &lt;= soyaNums; i++) &#123;</div><div class="line">        // 将黄豆随机洒落到长方形中</div><div class="line">        x = Math.random() * 20;</div><div class="line">        y = Math.random() * 10;</div><div class="line"></div><div class="line">        // 判断黄豆是否落入阴影区域</div><div class="line">        if (detectFallIn(x, y)) &#123;</div><div class="line">            fallIn++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // 阴影面积</div><div class="line">    var shadow = 20 * 10 * (fallIn / soyaNums);</div><div class="line">    console.log(&apos;shadow area = &apos;, shadow);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>calShadowArea(300);<br>calShadowArea(3000);<br>calShadowArea(30000);<br>calShadowArea(300000);<br>calShadowArea(3000000);<br>calShadowArea(30000000);<br>calShadowArea(300000000);</p>
+</blockquote>
+<p>soyaNums越大，答案就越接近正确结果<br><img src="https://ganchengyuan1990.github.io/blog/img/calculate.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;给大家看一个小学数学题，这个怎么来做呢？&lt;br&gt;&lt;img src=&quot;https://www.baidufe.com/upload/images/2016-08-03_19-05-09_5.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;当然，这道题可以用纯数学的方式来做，比如加一条
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="https://ganchengyuan1990.github.io/blog/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
   
   <entry>
     <title>Weex首秀</title>
