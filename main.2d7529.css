@@ -885,10 +885,21 @@ html {
     background: #d1e1e1;
 }
 
+
 .left-col .overlay img{
     display: block;
     margin: 0 auto;
     width: 30%;
+}
+
+@media screen and (max-width:800px) {
+    #mobile-nav .overlay img{
+        display: block;
+        margin: 0 auto;
+        width: 18%;
+        float: right;
+        margin-right: 30px;
+    }
 }
 
 .left-col .overlay .weatherInfo {
