@@ -881,7 +881,18 @@ html {
 .left-col .overlay {
     width: 100%;
     height: 180px;
-    position: absolute
+    position: absolute;
+    background: #d1e1e1;
+}
+
+.left-col .overlay img{
+    display: block;
+    margin: 0 auto;
+    width: 30%;
+}
+
+.left-col .overlay .weatherInfo {
+    text-align: center;
 }
 
 .left-col .intrude-less {

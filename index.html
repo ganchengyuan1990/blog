@@ -48,7 +48,12 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #d1e1e1">
+	<nav class="">
+		<div class="weatherInfo social"></div>
+	</nav>
+	<img src="../../blog/img/sunny.png" alt="">
+</div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/blog" class="profilepic">
@@ -543,12 +548,14 @@ if ("serviceWorker" in navigator) {
 	
 }
 
+
 var URL = 'https://jasongan.cn/php/hello1.php';
 
 fetch(URL).then(function(response2) {
     return response2.json();
 }).then(function(json) {
-    alert(JSON.stringify(json));
+	var rainy = json.weatherinfo.rain == "0" ? "无雨。": "有雨。";
+	document.getElementsByClassName('weatherInfo')[0].innerHTML = json.weatherinfo.city + json.weatherinfo.WD + json.weatherinfo.WS + ", 温度" + json.weatherinfo.temp + "摄氏度, " + rainy;
 });
 </script>
     
@@ -595,10 +602,6 @@ fetch(URL).then(function(response2) {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javacsript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
               </li>
              
@@ -611,11 +614,15 @@ fetch(URL).then(function(response2) {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javacsript</a>
               </li>
             
             <div class="clearfix"></div>
