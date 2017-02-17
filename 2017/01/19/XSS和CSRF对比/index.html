@@ -332,6 +332,7 @@ XSS：脚本中的不速之客XSS 全称“跨站脚本”，是注入攻击的�
     </a>
   
 </nav>
+<div id="ds-waiting"></div>
 
 
 
@@ -347,6 +348,7 @@ XSS：脚本中的不速之客XSS 全称“跨站脚本”，是注入攻击的�
 	<script type="text/javascript">
 	var duoshuoQuery = {short_name:"jasongan0915"};
 	(function() {
+		debugger
 		var ds = document.createElement('script');
 		ds.type = 'text/javascript';ds.async = true;
 		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
@@ -421,7 +423,7 @@ if ("serviceWorker" in navigator) {
 	
 }
 
-var URL = 'http://jasongan.cn/php/hello1.php';
+var URL = 'https://jasongan.cn/php/hello1.php';
 
 fetch(URL).then(function(response2) {
     return response2.json();
@@ -473,11 +475,15 @@ fetch(URL).then(function(response2) {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javacsript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javacsript</a>
+                <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -490,10 +496,6 @@ fetch(URL).then(function(response2) {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
             
             <div class="clearfix"></div>
