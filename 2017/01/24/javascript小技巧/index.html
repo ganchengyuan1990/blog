@@ -447,6 +447,15 @@ fetch(URL).then(function(response2) {
 	var rainy = json.weatherinfo.rain == "0" ? "无雨。": "有雨。";
 	document.getElementsByClassName('weatherInfo')[0].innerHTML = json.weatherinfo.city + json.weatherinfo.WD + json.weatherinfo.WS + ", 温度" + json.weatherinfo.temp + "摄氏度, " + rainy;
 });
+
+
+var URL2 = 'https://jasongan.cn:8080/spurs';
+fetch(URL2).then(function(response2) {
+    return response2.json();
+}).then(function(json) {
+	alert(stringify(json));
+});
+
 </script>
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
@@ -492,15 +501,15 @@ fetch(URL).then(function(response2) {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javacsript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javacsript</a>
               </li>
              
               <li class="article-tag-list-item">

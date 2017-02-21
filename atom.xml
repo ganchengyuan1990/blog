@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ganchengyuan1990.github.io/blog/"/>
-  <updated>2017-02-17T06:26:30.593Z</updated>
+  <updated>2017-02-21T01:35:54.383Z</updated>
   <id>https://ganchengyuan1990.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Object.defineProperty怎么玩</title>
+    <link href="https://ganchengyuan1990.github.io/blog/2017/02/21/Object-defineProperty%E6%80%8E%E4%B9%88%E7%8E%A9/"/>
+    <id>https://ganchengyuan1990.github.io/blog/2017/02/21/Object-defineProperty怎么玩/</id>
+    <published>2017-02-21T01:21:22.000Z</published>
+    <updated>2017-02-21T01:35:54.383Z</updated>
+    
+    <content type="html"><![CDATA[<p>原文转载地址<a href="http://imweb.io/topic/56d40adc0848801a4ba198ce" target="_blank" rel="external">http://imweb.io/topic/56d40adc0848801a4ba198ce</a></p>
+<p>Object.defineProperty ，顾名思义，为对象定义属性。在js中我们可以通过下面这几种方法定义属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// (1) define someOne property name</div><div class="line">someOne.name = &apos;cover&apos;;</div><div class="line"></div><div class="line">//or use (2) </div><div class="line"></div><div class="line">someOne[&apos;name&apos;] = &apos;cover&apos;;</div><div class="line"></div><div class="line">// or use (3) defineProperty</div><div class="line">Object.defineProperty(someOne, &apos;name&apos;, &#123;</div><div class="line">    value : &apos;cover&apos;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>从上面看，貌似使用Object.defineProperty很麻烦，那为啥存在这样的方法呢？<br>带着疑问，我们来看下 Object.defineProperty的定义。</p>
+<a id="more"></a>
+<p>先来看下MDN对defineProperty的定义：</p>
+<blockquote>
+<p>The Object.defineProperty() method defines a new property directly on an object, or modifies an exisiting property on an object, and returns the object.</p>
+</blockquote>
+<p>从上面得知，我们可以通过<code>Object.defineProperty</code>这个方法，直接在一个对象上定义一个新的属性，或者是修改已存在的属性。最终这个方法会返回该对象。</p>
+<p>##语法<br>object.defineProperty(object, propertyname, descriptor)</p>
+<p>##参数</p>
+<ol>
+<li>object 必需。 要在其上添加或修改属性的对象。 这可能是一个本机 JavaScript对象（即用户定义的对象或内置对象）或 DOM 对象。</li>
+<li>propertyname 必需。 一个包含属性名称的字符串。</li>
+<li>descriptor 必需。 属性描述符。 它可以针对数据属性或访问器属性。</li>
+</ol>
+<p>其中descriptor的参数值得我们关注下,该属性可设置的值有：</p>
+<ol>
+<li>【value】 属性的值，默认为 undefined。</li>
+<li>【writable】 该属性是否可写，如果设置成 false，则任何对该属性改写的操作都无效（但不会报错），对于像前面例子中直接在对象上定义的属性，这个属性该特性默认值为为 true。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var someOne = &#123; &#125;;</div><div class="line">Object.defineProperty(someOne, &quot;name&quot;, &#123;</div><div class="line">    value:&quot;coverguo&quot; , //由于设定了writable属性为false 导致这个量不可以修改</div><div class="line">    writable: false </div><div class="line">&#125;);  </div><div class="line">console.log(someOne.name); // 输出 coverguo</div><div class="line">someOne.name = &quot;linkzhu&quot;;</div><div class="line">console.log(someOne.name); // 输出coverguo</div></pre></td></tr></table></figure>
+<ol>
+<li>【configurable]】如果为false，则任何尝试删除目标属性或修改属性以下特性（writable, configurable, enumerable）的行为将被无效化，对于像前面例子中直接在对象上定义的属性，这个属性该特性默认值为为 true。 </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var someOne = &#123; &#125;;</div><div class="line">Object.defineProperty(someOne, &quot;name&quot;, &#123;</div><div class="line">    value:&quot;coverguo&quot; ,</div><div class="line">    configurable: false </div><div class="line">&#125;);  </div><div class="line">delete someOne.name; </div><div class="line">console.log(someOne.name);// 输出 coverguo</div><div class="line">someOne.name = &quot;linkzhu&quot;;</div><div class="line">console.log(someOne.name); // 输出coverguo</div></pre></td></tr></table></figure>
+<ol>
+<li>【enumerable】 是否能在for-in循环中遍历出来或在Object.keys中列举出来。对于像前面例子中直接在对象上定义的属性，这个属性该特性默认值为为 true。</li>
+</ol>
+<p>注意 在调用Object.defineProperty()方法时，如果不指定， configurable， enumerable， writable特性的默认值都是false,这跟之前所 说的对于像前面例子中直接在对象上定义的属性，这个特性默认值为为 true。并不冲突，如下代码所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//调用Object.defineProperty()方法时，如果不指定</div><div class="line">var someOne = &#123; &#125;;</div><div class="line">someOne.name = &apos;coverguo&apos;;</div><div class="line">console.log(Object.getOwnPropertyDescriptor(someOne, &apos;name&apos;));</div><div class="line">//输出 Object &#123;value: &quot;coverguo&quot;, writable: true, enumerable: true, configurable: true&#125;</div><div class="line"></div><div class="line">//直接在对象上定义的属性，这个特性默认值为为 true</div><div class="line">var otherOne = &#123;&#125;;</div><div class="line">Object.defineProperty(otherOne, &quot;name&quot;, &#123;</div><div class="line">    value:&quot;coverguo&quot; </div><div class="line">&#125;);  </div><div class="line">console.log(Object.getOwnPropertyDescriptor(otherOne, &apos;name&apos;));</div><div class="line">//输出 Object &#123;value: &quot;coverguo&quot;, writable: false, enumerable: false, configurable: false&#125;</div></pre></td></tr></table></figure>
+<p>从上面，可以得知，我们可以通过使用Object.defineProperty，来定义和控制一些特殊的属性，如属性是否可读，属性是否可枚举，甚至修改属性的修改器（setter）和获取器(getter)<br>那什么场景和地方适合使用到特殊的属性呢？</p>
+<hr>
+<p>###实际运用<br>在一些框架，如vue、express、qjs等，经常会看到对Object.defineProperty的使用。那这些框架是如何使用呢？</p>
+<p>##MVVM中数据‘双向绑定’实现</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;原文转载地址&lt;a href=&quot;http://imweb.io/topic/56d40adc0848801a4ba198ce&quot;&gt;http://imweb.io/topic/56d40adc0848801a4ba198ce&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Object.defineProperty ，顾名思义，为对象定义属性。在js中我们可以通过下面这几种方法定义属性&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;// (1) define someOne property name&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;someOne.name = &amp;apos;cover&amp;apos;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;//or use (2) &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;someOne[&amp;apos;name&amp;apos;] = &amp;apos;cover&amp;apos;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;// or use (3) defineProperty&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Object.defineProperty(someOne, &amp;apos;name&amp;apos;, &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    value : &amp;apos;cover&amp;apos;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;从上面看，貌似使用Object.defineProperty很麻烦，那为啥存在这样的方法呢？&lt;br&gt;带着疑问，我们来看下 Object.defineProperty的定义。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>蒙托卡罗模拟算法计算面积</title>
@@ -849,30 +906,6 @@
 &lt;h1 id=&quot;serve-with-hot-reload-at-localhost-8080&quot;&gt;&lt;a href=&quot;#serve-with-hot-reload-at-localhost-8080&quot; class=&quot;headerlink&quot; title=&quot;serve with hot reload at localhost:8080&quot;&gt;&lt;/a&gt;serve with hot reload at localhost:8080&lt;/h1&gt;&lt;p&gt;npm run dev&lt;/p&gt;
 &lt;h1 id=&quot;build-for-production-with-minification&quot;&gt;&lt;a href=&quot;#build-for-production-with-minification&quot; class=&quot;headerlink&quot; title=&quot;build for production with minification&quot;&gt;&lt;/a&gt;build for production with minification&lt;/h1&gt;&lt;p&gt;npm run build&lt;/p&gt;
 &lt;p&gt;```&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>搭好了我的博客</title>
-    <link href="https://ganchengyuan1990.github.io/blog/2017/01/16/hello-world/"/>
-    <id>https://ganchengyuan1990.github.io/blog/2017/01/16/hello-world/</id>
-    <published>2017-01-16T08:12:12.622Z</published>
-    <updated>2017-01-17T00:51:56.626Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近这两天工作并不忙，因此有很多时间自学，今天也是用Hexo和Github搭建了这个个人的技术博客，希望以后可以多写点东西，多长进！<br>列一下这段时间准备研究的东西</p>
-<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><p>对于一个前前端的全栈工程师来说，Node.js是非常好的语言，并且学习社区非常完善，资料健全，很有意思。</p>
-<h2 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h2><p>Vue是一个很容易上手的框架，单页面应用也是非常好的一个前端网页思路，有效地减少白屏带来的视觉问题。<br>这两天在做搭个人网站的时候用上了Vue，打包完也有2M左右，组件太丰富，选择是一个问题。</p>
-<h2 id="MongoDb"><a href="#MongoDb" class="headerlink" title="MongoDb"></a>MongoDb</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="string">'hello world'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>数据库的选择，效率不错，API也很好使用。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近这两天工作并不忙，因此有很多时间自学，今天也是用Hexo和Github搭建了这个个人的技术博客，希望以后可以多写点东西，多长进！&lt;br&gt;列一下这段时间准备研究的东西&lt;/p&gt;
-&lt;h2 id=&quot;Node-js&quot;&gt;&lt;a href=&quot;#Node-js&quot; class=&quot;heade
     
     </summary>
     

@@ -13,17 +13,24 @@
   <meta name="application-name" content="时间追逐者">
   <meta name="application-TileImage" content="./img/avater.jpg">
   <link rel="dns-prefetch" href="https://ganchengyuan1990.github.io/blog">
-  <title>Tag: Javascript | 时间追逐者</title>
+  <title>Object.defineProperty怎么玩 | 时间追逐者</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="你好">
-<meta property="og:type" content="website">
-<meta property="og:title" content="时间追逐者">
-<meta property="og:url" content="https://ganchengyuan1990.github.io/blog/tags/Javascript/page/2/index.html">
+  <meta name="description" content="原文转载地址http://imweb.io/topic/56d40adc0848801a4ba198ce
+Object.defineProperty ，顾名思义，为对象定义属性。在js中我们可以通过下面这几种方法定义属性
+123456789101112// (1) define someOne property namesomeOne.name = &amp;apos;cover&amp;apos;;//or u">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Object.defineProperty怎么玩">
+<meta property="og:url" content="https://ganchengyuan1990.github.io/blog/2017/02/21/Object-defineProperty怎么玩/index.html">
 <meta property="og:site_name" content="时间追逐者">
-<meta property="og:description" content="你好">
+<meta property="og:description" content="原文转载地址http://imweb.io/topic/56d40adc0848801a4ba198ce
+Object.defineProperty ，顾名思义，为对象定义属性。在js中我们可以通过下面这几种方法定义属性
+123456789101112// (1) define someOne property namesomeOne.name = &amp;apos;cover&amp;apos;;//or u">
+<meta property="og:updated_time" content="2017-02-21T01:35:54.383Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="时间追逐者">
-<meta name="twitter:description" content="你好">
+<meta name="twitter:title" content="Object.defineProperty怎么玩">
+<meta name="twitter:description" content="原文转载地址http://imweb.io/topic/56d40adc0848801a4ba198ce
+Object.defineProperty ，顾名思义，为对象定义属性。在js中我们可以通过下面这几种方法定义属性
+123456789101112// (1) define someOne property namesomeOne.name = &amp;apos;cover&amp;apos;;//or u">
   
     <link rel="alternative" href="/atom.xml" title="时间追逐者" type="application/atom+xml">
   
@@ -190,106 +197,198 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Object-defineProperty怎么玩" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/blog/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/blog/2017/01/17/vuex初探/" class="archive-article-date">
-  	<time datetime="2017-01-17T02:27:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-17</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2017/01/17/vuex初探/">vuex初探</a>
+    <h1 class="article-title" itemprop="name">
+      Object.defineProperty怎么玩
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/blog/2017/01/17/javascript闭包个人理解/" class="archive-article-date">
-  	<time datetime="2017-01-17T00:56:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-17</time>
+        
+        <a href="/blog/2017/02/21/Object-defineProperty怎么玩/" class="archive-article-date">
+  	<time datetime="2017-02-21T01:21:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-21</time>
 </a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原文转载地址<a href="http://imweb.io/topic/56d40adc0848801a4ba198ce" target="_blank" rel="external">http://imweb.io/topic/56d40adc0848801a4ba198ce</a></p>
+<p>Object.defineProperty ，顾名思义，为对象定义属性。在js中我们可以通过下面这几种方法定义属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// (1) define someOne property name</div><div class="line">someOne.name = &apos;cover&apos;;</div><div class="line"></div><div class="line">//or use (2) </div><div class="line"></div><div class="line">someOne[&apos;name&apos;] = &apos;cover&apos;;</div><div class="line"></div><div class="line">// or use (3) defineProperty</div><div class="line">Object.defineProperty(someOne, &apos;name&apos;, &#123;</div><div class="line">    value : &apos;cover&apos;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>从上面看，貌似使用Object.defineProperty很麻烦，那为啥存在这样的方法呢？<br>带着疑问，我们来看下 Object.defineProperty的定义。</p>
+<a id="more"></a>
+<p>先来看下MDN对defineProperty的定义：</p>
+<blockquote>
+<p>The Object.defineProperty() method defines a new property directly on an object, or modifies an exisiting property on an object, and returns the object.</p>
+</blockquote>
+<p>从上面得知，我们可以通过<code>Object.defineProperty</code>这个方法，直接在一个对象上定义一个新的属性，或者是修改已存在的属性。最终这个方法会返回该对象。</p>
+<p>##语法<br>object.defineProperty(object, propertyname, descriptor)</p>
+<p>##参数</p>
+<ol>
+<li>object 必需。 要在其上添加或修改属性的对象。 这可能是一个本机 JavaScript对象（即用户定义的对象或内置对象）或 DOM 对象。</li>
+<li>propertyname 必需。 一个包含属性名称的字符串。</li>
+<li>descriptor 必需。 属性描述符。 它可以针对数据属性或访问器属性。</li>
+</ol>
+<p>其中descriptor的参数值得我们关注下,该属性可设置的值有：</p>
+<ol>
+<li>【value】 属性的值，默认为 undefined。</li>
+<li>【writable】 该属性是否可写，如果设置成 false，则任何对该属性改写的操作都无效（但不会报错），对于像前面例子中直接在对象上定义的属性，这个属性该特性默认值为为 true。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var someOne = &#123; &#125;;</div><div class="line">Object.defineProperty(someOne, &quot;name&quot;, &#123;</div><div class="line">    value:&quot;coverguo&quot; , //由于设定了writable属性为false 导致这个量不可以修改</div><div class="line">    writable: false </div><div class="line">&#125;);  </div><div class="line">console.log(someOne.name); // 输出 coverguo</div><div class="line">someOne.name = &quot;linkzhu&quot;;</div><div class="line">console.log(someOne.name); // 输出coverguo</div></pre></td></tr></table></figure>
+<ol>
+<li>【configurable]】如果为false，则任何尝试删除目标属性或修改属性以下特性（writable, configurable, enumerable）的行为将被无效化，对于像前面例子中直接在对象上定义的属性，这个属性该特性默认值为为 true。 </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var someOne = &#123; &#125;;</div><div class="line">Object.defineProperty(someOne, &quot;name&quot;, &#123;</div><div class="line">    value:&quot;coverguo&quot; ,</div><div class="line">    configurable: false </div><div class="line">&#125;);  </div><div class="line">delete someOne.name; </div><div class="line">console.log(someOne.name);// 输出 coverguo</div><div class="line">someOne.name = &quot;linkzhu&quot;;</div><div class="line">console.log(someOne.name); // 输出coverguo</div></pre></td></tr></table></figure>
+<ol>
+<li>【enumerable】 是否能在for-in循环中遍历出来或在Object.keys中列举出来。对于像前面例子中直接在对象上定义的属性，这个属性该特性默认值为为 true。</li>
+</ol>
+<p>注意 在调用Object.defineProperty()方法时，如果不指定， configurable， enumerable， writable特性的默认值都是false,这跟之前所 说的对于像前面例子中直接在对象上定义的属性，这个特性默认值为为 true。并不冲突，如下代码所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//调用Object.defineProperty()方法时，如果不指定</div><div class="line">var someOne = &#123; &#125;;</div><div class="line">someOne.name = &apos;coverguo&apos;;</div><div class="line">console.log(Object.getOwnPropertyDescriptor(someOne, &apos;name&apos;));</div><div class="line">//输出 Object &#123;value: &quot;coverguo&quot;, writable: true, enumerable: true, configurable: true&#125;</div><div class="line"></div><div class="line">//直接在对象上定义的属性，这个特性默认值为为 true</div><div class="line">var otherOne = &#123;&#125;;</div><div class="line">Object.defineProperty(otherOne, &quot;name&quot;, &#123;</div><div class="line">    value:&quot;coverguo&quot; </div><div class="line">&#125;);  </div><div class="line">console.log(Object.getOwnPropertyDescriptor(otherOne, &apos;name&apos;));</div><div class="line">//输出 Object &#123;value: &quot;coverguo&quot;, writable: false, enumerable: false, configurable: false&#125;</div></pre></td></tr></table></figure>
+<p>从上面，可以得知，我们可以通过使用Object.defineProperty，来定义和控制一些特殊的属性，如属性是否可读，属性是否可枚举，甚至修改属性的修改器（setter）和获取器(getter)<br>那什么场景和地方适合使用到特殊的属性呢？</p>
+<hr>
+<p>###实际运用<br>在一些框架，如vue、express、qjs等，经常会看到对Object.defineProperty的使用。那这些框架是如何使用呢？</p>
+<p>##MVVM中数据‘双向绑定’实现</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://ganchengyuan1990.github.io/blog/img/wechat.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2017/01/17/javascript闭包个人理解/">javascript闭包个人理解</a>
-    </h1>
-  
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
-          
-
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://ganchengyuan1990.github.io/blog/2017/02/21/Object-defineProperty怎么玩/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/blog/2017/02/17/蒙托卡罗模拟算法计算面积/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">蒙托卡罗模拟算法计算面积</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+<div id="ds-waiting"></div>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Object-defineProperty怎么玩" data-title="Object.defineProperty怎么玩" data-url="https://ganchengyuan1990.github.io/blog/blog/2017/02/21/Object-defineProperty怎么玩/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"jasongan0915"};
+	(function() {
+		debugger
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/blog/tags/Javascript/">&laquo; Prev</a><a class="page-number" href="/blog/tags/Javascript/">1</a><span class="page-number current">2</span>
-    </nav>
-  
+
 
 
           </div>
@@ -312,9 +411,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/blog/",
