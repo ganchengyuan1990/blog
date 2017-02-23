@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ganchengyuan1990.github.io/blog/"/>
-  <updated>2017-02-21T01:35:54.383Z</updated>
+  <updated>2017-02-23T02:10:00.680Z</updated>
   <id>https://ganchengyuan1990.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,25 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webpack入门&amp;感想</title>
+    <link href="https://ganchengyuan1990.github.io/blog/2017/02/23/webpack%E5%85%A5%E9%97%A8-%E6%84%9F%E6%83%B3/"/>
+    <id>https://ganchengyuan1990.github.io/blog/2017/02/23/webpack入门-感想/</id>
+    <published>2017-02-23T02:09:04.000Z</published>
+    <updated>2017-02-23T02:10:00.680Z</updated>
+    
+    <content type="html"><![CDATA[<p>也许你想在写代码的时候检查自己的js是否符合jshint的规范，那么隆重推荐preLoaders和postLoaders，loaders是webpack的最重要模块，用它来处理各种类型的文件。perLoaders顾名思义就是在loaders执行之前处理的，webpack的处理顺序是perLoaders - loaders - postLoaders。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;也许你想在写代码的时候检查自己的js是否符合jshint的规范，那么隆重推荐preLoaders和postLoaders，loaders是webpack的最重要模块，用它来处理各种类型的文件。perLoaders顾名思义就是在loaders执行之前处理的，webpack的处
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Object.defineProperty怎么玩</title>
@@ -133,7 +152,7 @@
 <h2 id="外部链接问题"><a href="#外部链接问题" class="headerlink" title="外部链接问题"></a>外部链接问题</h2><p>在“关于我”这个page中，有一个需求，就是链接到外部网站，因为之前缺少APP开发经验，所以我想当然地认为这个问题非常简单，只需要价格a标签，或者像Vue一样采用Router的方法就可以了，但是后来发现这样并不能正常work。</p>
 <p>仔细一看，Demo中所有Router都是链接到项目内部页面的，看地址栏上每个页面其实都是一个经过build的Js文件，这点应该和Vue是类似的，但这个并不符合我的需求，并且外部网站是传统的静态页面，因此还是需要解决。</p>
 <p>首先抓包看看访问的URL是否正确:<br><img src="https://ganchengyuan1990.github.io/blog/img/psb2.png" alt=""><br>由上图看 <a href="http://m.feiniu.com/my/order/index.html" target="_blank" rel="external">http://m.feiniu.com/my/order/index.html</a> 这个请求地址应该没有错，所以有可能是兼容问题。</p>
-<p>于是尝试捕捉error<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> &lt;web <span class="class"><span class="keyword">class</span></span>=<span class="string">"content"</span> id=<span class="string">"webview"</span> src=<span class="string">'https://m.taobao.com/?spm=0.0.0.0&amp;v=0#index'</span> onpagestart=<span class="string">"startload"</span> onpagefinish=<span class="string">"finishload"</span> onerror=<span class="string">"failload"</span>&gt;&lt;/web&gt;</div><div class="line"></div><div class="line">startload: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: <span class="string">'pagestart'</span> &#125;)</div><div class="line">&#125;,</div><div class="line"><span class="attr">finishload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: <span class="string">'finishload'</span> &#125;)</div><div class="line">&#125;,</div><div class="line"><span class="attr">failload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: event &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>于是尝试捕捉error<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> &lt;web <span class="class"><span class="keyword">class</span></span>=<span class="string">"content"</span> id=<span class="string">"webview"</span> src=<span class="string">'https://m.taobao.com/?spm=0.0.0.0&amp;v=0#index'</span> onpagestart=<span class="string">"startload"</span> onpagefinish=<span class="string">"finishload"</span> onerror=<span class="string">"failload"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">web</span>&gt;</span></span></div><div class="line"></div><div class="line">startload: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: <span class="string">'pagestart'</span> &#125;)</div><div class="line">&#125;,</div><div class="line"><span class="attr">finishload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: <span class="string">'finishload'</span> &#125;)</div><div class="line">&#125;,</div><div class="line"><span class="attr">failload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">  modal.toast(&#123; <span class="attr">message</span>: event &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>使用不同的机器进行测试，安卓手机触发到了finishload事件，而IPHONE触发了failload事件，但是两个手机都无法正常显示网页。</p>
 <p>最后我在官方文档中查到这个：<br><img src="https://ganchengyuan1990.github.io/blog/img/psb2.jpg" alt=""><br>web组件要求的weex版本是v0.5+，但是我的项目中用的是v0.32的，所以说看起来还是得仔细查查手册啊，之前在Vue项目中也碰到过这种组件兼容性问题。<br><img src="https://ganchengyuan1990.github.io/blog/img/psb3.jpg" alt=""><br>目前怀疑就是这个问题导致无法正常使用webview（未完待续）。</p>
 <h3 id="第三部分-2017-02-16"><a href="#第三部分-2017-02-16" class="headerlink" title="第三部分 2017-02-16"></a>第三部分 2017-02-16</h3><p>在Weex中，不能直接像HTML中那样用a标签链接打开一个页面，也无法使用Router进行路由，因此需要用到Webview。</p>
@@ -866,49 +885,6 @@
     
     
       <category term="Javascript" scheme="https://ganchengyuan1990.github.io/blog/tags/Javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue个人网站搭建</title>
-    <link href="https://ganchengyuan1990.github.io/blog/2017/01/16/%E7%AC%AC%E4%B8%80%E7%AF%87/"/>
-    <id>https://ganchengyuan1990.github.io/blog/2017/01/16/第一篇/</id>
-    <published>2017-01-16T09:13:04.353Z</published>
-    <updated>2017-02-06T08:43:56.067Z</updated>
-    
-    <content type="html"><![CDATA[<p>  自学Vue也有将近一个月了，想做个简单的小作品，正好这段时间自己的阿里云服务器闲置着，而且个人域名一直缺一个主页面，自然就想到做一个小项目来改装一下门庭。</p>
-<p>###手机预览(website)<br>  废话不多说，上预览，<a href="http://www.jasongan.cn" target="_blank" rel="external">http://www.jasongan.cn</a></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h1 id="install-dependencies"><a href="#install-dependencies" class="headerlink" title="install dependencies"></a>install dependencies</h1><p>npm install</p>
-<h1 id="serve-with-hot-reload-at-localhost-8080"><a href="#serve-with-hot-reload-at-localhost-8080" class="headerlink" title="serve with hot reload at localhost:8080"></a>serve with hot reload at localhost:8080</h1><p>npm run dev</p>
-<h1 id="build-for-production-with-minification"><a href="#build-for-production-with-minification" class="headerlink" title="build for production with minification"></a>build for production with minification</h1><p>npm run build</p>
-<p>```</p>
-<a id="more"></a>
-<h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><p>  vue-wechat是主要在利用Vue.js。</p>
-<p>  此demo在实现上使用了以下技术</p>
-<ul>
-<li>[x] - vue: “^1.0.21”,  考虑到Vue2.0组件还不够丰富，因此就还是想用1.0+的版本。</li>
-<li>[x] - vue-resource: “^1.0.0”,   要获取数据就要调API，在requireJs架构中使用Jquery即可，但是毕竟Jquery与Vue的思想是背道而驰的，因此选择使用”vue-resource”这套组件，她提供了非常友好而已用的API，来帮助我们非常快速简单地进行数据请求。</li>
-<li>[x] - mint-ui: “^1.0.2”  UI组件我选择大名鼎鼎的由饿了么前端团队出品的Mint-ui，这套组件文档丰富，更新快（现已完全支持Vue2.0+），能够满足80%左右前端UI的需求。</li>
-<li>[x] - vue-echarts: “^1.0.0”,  Echarts我原来就很喜欢了，百度的产品，有非常丰富的图表类型可供选择。原本使用的是Vue-chartjs，但是最后发现”vue-echarts”对”vue-resource”的支持更好（选择组件的过程中发现，一个好的组件，一定要做到对常用其他组件的支持，否则就失去存在意思，会被淘汰）。</li>
-<li>[x] - vue-animated-list</li>
-<li>[x] - vuex: “^1.0.0-rc.2”,  这个组件的意义在于清晰地状态管理，结合Chrome上的调试工具，玩法很多。</li>
-<li>[x] - vue-router</li>
-<li>[x] - fastclick</li>
-</ul>
-<p>注：在这边要提醒一下，一定要保持各组件之间的版本对应，必须时在npm安装时可以简单地在后面加上@X（版本号）来安装对应版本。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;  自学Vue也有将近一个月了，想做个简单的小作品，正好这段时间自己的阿里云服务器闲置着，而且个人域名一直缺一个主页面，自然就想到做一个小项目来改装一下门庭。&lt;/p&gt;
-&lt;p&gt;###手机预览(website)&lt;br&gt;  废话不多说，上预览，&lt;a href=&quot;http://www.jasongan.cn&quot;&gt;http://www.jasongan.cn&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h3&gt;&lt;h1 id=&quot;install-dependencies&quot;&gt;&lt;a href=&quot;#install-dependencies&quot; class=&quot;headerlink&quot; title=&quot;install dependencies&quot;&gt;&lt;/a&gt;install dependencies&lt;/h1&gt;&lt;p&gt;npm install&lt;/p&gt;
-&lt;h1 id=&quot;serve-with-hot-reload-at-localhost-8080&quot;&gt;&lt;a href=&quot;#serve-with-hot-reload-at-localhost-8080&quot; class=&quot;headerlink&quot; title=&quot;serve with hot reload at localhost:8080&quot;&gt;&lt;/a&gt;serve with hot reload at localhost:8080&lt;/h1&gt;&lt;p&gt;npm run dev&lt;/p&gt;
-&lt;h1 id=&quot;build-for-production-with-minification&quot;&gt;&lt;a href=&quot;#build-for-production-with-minification&quot; class=&quot;headerlink&quot; title=&quot;build for production with minification&quot;&gt;&lt;/a&gt;build for production with minification&lt;/h1&gt;&lt;p&gt;npm run build&lt;/p&gt;
-&lt;p&gt;```&lt;/p&gt;
-    
-    </summary>
-    
     
   </entry>
   
