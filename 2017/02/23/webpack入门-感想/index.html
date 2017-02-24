@@ -15,16 +15,19 @@
   <link rel="dns-prefetch" href="https://ganchengyuan1990.github.io/blog">
   <title>webpack入门&amp;感想 | 时间追逐者</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="也许你想在写代码的时候检查自己的js是否符合jshint的规范，那么隆重推荐preLoaders和postLoaders，loaders是webpack的最重要模块，用它来处理各种类型的文件。perLoaders顾名思义就是在loaders执行之前处理的，webpack的处理顺序是perLoaders - loaders - postLoaders。">
+  <meta name="description" content="也许你想在写代码的时候检查自己的js是否符合jshint的规范，那么隆重推荐preLoaders和postLoaders，loaders是webpack的最重要模块，用它来处理各种类型的文件。perLoaders顾名思义就是在loaders执行之前处理的，webpack的处理顺序是perLoaders - loaders - postLoaders。
+另外，这两天把服务器从apache迁移到了ng">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack入门&感想">
 <meta property="og:url" content="https://ganchengyuan1990.github.io/blog/2017/02/23/webpack入门-感想/index.html">
 <meta property="og:site_name" content="时间追逐者">
-<meta property="og:description" content="也许你想在写代码的时候检查自己的js是否符合jshint的规范，那么隆重推荐preLoaders和postLoaders，loaders是webpack的最重要模块，用它来处理各种类型的文件。perLoaders顾名思义就是在loaders执行之前处理的，webpack的处理顺序是perLoaders - loaders - postLoaders。">
-<meta property="og:updated_time" content="2017-02-23T02:10:00.680Z">
+<meta property="og:description" content="也许你想在写代码的时候检查自己的js是否符合jshint的规范，那么隆重推荐preLoaders和postLoaders，loaders是webpack的最重要模块，用它来处理各种类型的文件。perLoaders顾名思义就是在loaders执行之前处理的，webpack的处理顺序是perLoaders - loaders - postLoaders。
+另外，这两天把服务器从apache迁移到了ng">
+<meta property="og:updated_time" content="2017-02-23T06:28:51.529Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack入门&感想">
-<meta name="twitter:description" content="也许你想在写代码的时候检查自己的js是否符合jshint的规范，那么隆重推荐preLoaders和postLoaders，loaders是webpack的最重要模块，用它来处理各种类型的文件。perLoaders顾名思义就是在loaders执行之前处理的，webpack的处理顺序是perLoaders - loaders - postLoaders。">
+<meta name="twitter:description" content="也许你想在写代码的时候检查自己的js是否符合jshint的规范，那么隆重推荐preLoaders和postLoaders，loaders是webpack的最重要模块，用它来处理各种类型的文件。perLoaders顾名思义就是在loaders执行之前处理的，webpack的处理顺序是perLoaders - loaders - postLoaders。
+另外，这两天把服务器从apache迁移到了ng">
   
     <link rel="alternative" href="/atom.xml" title="时间追逐者" type="application/atom+xml">
   
@@ -212,6 +215,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>也许你想在写代码的时候检查自己的js是否符合jshint的规范，那么隆重推荐preLoaders和postLoaders，loaders是webpack的最重要模块，用它来处理各种类型的文件。perLoaders顾名思义就是在loaders执行之前处理的，webpack的处理顺序是perLoaders - loaders - postLoaders。</p>
+<p>另外，这两天把服务器从apache迁移到了nginx，nginx的反向代理功能确实非常有用，现在已经把原本监听8080端口的NodeJs服务都反响代理到了80端口，这样一来我的HTTPS证书相当于在8080端口也能起效了。</p>
 
       
 
@@ -305,6 +309,8 @@
       <div class="clearfix"></div>
     </div>
   </div>
+
+
 </article>
 
   
@@ -365,8 +371,23 @@
     </div>
   </div>
 </footer>
+
+      <!-- <div class="switch demo1">
+        <input type="checkbox" id="particle">
+        <label></label>
+      </div>
+      
+      <div id="particles-js" style="bottom: 100%;">
+          <canvas class="particles-js-canvas-el" width="1000" height="1000" style="width: 100%; height: 100%;"></canvas>
+      </div> -->
     </div>
-    <script>
+    <!-- <script src="../blog/js/particles.min.js"></script>
+
+<script src="../blog/js/app.js"></script>
+stats.js
+<script src="../blog/js/lib/stats.js"></script> -->
+
+<script>
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
@@ -409,22 +430,39 @@ if ("serviceWorker" in navigator) {
 }
 
 
-var URL = 'https://jasongan.cn/php/hello1.php';
+var URL = 'https://jasongan.cn/api/weather';
 
 fetch(URL).then(function(response2) {
     return response2.json();
 }).then(function(json) {
-	var rainy = json.weatherinfo.rain == "0" ? "无雨。": "有雨。";
-	document.getElementsByClassName('weatherInfo')[0].innerHTML = json.weatherinfo.city + json.weatherinfo.WD + json.weatherinfo.WS + ", 温度" + json.weatherinfo.temp + "摄氏度, " + rainy;
+	var rainy = json.weatherinfo.weather.indexOf("雨") > 0 ? "有雨" : "无雨";
+	document.getElementsByClassName('weatherInfo')[0].innerHTML = json.weatherinfo.city + "最高温度" + json.weatherinfo.temp2 + ", 最低温度" + json.weatherinfo.temp1 + ", " + rainy;
 });
 
 
-var URL2 = 'https://jasongan.cn/api/spurs';
+
+
+/*document.getElementById('particle').addEventListener('click', myFunction);
+
+function myFunction(event) {
+	if(event.currentTarget.checked) {
+		document.getElementById('particles-js').style.top = 0;
+	} else {
+		document.getElementById('particles-js').style.top = '100%';
+	}
+	
+}*/
+
+
+
+ 
+
+/*var URL2 = 'https://jasongan.cn/api/spurs';
 fetch(URL2).then(function(response2) {
     return response2.json();
 }).then(function(json) {
 	alert(JSON.stringify(json[0]));
-});
+});*/
 
 </script>
     
@@ -471,23 +509,11 @@ fetch(URL2).then(function(response2) {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javacsript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后端</a>
+                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,7 +521,19 @@ fetch(URL2).then(function(response2) {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">其他</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javacsript</a>
               </li>
             
             <div class="clearfix"></div>
