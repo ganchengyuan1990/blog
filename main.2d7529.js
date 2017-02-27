@@ -1494,7 +1494,7 @@ window.onblur = function(e) {
     document.title = '看这里！看这里!';
 }
 window.onfocus = function(e) {
-    document.title = '时间追逐者';
+    document.title = '时间追逐者222';
 }
 
 function showArticle() {
@@ -1522,9 +1522,9 @@ function showArticle() {
 
 showArticle();
 
-setTimeout(function(e) {
+
     window.onscroll = function(e) {
         console.log("onscroll...");
         showArticle();
     }
-}, 1000);
+
