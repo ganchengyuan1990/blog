@@ -46,132 +46,37 @@
 
 	'use strict';
 
-	var _addClass = __webpack_require__(22);
+	__webpack_require__(1);
 
-	var _addClass2 = _interopRequireDefault(_addClass);
+	var _viewer = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./viewer\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
-	var _removeClass = __webpack_require__(23);
+	var _viewer2 = _interopRequireDefault(_viewer);
 
-	var _removeClass2 = _interopRequireDefault(_removeClass);
+	var _share = __webpack_require__(21);
 
-	var _after = __webpack_require__(93);
-
-	var _after2 = _interopRequireDefault(_after);
-
-	var _browser = __webpack_require__(94);
-
-	var _browser2 = _interopRequireDefault(_browser);
-
-	var _fix = __webpack_require__(95);
-
-	var _fix2 = _interopRequireDefault(_fix);
+	var _share2 = _interopRequireDefault(_share);
 
 	var _util = __webpack_require__(24);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// fix hexo 不支持的配置
-	function isPathMatch(path, href) {
-		var reg = /\/|index.html/g;
-		return path.replace(reg, '') === href.replace(reg, '');
-	}
-	// 浏览器判断
-
-
-	function tabActive() {
-		var $tabs = document.querySelectorAll('.js-header-menu li a');
-		var path = window.location.pathname;
-
-		for (var i = 0, len = $tabs.length; i < len; i++) {
-			var $tab = $tabs[i];
-			if (isPathMatch(path, $tab.getAttribute('href'))) {
-				(0, _addClass2.default)($tab, 'active');
-			}
-		}
-	}
-
-	function getElementLeft(element) {
-		var actualLeft = element.offsetLeft;
-		var current = element.offsetParent;
-		while (current !== null) {
-			actualLeft += current.offsetLeft;
-			current = current.offsetParent;
-		}
-		return actualLeft;
-	}
-	function getElementTop(element) {
-		var actualTop = element.offsetTop;
-		var current = element.offsetParent;
-		while (current !== null) {
-			actualTop += current.offsetTop;
-			current = current.offsetParent;
-		}
-		return actualTop;
-	}
-
-	function scrollStop($dom, top, limit, zIndex, diff) {
-		var nowLeft = getElementLeft($dom);
-		var nowTop = getElementTop($dom) - top;
-
-		if (nowTop - limit <= diff) {
-			var $newDom = $dom.$newDom;
-			if (!$newDom) {
-				$newDom = $dom.cloneNode(true);
-				(0, _after2.default)($dom, $newDom);
-				$dom.$newDom = $newDom;
-				$newDom.style.position = 'fixed';
-				$newDom.style.top = (limit || nowTop) + 'px';
-				$newDom.style.left = nowLeft + 'px';
-				$newDom.style.zIndex = zIndex || 2;
-				$newDom.style.width = '100%';
-				$newDom.style.color = '#fff';
-			}
-			$newDom.style.visibility = 'visible';
-			$dom.style.visibility = 'hidden';
-		} else {
-			$dom.style.visibility = 'visible';
-			var _$newDom = $dom.$newDom;
-			if (_$newDom) {
-				_$newDom.style.visibility = 'hidden';
-			}
-		}
-	}
-
-	function handleScroll() {
-		var $overlay = document.querySelector('.js-overlay');
-		var $menu = document.querySelector('.js-header-menu');
-		scrollStop($overlay, document.body.scrollTop, -63, 2, 0);
-		scrollStop($menu, document.body.scrollTop, 1, 3, 0);
-	}
-
-	function bindScroll() {
-		document.querySelector('#container').addEventListener('scroll', function (e) {
-			handleScroll();
-		});
-
-		window.addEventListener('scroll', function (e) {
-			handleScroll();
-		});
-		handleScroll();
-	}
-
-	function init() {
-		if (_browser2.default.versions.mobile && window.screen.width < 800) {
-			tabActive();
-			bindScroll();
-		}
-	}
-
-	init();
-
+	// 分享
+	// 样式
 	(0, _util.addLoadEvent)(function () {
-		_fix2.default.init();
+		_share2.default.init();
+		_viewer2.default.init();
 	});
-
-	module.exports = {};
+	// 上报
+	//import './report'
+	// 图片查看器
 
 /***/ },
-/* 1 */,
+/* 1 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
 /* 2 */,
 /* 3 */,
 /* 4 */,
@@ -191,7 +96,96 @@
 /* 18 */,
 /* 19 */,
 /* 20 */,
-/* 21 */,
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _addClass = __webpack_require__(22);
+
+	var _addClass2 = _interopRequireDefault(_addClass);
+
+	var _removeClass = __webpack_require__(23);
+
+	var _removeClass2 = _interopRequireDefault(_removeClass);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function generate(url, opts) {
+	    var url = url.replace(/<%-sUrl%>/g, encodeURIComponent(opts.sUrl)).replace(/<%-sTitle%>/g, opts.sTitle).replace(/<%-sDesc%>/g, opts.sDesc).replace(/<%-sPic%>/g, encodeURIComponent(opts.sPic));
+
+	    window.open(url);
+	}
+
+	function showWX() {
+	    var $wx = document.querySelector('.js-wx-box');
+	    var $mask = document.querySelector('.mask');
+	    (0, _addClass2.default)($wx, 'in');
+	    (0, _addClass2.default)($wx, 'ready');
+	    (0, _addClass2.default)($mask, 'in');
+	}
+
+	function hideWX() {
+	    var $wx = document.querySelector('.js-wx-box');
+	    var $mask = document.querySelector('.mask');
+	    (0, _removeClass2.default)($wx, 'in');
+	    (0, _removeClass2.default)($wx, 'ready');
+	    (0, _removeClass2.default)($mask, 'in');
+	}
+
+	function handleClick(type, opts) {
+	    if (type === 'weibo') {
+	        generate('http://service.weibo.com/share/share.php?url=<%-sUrl%>&title=<%-sTitle%>&pic=<%-sPic%>', opts);
+	    } else if (type === 'qq') {
+	        generate('http://connect.qq.com/widget/shareqq/index.html?url=<%-sUrl%>&title=<%-sTitle%>&source=<%-sDesc%>', opts);
+	    } else if (type === 'douban') {
+	        generate('https://www.douban.com/share/service?image=<%-sPic%>&href=<%-sUrl%>&name=<%-sTitle%>&text=<%-sDesc%>', opts);
+	    } else if (type === 'qzone') {
+	        generate('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<%-sUrl%>&title=<%-sTitle%>&pics=<%-sPic%>&summary=<%-sDesc%>', opts);
+	    } else if (type === 'facebook') {
+	        generate('https://www.facebook.com/sharer/sharer.php?u=<%-sUrl%>', opts);
+	    } else if (type === 'twitter') {
+	        generate('https://twitter.com/intent/tweet?text=<%-sTitle%>&url=<%-sUrl%>&via=<%-config.url%>', opts);
+	    } else if (type === 'google') {
+	        generate('https://plus.google.com/share?url=<%-sUrl%>', opts);
+	    } else if (type === 'weixin') {
+	        showWX();
+	    }
+	}
+
+	var init = function init() {
+	    var $sns = document.querySelectorAll('.share-sns');
+	    if (!$sns || $sns.length === 0) return;
+
+	    var sUrl = window.location.href;
+	    var sTitle = document.querySelector('title').innerHTML;
+	    var $img = document.querySelectorAll('.article-entry img');
+	    var sPic = $img.length ? document.querySelector('.article-entry img').getAttribute('src') : '';
+	    if (sPic !== '' && !/^(http:|https:)?\/\//.test(sPic)) {
+	        sPic = window.location.origin + sPic;
+	    }
+
+	    $sns.forEach(function ($em) {
+	        $em.onclick = function (e) {
+	            var type = $em.getAttribute('data-type');
+	            handleClick(type, {
+	                sUrl: sUrl,
+	                sPic: sPic,
+	                sTitle: sTitle,
+	                sDesc: sTitle
+	            });
+	        };
+	    });
+
+	    document.querySelector('.mask').onclick = hideWX;
+	    document.querySelector('.js-modal-close').onclick = hideWX;
+	};
+
+	module.exports = {
+	    init: init
+	};
+
+/***/ },
 /* 22 */
 /***/ function(module, exports) {
 
@@ -1622,99 +1616,6 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(81)('observable');
-
-/***/ },
-/* 93 */
-/***/ function(module, exports) {
-
-	/**
-	 * after : after(el, newEl)
-	 * Inserts a new element `newEl` just after `el`.
-	 *
-	 *     var after = require('dom101/after');
-	 *     var newNode = document.createElement('div');
-	 *     var button = document.querySelector('#submit');
-	 *
-	 *     after(button, newNode);
-	 */
-
-	function after (el, newEl) {
-	  if (typeof newEl === 'string') {
-	    return el.insertAdjacentHTML('afterend', newEl);
-	  } else {
-	    var next = el.nextSibling;
-	    if (next) {
-	      return el.parentNode.insertBefore(newEl, next);
-	    } else {
-	      return el.parentNode.appendChild(newEl);
-	    }
-	  }
-	}
-
-	module.exports = after;
-
-
-/***/ },
-/* 94 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	var browser = {
-	    versions: function () {
-	        var u = window.navigator.userAgent;
-	        return {
-	            trident: u.indexOf('Trident') > -1, //IE内核
-	            presto: u.indexOf('Presto') > -1, //opera内核
-	            webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-	            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-	            mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-	            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-	            android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
-	            iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
-	            iPad: u.indexOf('iPad') > -1, //是否为iPad
-	            webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
-	            weixin: u.indexOf('MicroMessenger') == -1 //是否为微信浏览器
-	        };
-	    }()
-	};
-
-	module.exports = browser;
-
-/***/ },
-/* 95 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	function init() {
-		// 由于hexo分页不支持，手工美化
-		var $nav = document.querySelector('#page-nav');
-		if ($nav && !document.querySelector('#page-nav .extend.prev')) {
-			$nav.innerHTML = '<a class="extend prev disabled" rel="prev">&laquo; Prev</a>' + $nav.innerHTML;
-		}
-		if ($nav && !document.querySelector('#page-nav .extend.next')) {
-			$nav.innerHTML = $nav.innerHTML + '<a class="extend next disabled" rel="next">Next &raquo;</a>';
-		}
-
-		// 新窗口打开
-		if (yiliaConfig && yiliaConfig.open_in_new) {
-			var $a = document.querySelectorAll('.article-entry a:not(.article-more-a)');
-			$a.forEach(function ($em) {
-				$em.setAttribute('target', '_blank');
-			});
-		}
-
-		// about me 转义
-		var $aboutme = document.querySelector('#js-aboutme');
-		if ($aboutme && $aboutme.length !== 0) {
-			$aboutme.innerHTML = $aboutme.innerText;
-		}
-	}
-
-	module.exports = {
-		init: init
-	};
 
 /***/ }
 /******/ ]);

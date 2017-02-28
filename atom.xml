@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ganchengyuan1990.github.io/blog/"/>
-  <updated>2017-02-23T06:28:51.529Z</updated>
+  <updated>2017-02-28T07:27:56.205Z</updated>
   <id>https://ganchengyuan1990.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>写一个hexo新主题</title>
+    <link href="https://ganchengyuan1990.github.io/blog/2017/02/27/%E5%86%99%E4%B8%80%E4%B8%AAhexo%E6%96%B0%E4%B8%BB%E9%A2%98/"/>
+    <id>https://ganchengyuan1990.github.io/blog/2017/02/27/写一个hexo新主题/</id>
+    <published>2017-02-27T10:30:27.000Z</published>
+    <updated>2017-02-28T07:27:56.205Z</updated>
+    
+    <content type="html"><![CDATA[<p>从今天开始，写一个新的Hexo主题，学习一下ejs语法，并且熟悉webpack的工作流程。</p>
+<p>首先，找到了Base，就是Yilla，这个主题我非常喜欢，但是它还存在一些可以优化的地方，比如说：</p>
+<p>1.当我的域名为<a href="https://XXX.github.io/XXX的时候，模版支持不太友好，很多地方只能手动去改代码，否则就会有URL错误的情况产生，所以打算加上这方面的支持。" target="_blank" rel="external">https://XXX.github.io/XXX的时候，模版支持不太友好，很多地方只能手动去改代码，否则就会有URL错误的情况产生，所以打算加上这方面的支持。</a></p>
+<p>2.想自己写一些附加功能，比如置顶文章。</p>
+<p>3.另外，我最近对NODEJS挺着迷的，并且我自己的网站<a href="https://jasongan.cn" target="_blank" rel="external">https://jasongan.cn</a>刚刚支持了HTTPS协议，因此开始为博客写接口，形成一个以Github博客为前端，jasongan.cn为后台服务器的完整架构，开始向全栈进发！</p>
+<a id="more"></a>
+<hr>
+<p>OK，牛吹完了，现在插播一条广告。今天在项目中碰到了一个有关执行上下文的问题，于是就debugger了一下Jquery代码，看看$.proxy如何实现，上代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">$.proxy = function(fn, context) &#123;</div><div class="line">    var args = (2 in arguments) &amp;&amp; slice.call(arguments, 2)</div><div class="line">    if (isFunction(fn)) &#123;</div><div class="line">      var proxyFn = function()&#123; return fn.apply(context, args ? args.concat(slice.call(arguments)) : arguments) &#125;</div><div class="line">      proxyFn._zid = zid(fn)</div><div class="line">      return proxyFn</div><div class="line">    &#125; else if (isString(context)) &#123;</div><div class="line">      if (args) &#123;</div><div class="line">        args.unshift(fn[context], fn)</div><div class="line">        return $.proxy.apply(null, args)</div><div class="line">      &#125; else &#123;</div><div class="line">        return $.proxy(fn[context], fn)</div><div class="line">      &#125;</div><div class="line">    &#125; else &#123;</div><div class="line">      throw new TypeError(&quot;expected function&quot;)</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>这里有几个点需要注意一下：<br>首先，之所以var args = (2 in arguments) &amp;&amp; slice.call(arguments, 2)是因为用户可能会传入其他参数，比如:</p>
+<blockquote>
+<p>$.proxy(chooseReason, this, “Jason”)</p>
+</blockquote>
+<p>这个”Jason”就是用户传入的额外参数，这个时候要把”jason”push到args里，以便之后能够被element取到</p>
+<blockquote>
+<p>function chooseReason(element) {<br>    $(this).find(‘span’).html($(element).html()).attr(‘value’, $(element).attr(‘value’));<br>}</p>
+</blockquote>
+<hr>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;从今天开始，写一个新的Hexo主题，学习一下ejs语法，并且熟悉webpack的工作流程。&lt;/p&gt;
+&lt;p&gt;首先，找到了Base，就是Yilla，这个主题我非常喜欢，但是它还存在一些可以优化的地方，比如说：&lt;/p&gt;
+&lt;p&gt;1.当我的域名为&lt;a href=&quot;https://XXX.github.io/XXX的时候，模版支持不太友好，很多地方只能手动去改代码，否则就会有URL错误的情况产生，所以打算加上这方面的支持。&quot;&gt;https://XXX.github.io/XXX的时候，模版支持不太友好，很多地方只能手动去改代码，否则就会有URL错误的情况产生，所以打算加上这方面的支持。&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2.想自己写一些附加功能，比如置顶文章。&lt;/p&gt;
+&lt;p&gt;3.另外，我最近对NODEJS挺着迷的，并且我自己的网站&lt;a href=&quot;https://jasongan.cn&quot;&gt;https://jasongan.cn&lt;/a&gt;刚刚支持了HTTPS协议，因此开始为博客写接口，形成一个以Github博客为前端，jasongan.cn为后台服务器的完整架构，开始向全栈进发！&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>webpack入门&amp;感想</title>
@@ -136,7 +176,7 @@
     <link href="https://ganchengyuan1990.github.io/blog/2017/02/16/Weex%E9%A6%96%E7%A7%80/"/>
     <id>https://ganchengyuan1990.github.io/blog/2017/02/16/Weex首秀/</id>
     <published>2017-02-16T05:54:46.000Z</published>
-    <updated>2017-02-16T06:23:55.509Z</updated>
+    <updated>2017-02-28T07:54:24.366Z</updated>
     
     <content type="html"><![CDATA[<h3 id="第一部分-2017-01-25"><a href="#第一部分-2017-01-25" class="headerlink" title="第一部分 2017-01-25"></a>第一部分 2017-01-25</h3><p>一直想做一个APP，去年也自学过一段时间的<code>React Native</code>, 但是RN相对来说学习曲线比较陡峭，并且很多资源包在下载时都不是那么容易，经常error（这个大家都懂）, 所以这事儿就不了了之了。</p>
 <p>前两天看了weex的会议，觉得阿里又在放大招了，这个工具虽然目前学习社区不多，资源组件不丰富，但是本身调式来发非常便捷，weex playground非常不错，并且因为weex是基于vue的，所以入门简单，<code>npm run build</code>打包以后部署到自己的服务器上，用二维码扫描以后就可以拥有一个自己的APP了，并且是兼容三端的，这一点非常诱人。</p>
@@ -173,7 +213,7 @@
     </summary>
     
     
-      <category term="Vue" scheme="https://ganchengyuan1990.github.io/blog/tags/Vue/"/>
+      <category term="Vue 置顶" scheme="https://ganchengyuan1990.github.io/blog/tags/Vue-%E7%BD%AE%E9%A1%B6/"/>
     
   </entry>
   
@@ -313,11 +353,11 @@
   </entry>
   
   <entry>
-    <title>今日休整，简单修改样式</title>
+    <title>今日休整，简单修改样式【置顶】</title>
     <link href="https://ganchengyuan1990.github.io/blog/2017/02/06/%E4%BB%8A%E6%97%A5%E4%BC%91%E6%95%B4%EF%BC%8C%E7%AE%80%E5%8D%95%E4%BF%AE%E6%94%B9%E6%A0%B7%E5%BC%8F/"/>
     <id>https://ganchengyuan1990.github.io/blog/2017/02/06/今日休整，简单修改样式/</id>
     <published>2017-02-06T06:53:02.000Z</published>
-    <updated>2017-02-07T05:36:55.689Z</updated>
+    <updated>2017-02-28T09:06:45.057Z</updated>
     
     <content type="html"><![CDATA[<p>如题，今日没有阅读到特别好的文章，简单记两笔。</p>
 <p><img src="https://ganchengyuan1990.github.io/blog/img/avater.gif" alt=""></p>
@@ -861,31 +901,9 @@
     </summary>
     
     
+      <category term="Javascript" scheme="https://ganchengyuan1990.github.io/blog/tags/Javascript/"/>
+    
       <category term="Vue" scheme="https://ganchengyuan1990.github.io/blog/tags/Vue/"/>
-    
-      <category term="Javascript" scheme="https://ganchengyuan1990.github.io/blog/tags/Javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>javascript闭包个人理解</title>
-    <link href="https://ganchengyuan1990.github.io/blog/2017/01/17/javascript%E9%97%AD%E5%8C%85%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3/"/>
-    <id>https://ganchengyuan1990.github.io/blog/2017/01/17/javascript闭包个人理解/</id>
-    <published>2017-01-17T00:56:37.000Z</published>
-    <updated>2017-01-19T05:35:39.330Z</updated>
-    
-    <content type="html"><![CDATA[<p>个人理解，闭包的目的就是为了从外部读取内部函数的局部参数而设置的桥梁方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">closure</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> n = <span class="number">1</span>;</div><div class="line">    nAdd=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;n+=<span class="number">1</span>; &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(n)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> inner;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> result = closure();</div><div class="line">result();</div><div class="line"></div><div class="line">nAdd();</div><div class="line">result(); <span class="comment">// 1000</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> name = <span class="string">"The Window"</span>;</div><div class="line">　　<span class="keyword">var</span> object = &#123;</div><div class="line">　　　　<span class="attr">name</span> : <span class="string">"My Object"</span>,</div><div class="line">　　　　<span class="attr">getNameFunc</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">　　　　　　<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">　　　　　　　　<span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">　　　　　　&#125;;</div><div class="line">　　　　&#125;</div><div class="line">　　&#125;;</div><div class="line">alert(object.getNameFunc()());</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;个人理解，闭包的目的就是为了从外部读取内部函数的局部参数而设置的桥梁方法。&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/di
-    
-    </summary>
-    
-    
-      <category term="Javascript" scheme="https://ganchengyuan1990.github.io/blog/tags/Javascript/"/>
     
   </entry>
   
