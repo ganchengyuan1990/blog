@@ -10,7 +10,6 @@ const offlineResources = [
 ];
 
 const ignoreFetch = [
-  /https?:\/\/wx1.sinaimg.cn\//,
   /https?:\/\/static.duoshuo.com\//,
   /https?:\/\/www.google-analytics.com\//,
   /https?:\/\/dn-lbstatics.qbox.me\//,
