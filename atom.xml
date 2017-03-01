@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ganchengyuan1990.github.io/blog/"/>
-  <updated>2017-02-28T07:27:56.205Z</updated>
+  <updated>2017-03-01T03:26:59.381Z</updated>
   <id>https://ganchengyuan1990.github.io/blog/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>写一个hexo新主题</title>
+    <title>写一个hexo新主题！</title>
     <link href="https://ganchengyuan1990.github.io/blog/2017/02/27/%E5%86%99%E4%B8%80%E4%B8%AAhexo%E6%96%B0%E4%B8%BB%E9%A2%98/"/>
     <id>https://ganchengyuan1990.github.io/blog/2017/02/27/写一个hexo新主题/</id>
     <published>2017-02-27T10:30:27.000Z</published>
-    <updated>2017-02-28T07:27:56.205Z</updated>
+    <updated>2017-03-01T03:26:59.381Z</updated>
     
     <content type="html"><![CDATA[<p>从今天开始，写一个新的Hexo主题，学习一下ejs语法，并且熟悉webpack的工作流程。</p>
 <p>首先，找到了Base，就是Yilla，这个主题我非常喜欢，但是它还存在一些可以优化的地方，比如说：</p>
