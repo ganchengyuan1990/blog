@@ -68,7 +68,7 @@
 	// 图片查看器
 
 	if ("serviceWorker" in navigator) {
-		navigator.serviceWorker.register('./blog/serviceWorker.js', { scope: "./blog/" }) //setting scope of sw
+		navigator.serviceWorker.register('./serviceWorker.js', { scope: "./" }) //setting scope of sw
 		.then(function (registration) {
 			console.info('Service worker is registered!');
 		}).catch(function (error) {
