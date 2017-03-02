@@ -5,8 +5,8 @@ const __DEVELOPMENT__ = false;
 const __DEBUG__ = false;
 const offlineResources = [
   '/',
-  '/offline.html',
-  '/offline.svg'
+  '/blog/offline.html',
+  '/blog/offline.svg'
 ];
 
 const ignoreFetch = [
@@ -108,9 +108,9 @@ function cachedOrOffline(request) {
 function offlineResponse(request) {
   log('(offline)', request.method, request.url);
   if (request.url.match(/\.(jpg|png|gif|svg|jpeg)(\?.*)?$/)) {
-    return caches.match('/offline.svg');
+    return caches.match('/blog/offline.svg');
   } else {
-    return caches.match('/offline.html');
+    return caches.match('/blog/offline.html');
   }
 }
 
