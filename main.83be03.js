@@ -62,11 +62,6 @@
 
 	// 分享
 	// 样式
-	debugger;
-	// 上报
-	//import './report'
-	// 图片查看器
-
 	if ("serviceWorker" in navigator) {
 		navigator.serviceWorker.register('./serviceWorker.js', { scope: "./" }) //setting scope of sw
 		.then(function (registration) {
@@ -75,6 +70,10 @@
 			console.error('Service worker failed ', error);
 		});
 	}
+	// 上报
+	//import './report'
+	// 图片查看器
+
 
 	(0, _util.addLoadEvent)(function () {
 		_share2.default.init();
@@ -134,10 +133,6 @@
 		var $zhuabao = document.querySelectorAll('.special');
 
 		var $dianzan = document.querySelectorAll('.dianzan span')[0];
-
-		window.onload = function () {
-			alert('finish');
-		};
 
 		$dianzan.onclick = function (e) {
 			if (e.currentTarget.innerHTML == "点赞") {
@@ -5076,6 +5071,8 @@
 	                window.onload = func;
 	            } else {
 	                window.onload = function () {
+	                    document.querySelector('.loading').classList.add('hide_it');
+	                    document.querySelector('.loadingMask').classList.add('hide_it');
 	                    oldonload();
 	                    func();
 	                };

@@ -446,6 +446,9 @@ i {
 * {
   box-sizing: border-box; }
 
+.hide_it {
+  display: none; }
+
 @font-face {
   font-family: "iconfont";
   src: url(./fonts/iconfont.59e68b.eot);
@@ -1297,6 +1300,25 @@ pre .css ~ * .id {
       color: #5e5e5e; }
   #page-nav:hover .extend {
     opacity: 1; }
+
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  font-size: 40px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 300; }
+
+.loadingMask {
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  height: 100%; }
 
 .archives-wrap {
   position: relative;
