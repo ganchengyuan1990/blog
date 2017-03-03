@@ -806,6 +806,96 @@ html, body, #container {
         display: inline-block;
         color: #fff;
         border-radius: 50%; }
+    .left-col #header .clock {
+      width: 193px;
+      height: 193px;
+      border-radius: 50%;
+      margin: auto;
+      position: absolute;
+      left: 16px;
+      z-index: -30;
+      margin-top: 60px;
+      background: #444; }
+      .left-col #header .clock .numbers {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%; }
+        .left-col #header .clock .numbers ul {
+          list-style: none; }
+          .left-col #header .clock .numbers ul li {
+            position: absolute;
+            width: 1.5em;
+            height: 1.5em;
+            text-align: center;
+            line-height: 1.5em;
+            font-size: 1.3em;
+            color: #a5a595; }
+            .left-col #header .clock .numbers ul li:first-child {
+              top: 0;
+              left: 50%;
+              margin-left: -0.75em; }
+            .left-col #header .clock .numbers ul li:nth-child(2) {
+              top: 50%;
+              right: 0;
+              margin-top: -0.75em; }
+            .left-col #header .clock .numbers ul li:nth-child(3) {
+              left: 50%;
+              bottom: 0;
+              margin-left: -0.75em; }
+            .left-col #header .clock .numbers ul li:last-child {
+              top: 50%;
+              left: 0;
+              margin-top: -0.75em; }
+      .left-col #header .clock .clockwise {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%; }
+        .left-col #header .clock .clockwise .center, .left-col #header .clock .clockwise .support {
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: radial-gradient(center center, circle, #ffffff, #837874 97%, #b4b2aa 100%);
+          background: -webkit-radial-gradient(center center, circle, #ffffff, #837874 97%, #b4b2aa 100%);
+          background-position: 50% -12px;
+          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+          left: 50%;
+          margin-left: -5px;
+          top: 50%;
+          margin-top: -5px;
+          z-index: 5; }
+        .left-col #header .clock .clockwise [class*="hand-"] {
+          border-radius: 100% 100% 5px 5px;
+          box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.2);
+          left: 50%;
+          position: absolute;
+          top: 50%;
+          z-index: 4;
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3); }
+        .left-col #header .clock .clockwise .hand-second {
+          display: none;
+          width: 2px;
+          top: 18px;
+          height: 78px;
+          background: #f16e54;
+          -webkit-transform-origin: 50% 100%;
+                  transform-origin: 50% 100%; }
+        .left-col #header .clock .clockwise .hand-minute {
+          width: 6px;
+          top: 26px;
+          margin-left: -3px;
+          height: 88px;
+          background: #68645b;
+          -webkit-transform-origin: 50% 80%;
+                  transform-origin: 50% 80%; }
+        .left-col #header .clock .clockwise .hand-hour {
+          width: 6px;
+          top: 56px;
+          -webkit-transform-origin: 50% 40px;
+                  transform-origin: 50% 40px;
+          margin-left: -3px;
+          height: 50px;
+          background: #68645b; }
 
 /* 设置滚动条的样式 */
 ::-webkit-scrollbar {

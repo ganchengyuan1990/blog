@@ -58,10 +58,20 @@
 
 	var _util = __webpack_require__(25);
 
+	var _clock = __webpack_require__(108);
+
+	var _clock2 = _interopRequireDefault(_clock);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// 分享
 	// 样式
+	debugger;
+	// 上报
+	//import './report'
+	// 图片查看器
+
+
 	if ("serviceWorker" in navigator) {
 		navigator.serviceWorker.register('./serviceWorker.js', { scope: "./" }) //setting scope of sw
 		.then(function (registration) {
@@ -70,10 +80,6 @@
 			console.error('Service worker failed ', error);
 		});
 	}
-	// 上报
-	//import './report'
-	// 图片查看器
-
 
 	(0, _util.addLoadEvent)(function () {
 		_share2.default.init();
@@ -6365,6 +6371,112 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(82)('observable');
+
+/***/ },
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */,
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	debugger;
+
+	var oClockAnalog = {
+	    aSecond: [],
+	    dtDate: new Date(),
+	    iCurrSecond: -1,
+	    iHourRotation: -1,
+	    iMinuteRotation: -1,
+	    iStepSize: 10,
+	    iTimerAnimate: setInterval("oClockAnalog.fAnimate()", 20),
+	    iTimerUpdate: setInterval("oClockAnalog.fUpdate()", 1000),
+
+	    fAnimate: function fAnimate() {
+	        if (this.aSecond.length > 0) {
+	            this.fRotate("analogsecond", this.aSecond[0]);
+	            this.aSecond = this.aSecond.slice(1);
+	        }
+	    },
+	    fGetHour: function fGetHour() {
+	        var iHours = this.dtDate.getHours();
+	        if (iHours > 11) {
+	            iHours -= 12;
+	        }
+	        return Math.round(this.dtDate.getHours() * 30 + this.dtDate.getMinutes() / 2 + this.dtDate.getSeconds() / 120);
+	    },
+	    fGetMinute: function fGetMinute() {
+	        return Math.round(this.dtDate.getMinutes() * 6 + this.dtDate.getSeconds() / 10);
+	    },
+	    fInit: function fInit() {
+	        this.iHourRotation = this.fGetHour();
+	        this.fRotate("analoghour", this.iHourRotation);
+
+	        this.iMinuteRotation = this.fGetMinute();
+	        this.fRotate("analogminute", this.iMinuteRotation);
+
+	        this.iCurrSecond = this.dtDate.getSeconds();
+	        this.fRotate("analogsecond", 6 * this.iCurrSecond);
+	    },
+	    fRotate: function fRotate(sID, iDeg) {
+	        var sCSS = "rotate(" + iDeg + "deg)";
+	        document.querySelector("#" + sID).style['-webkit-transform'] = sCSS;
+	        //$("#" + sID).css({ '-moz-transform': sCSS, '-o-transform': sCSS, '-webkit-transform': sCSS });
+	    },
+	    fStepSize: function fStepSize(iTo, iFrom) {
+	        var iAnimDiff = iFrom - iTo;
+	        if (iAnimDiff > 0) {
+	            iAnimDiff -= 360;
+	        }
+	        return iAnimDiff / this.iStepSize;
+	    },
+	    fUpdate: function fUpdate() {
+	        // update time
+	        this.dtDate = new Date();
+
+	        // hours
+	        var iTemp = this.fGetHour();
+	        if (this.iHourRotation != iTemp) {
+	            this.iHourRotation = iTemp;
+	            this.fRotate("analoghour", iTemp);
+	        }
+
+	        // minutes
+	        iTemp = this.fGetMinute();
+	        if (this.iMinuteRotation != iTemp) {
+	            this.iMinuteRotation = iTemp;
+	            this.fRotate("analogminute", iTemp);
+	        }
+
+	        // seconds
+	        if (this.iCurrSecond != this.dtDate.getSeconds()) {
+	            var iRotateFrom = 6 * this.iCurrSecond;
+	            this.iCurrSecond = this.dtDate.getSeconds();
+	            var iRotateTo = 6 * this.iCurrSecond;
+
+	            // push steps into array
+	            var iDiff = this.fStepSize(iRotateTo, iRotateFrom);
+	            for (var i = 0; i < this.iStepSize; i++) {
+	                iRotateFrom -= iDiff;
+	                this.aSecond.push(Math.round(iRotateFrom));
+	            }
+	        }
+	    }
+	};
+
+	window.oClockAnalog = oClockAnalog;
 
 /***/ }
 /******/ ]);
