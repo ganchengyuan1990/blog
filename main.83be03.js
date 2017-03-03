@@ -140,7 +140,15 @@
 
 		var $dianzan = document.querySelectorAll('.dianzan span')[0];
 
+		var $loadingMask = document.querySelector('.loadingMask');
+
+		$loadingMask.onclick = function (e) {
+			e.currentTarget.classList.add("hide_it");
+		};
+
 		$dianzan.onclick = function (e) {
+			debugger;
+
 			if (e.currentTarget.innerHTML == "点赞") {
 				fetch("https://jasongan.cn/api/dianzan?plus=1").then(function (res) {
 					return res.json();
@@ -148,7 +156,7 @@
 					document.querySelectorAll('.dianzan span')[0].innerHTML = response.number;
 				});
 			} else {
-				alert('已收到您的点赞，谢谢亲!');
+				_pop2.default.popAlertFun("已收到您的点赞，谢谢！");
 			}
 		};
 
@@ -4829,9 +4837,9 @@
 	var popAlert = {
 		popAlertFun: function popAlertFun(content) {
 
-			//
 			var popDom = document.createElement('div');
 			popDom.classList.add('popbg');
+			popDom.innerHTML = content;
 
 			if (Array.isArray(content)) {
 				content.forEach(function (ele, i) {
@@ -4842,7 +4850,8 @@
 			}
 
 			//输出到页面
-			document.body.appendChild(popDom);
+			document.querySelector('.loadingMask').appendChild(popDom);
+			document.querySelector('.loadingMask').classList.remove("hide_it");
 		}
 	};
 
@@ -6391,8 +6400,6 @@
 /***/ function(module, exports) {
 
 	"use strict";
-
-	debugger;
 
 	var oClockAnalog = {
 	    aSecond: [],
