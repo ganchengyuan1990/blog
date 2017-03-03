@@ -172,11 +172,11 @@
   </entry>
   
   <entry>
-    <title>Weex首秀</title>
+    <title>Weex首秀【置顶】</title>
     <link href="https://ganchengyuan1990.github.io/blog/2017/02/16/Weex%E9%A6%96%E7%A7%80/"/>
     <id>https://ganchengyuan1990.github.io/blog/2017/02/16/Weex首秀/</id>
     <published>2017-02-16T05:54:46.000Z</published>
-    <updated>2017-02-28T07:54:24.366Z</updated>
+    <updated>2017-03-03T07:35:11.167Z</updated>
     
     <content type="html"><![CDATA[<h3 id="第一部分-2017-01-25"><a href="#第一部分-2017-01-25" class="headerlink" title="第一部分 2017-01-25"></a>第一部分 2017-01-25</h3><p>一直想做一个APP，去年也自学过一段时间的<code>React Native</code>, 但是RN相对来说学习曲线比较陡峭，并且很多资源包在下载时都不是那么容易，经常error（这个大家都懂）, 所以这事儿就不了了之了。</p>
 <p>前两天看了weex的会议，觉得阿里又在放大招了，这个工具虽然目前学习社区不多，资源组件不丰富，但是本身调式来发非常便捷，weex playground非常不错，并且因为weex是基于vue的，所以入门简单，<code>npm run build</code>打包以后部署到自己的服务器上，用二维码扫描以后就可以拥有一个自己的APP了，并且是兼容三端的，这一点非常诱人。</p>
