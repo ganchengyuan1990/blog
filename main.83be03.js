@@ -58,7 +58,7 @@
 
 	var _util = __webpack_require__(25);
 
-	var _clock = __webpack_require__(108);
+	var _clock = __webpack_require__(94);
 
 	var _clock2 = _interopRequireDefault(_clock);
 
@@ -5081,6 +5081,10 @@
 	            $script.setAttribute('src', path);
 	        },
 	        addLoadEvent: function addLoadEvent(func) {
+	            window.addEventListener('DOMContentLoaded', function (e) {
+	                console.log(1);
+	                debugger;
+	            });
 	            var oldonload = window.onload;
 	            if (typeof window.onload != "function") {
 	                window.onload = func;
@@ -6382,21 +6386,7 @@
 	__webpack_require__(82)('observable');
 
 /***/ },
-/* 94 */,
-/* 95 */,
-/* 96 */,
-/* 97 */,
-/* 98 */,
-/* 99 */,
-/* 100 */,
-/* 101 */,
-/* 102 */,
-/* 103 */,
-/* 104 */,
-/* 105 */,
-/* 106 */,
-/* 107 */,
-/* 108 */
+/* 94 */
 /***/ function(module, exports) {
 
 	"use strict";

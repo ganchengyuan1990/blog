@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ganchengyuan1990.github.io/blog/"/>
-  <updated>2017-03-01T03:26:59.381Z</updated>
+  <updated>2017-03-10T09:22:30.575Z</updated>
   <id>https://ganchengyuan1990.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,87 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2017/03/10总结</title>
+    <link href="https://ganchengyuan1990.github.io/blog/2017/03/10/2017-03-10%E6%80%BB%E7%BB%93/"/>
+    <id>https://ganchengyuan1990.github.io/blog/2017/03/10/2017-03-10总结/</id>
+    <published>2017-03-10T03:34:27.000Z</published>
+    <updated>2017-03-10T09:22:30.575Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在忙着学习和工作，博客写作有所怠慢，权衡了一下，打算写周记，每周至少一篇，以总结为主，也加之展望。</p>
+<p>1.深拷贝与浅拷贝<br>今天看了一篇Object.assgin()相关的文章，ES6提供的这个API可以帮助我们进行复杂对象的copy，但是这个是深拷贝还是浅拷贝呢？我们来看下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> keyWord2 = &#123; <span class="attr">a</span>:<span class="number">1</span>, <span class="attr">arr</span>: [<span class="number">1</span>,<span class="number">2</span>] &#125;;</div><div class="line"><span class="keyword">var</span> argu2 = &#123;&#125;;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.assign(argu2, keyWord2);</div><div class="line"></div><div class="line">keyWord2.arr[<span class="number">1</span>] = <span class="number">6</span>;</div><div class="line"><span class="built_in">console</span>.log(argu2.arr[<span class="number">1</span>]);  <span class="comment">//6</span></div></pre></td></tr></table></figure>
+<p>所以看出这里是浅拷贝，预计native代码如下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">shadowCopy</span>(<span class="params">src</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> dst = &#123;&#125;;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> src) &#123;</div><div class="line">    <span class="keyword">if</span> (src.hasOwnProperty(prop)) &#123;</div><div class="line">      dst[prop] = src[prop];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> dst;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果是深拷贝，代码应如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> cloneObj = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> str, newobj = obj.constructor === <span class="built_in">Array</span> ? [] : &#123;&#125;;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> obj !== <span class="string">'object'</span>)&#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">window</span>.JSON)&#123;</div><div class="line">        str = <span class="built_in">JSON</span>.stringify(obj), <span class="comment">//系列化对象</span></div><div class="line">        newobj = <span class="built_in">JSON</span>.parse(str); <span class="comment">//还原</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> obj)&#123;</div><div class="line">            newobj[i] = <span class="keyword">typeof</span> obj[i] === <span class="string">'object'</span> ? </div><div class="line">            cloneObj(obj[i]) : obj[i]; </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> newobj;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>所以总体来说，先stringify再parse就可以了。但是如果有不支持JSON对象的古董浏览器，就可以用递归的方式来做。</p>
+<ol>
+<li>最近开始结合着学习VUE和REACT，分析对比一下VUEX和REDUX的区别：</li>
+</ol>
+<ul>
+<li><p>redux中有一个reducer的概念，它是一组函数，用来处理action和state之间的关系，”react-redux”提供了一个connect方法，连接REACT组件和REDUX，其中mapStateToProps函数的作用就是在state被修改以后映射到相应的props上，而REACT提供了一个componentWillReceiveProps来监听已加载组件上props的变化，然后便可在回调函数中通过setState方法来修改并且重绘页面。（这个过程能否简化）</p>
+</li>
+<li><p>Vuex相对来说就简单一些，首先action的概念是一样，然后触发action后如果是一个异步操作，就要扽到获取值后去commit相应的mutations操作，state的操作全部都要经过mutations来代理，</p>
+</li>
+</ul>
+<p>REDUX不允许直接对state进行赋值，但是VUEX是允许的。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在忙着学习和工作，博客写作有所怠慢，权衡了一下，打算写周记，每周至少一篇，以总结为主，也加之展望。&lt;/p&gt;
+&lt;p&gt;1.深拷贝与浅拷贝&lt;br&gt;今天看了一篇Object.assgin()相关的文章，ES6提供的这个API可以帮助我们进行复杂对象的copy，但是这个是深拷贝还
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>今日VUE小记</title>
+    <link href="https://ganchengyuan1990.github.io/blog/2017/03/07/%E4%BB%8A%E6%97%A5VUE%E5%B0%8F%E8%AE%B0/"/>
+    <id>https://ganchengyuan1990.github.io/blog/2017/03/07/今日VUE小记/</id>
+    <published>2017-03-07T01:24:15.000Z</published>
+    <updated>2017-03-07T05:49:18.990Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近正在将自己的个人网页从VUE1.0升级到VUE2.0，这期间又学习到了一些零散的知识点，记录下来，内化为自己的只是储备。</p>
+<hr>
+<p>首先，VUEX并没有想象中那么复杂，需要注意的是state可以分模块命名，也就是说在不同模块下可存在取名同样的state，但是mutation/getters/actions是共享同一个命名空间的，虽然也可以在不同的modules里可以命名同一个mutation并且不报错，但是VUEX默认会连续访问这两个MUTATIONS，造成不必要的问题。</p>
+<p>另外，VUE本身提供了过渡状态管理组件transition，对应的过渡的-CSS-类名<br>会有 4 个(CSS)类名在 enter/leave 的过渡中切换</p>
+<ul>
+<li>v-enter: 定义进入过渡的开始状态。在元素被插入时生效，在下一个帧移除。</li>
+<li>v-enter-active: 定义进入过渡的结束状态。在元素被插入时生效，在 transition/animation 完成之后移除。</li>
+<li>v-leave: 定义离开过渡的开始状态。在离开过渡被触发时生效，在下一个帧移除。</li>
+<li>v-leave-active: 定义离开过渡的结束状态。在离开过渡被触发时生效，在 transition/animation 完成之后移除。</li>
+</ul>
+<a id="more"></a>
+<p>demo如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;demo&quot;&gt;</div><div class="line">  &lt;button v-on:click=&quot;show = !show&quot;&gt;</div><div class="line">    Toggle</div><div class="line">  &lt;/button&gt;</div><div class="line">  &lt;transition name=&quot;fade&quot;&gt;</div><div class="line">    &lt;p v-if=&quot;show&quot;&gt;hello&lt;/p&gt;</div><div class="line">  &lt;/transition&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">new Vue(&#123;</div><div class="line">  el: &apos;#demo&apos;,</div><div class="line">  data: &#123;</div><div class="line">    show: true</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">.fade-enter-active, .fade-leave-active &#123;</div><div class="line">  transition: opacity .5s</div><div class="line">&#125;</div><div class="line">.fade-enter, .fade-leave-active &#123;</div><div class="line">  opacity: 0</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<p>VUE源码中这段非常重要，对数据进行双向绑定,如果有参数就会进入set函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">Object.defineProperty(obj, key, &#123;</div><div class="line">   enumerable: true,</div><div class="line">   configurable: true,</div><div class="line">   get: function reactiveGetter () &#123;</div><div class="line">     var value = getter ? getter.call(obj) : val;</div><div class="line">     if (Dep.target) &#123;</div><div class="line">       dep.depend();</div><div class="line">       if (childOb) &#123;</div><div class="line">         childOb.dep.depend();</div><div class="line">       &#125;</div><div class="line">       if (Array.isArray(value)) &#123;</div><div class="line">         dependArray(value);</div><div class="line">       &#125;</div><div class="line">     &#125;</div><div class="line">     return value</div><div class="line">   &#125;,</div><div class="line">   set: function reactiveSetter (newVal) &#123;</div><div class="line">     var value = getter ? getter.call(obj) : val;</div><div class="line">     /* eslint-disable no-self-compare */</div><div class="line">     if (newVal === value || (newVal !== newVal &amp;&amp; value !== value)) &#123;</div><div class="line">       return</div><div class="line">     &#125;</div><div class="line">     /* eslint-enable no-self-compare */</div><div class="line">     if (process.env.NODE_ENV !== &apos;production&apos; &amp;&amp; customSetter) &#123;</div><div class="line">       customSetter();</div><div class="line">     &#125;</div><div class="line">     if (setter) &#123;</div><div class="line">       setter.call(obj, newVal);</div><div class="line">     &#125; else &#123;</div><div class="line">       val = newVal;</div><div class="line">     &#125;</div><div class="line">     childOb = observe(newVal);</div><div class="line">     dep.notify();</div><div class="line">   &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>JS工厂模式与构造函数模式结合(工厂模式会return object)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">function Observer(data)&#123;</div><div class="line">    this.data = data;</div><div class="line">    this.walk(data)</div><div class="line">&#125;</div><div class="line"></div><div class="line">function O</div><div class="line"></div><div class="line">var p = Observer.prototype;</div><div class="line"></div><div class="line">// 遍历</div><div class="line">p.walk = function (obj)&#123;</div><div class="line">    var val,</div><div class="line">        _this = this;</div><div class="line">    Object.keys(obj).forEach(function (key)&#123;</div><div class="line">        val = obj[key]</div><div class="line">        if(typeof val===&quot;object&quot;)&#123;</div><div class="line">            new Observer(val)</div><div class="line">        &#125;</div><div class="line">        _this.convert(key,val)</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 绑定getter 和setter</div><div class="line">p.convert = function (key,val)&#123;</div><div class="line">    Object.defineProperty(this.data,key,&#123;</div><div class="line">        configurable:true,</div><div class="line">        enumarable:true,</div><div class="line">        get:function ()&#123;</div><div class="line">            debugger</div><div class="line">            console.log(&quot;你访问了&quot;+key);</div><div class="line">            return val</div><div class="line">        &#125;,</div><div class="line">        set:function (newVal)&#123;</div><div class="line">            debugger</div><div class="line">            console.log(&quot;你设置了&quot;+key);</div><div class="line">            console.log(&quot;新的&quot;+key+&quot;=&quot;+newVal);</div><div class="line"></div><div class="line">            // 如果设置的新值是一个对象，则递归它，加上set/get</div><div class="line">            if(typeof newVal ===&quot;object&quot;)&#123;</div><div class="line">                new Observer(newVal);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            val = newVal</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">let data = &#123;</div><div class="line">    user: &#123;</div><div class="line">        name: &quot;hello world&quot;,</div><div class="line">        age: &quot;24&quot;</div><div class="line">    &#125;,</div><div class="line">    address: &#123;</div><div class="line">        city: &quot;beijing&quot;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">var app = new Observer(data);</div><div class="line">console.log(app.data.user);</div></pre></td></tr></table></figure>
+<p>最后，需要仔细看看VUE的生命周期：<br><img src="https://cn.vuejs.org/images/lifecycle.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近正在将自己的个人网页从VUE1.0升级到VUE2.0，这期间又学习到了一些零散的知识点，记录下来，内化为自己的只是储备。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;首先，VUEX并没有想象中那么复杂，需要注意的是state可以分模块命名，也就是说在不同模块下可存在取名同样的state，但是mutation/getters/actions是共享同一个命名空间的，虽然也可以在不同的modules里可以命名同一个mutation并且不报错，但是VUEX默认会连续访问这两个MUTATIONS，造成不必要的问题。&lt;/p&gt;
+&lt;p&gt;另外，VUE本身提供了过渡状态管理组件transition，对应的过渡的-CSS-类名&lt;br&gt;会有 4 个(CSS)类名在 enter/leave 的过渡中切换&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;v-enter: 定义进入过渡的开始状态。在元素被插入时生效，在下一个帧移除。&lt;/li&gt;
+&lt;li&gt;v-enter-active: 定义进入过渡的结束状态。在元素被插入时生效，在 transition/animation 完成之后移除。&lt;/li&gt;
+&lt;li&gt;v-leave: 定义离开过渡的开始状态。在离开过渡被触发时生效，在下一个帧移除。&lt;/li&gt;
+&lt;li&gt;v-leave-active: 定义离开过渡的结束状态。在离开过渡被触发时生效，在 transition/animation 完成之后移除。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>写一个hexo新主题！</title>
@@ -386,7 +467,7 @@
     <link href="https://ganchengyuan1990.github.io/blog/2017/02/04/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
     <id>https://ganchengyuan1990.github.io/blog/2017/02/04/函数式编程/</id>
     <published>2017-02-04T01:48:39.000Z</published>
-    <updated>2017-02-10T10:59:57.344Z</updated>
+    <updated>2017-03-09T10:52:26.369Z</updated>
     
     <content type="html"><![CDATA[<p>转帖：<a href="http://www.zcfy.cc/article/master-the-javascript-interview-what-is-function-composition-2160.html" target="_blank" rel="external">http://www.zcfy.cc/article/master-the-javascript-interview-what-is-function-composition-2160.html</a></p>
 <blockquote>
@@ -840,70 +921,6 @@
     
     
       <category term="网络相关" scheme="https://ganchengyuan1990.github.io/blog/tags/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>html render &amp; paint（重排和重绘）</title>
-    <link href="https://ganchengyuan1990.github.io/blog/2017/01/18/html-render-paint/"/>
-    <id>https://ganchengyuan1990.github.io/blog/2017/01/18/html-render-paint/</id>
-    <published>2017-01-18T03:05:38.000Z</published>
-    <updated>2017-02-07T05:56:53.491Z</updated>
-    
-    <content type="html"><![CDATA[<p>首先，先吐槽一下weex学习社区的内容真的非常不全面，自学很难，优点是调试相对简单，暂时放一放，以后有空再看看。</p>
-<hr>
-<p>接下来进入正题，讲一讲昨天刚复习的有关<font color="red">浏览器页面渲染</font>的知识点。</p>
-<p>##repaint、reflow/relayout、restyle</p>
-<p>这四个概念分别代表什么？先来看一张图，了解一下浏览器页面的渲染过程<br><img src="https://ganchengyuan1990.github.io/blog/img/render.png"></p>
-<a id="more"></a>
-<font color="red">这里要注意的是：</font>要生成Dom Tree和Css Tree以后才会生成render tree，然后进行绘制(paint)。<br><br>1. 首先，浏览器解析HTML源码构建DOM树，在DOM树中，每个HTML标签都有对应的节点，并且在介于两个标签中间的文字块也对应一个text节点。DOM树的根节点是documentElement，也就是<html>标签；<br>2. 然后，浏览器对CSS代码进行解析，一些当前浏览器不能识别的CSS hack写法（如-moz-/-webkit等前缀，以及IE下的/_等）将会被忽略。CSS样式的优先级如下：最低的是浏览器的默认样式，然后是通过<link>、import引入的外部样式和行内样式，最高级的是直接写在标签的style属性中的样式；<br>3. 随后将进入非常有趣的环节-构建渲染树。渲染树跟DOM树结构相似但并不完全匹配。渲染树会识别样式，所以如果通过设置display:none隐藏的标签是不会被渲染树引入的。同样的规则适用于<head>标签以及其包含的所有内容。另外，在渲染树中可能存在多个渲染节点（渲染树中的节点称为渲染节点）映射为一个DOM标签，例如，多行文字的<p>标签中的每一行文字都会被视为一个单独的渲染节点。渲染树的一个节点也称为frame-结构体，或者盒子-box（与CSS盒子类似）。每个渲染节点都具有CSS盒子的属性，如width、height、border、margin等；<br>4. 最后，等待渲染树构建完毕后，浏览器便开始将渲染节点一一绘制-paint到屏幕上。。<br><br>OK，接下来看一个例子<br><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Beautiful page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    </div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">    Once upon a time there was </div><div class="line">    a looong paragraph...</div><div class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  </div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"display: none"</span>&gt;</span></div><div class="line">    Secret message</div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  </div><div class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"..."</span> /&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  ...</div><div class="line"> </div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure><br><br>这个html对应的DOM结构如下：<br><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">documentElement (html)</div><div class="line">    head</div><div class="line">        title</div><div class="line">    body</div><div class="line">        p</div><div class="line">            [text node]</div><div class="line">        </div><div class="line">        div </div><div class="line">            [text node]</div><div class="line">        </div><div class="line">        div</div><div class="line">            img</div><div class="line">        </div><div class="line">        ...</div></pre></td></tr></table></figure><br><br>由于渲染树会忽略head内容和隐藏的节点，并且会将</p><p>中的多行文字按行数映射为单独的渲染节点，故构建完成的渲染树结构如下：<br><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">root (RenderView)</div><div class="line">    body</div><div class="line">        p</div><div class="line">            line 1</div><div class="line">        line 2</div><div class="line">        line 3</div><div class="line">        ...</div><div class="line">        </div><div class="line">    div</div><div class="line">        img</div><div class="line">        </div><div class="line">    ...</div></pre></td></tr></table></figure><br><br><br><br>## 重绘-repaint和回流（重排）-reflow<br><br>同一时间内至少存在一个页面初始化layout行为和一个绘制行为（除非你的页面是空白页-blank）。在此之后，改变任何影响构造渲染树的行为都会触发以下一种或者多种动作：<br><br>1.  渲染树的部分或者全部将需要重新构造并且渲染节点的大小需要重新计算。这个过程叫做回流-reflow，或者layout，或者layouting（靠，能不能愉快的翻译了，是不是还来个过去式啊?!），或者relayout（这词是原文作者杜撰的，为了标题中多个“R”）。浏览器中至少存在一个reflow行为-即页面的初始化layout；<br>2.  屏幕的部分区域需要进行更新，要么是因为节点的几何结构改变，要么是因为格式改变，如背景色的变化。屏幕的更新行为称作重绘-repaint，或者redraw。<br><br><br><br>## 如何减少重绘和回流<br>减少因为重绘和回流引起的糟糕用户体验的本质是尽量减少重绘和回流，减少样式信息的set行为。可以通过以下几点来优化：<br>1.  不要逐个修改多个样式。对于静态样式来说，最明智和易维护的代码是通过改变classname来控制样式；而对于动态样式来说，通过一次修改节点的cssText来代替样式的逐个改变。<br>2.  “离线”处理多个DOM操作。“离线”的意思是将需要进行的DOM操作脱离DOM树，比如：<br><em> 通过documentFragment集中处理临时操作；
-</em> 将需要更新的节点克隆，在克隆节点上进行更新操作，然后把原始节点替换为克隆节点；<br>* 先通过设置display:none将节点隐藏（此时出发一次回流和重绘），然后对隐藏的节点进行100个操作（这些操作都会单独触发回流和重绘），完毕后将节点的display改回原值（此时再次触发一次回流和重绘）。通过这种方法，将100次回流和重绘缩减为2次，大大减少了消耗<br>3. 不要过多进行重复的样式计算操作。如果你需要重复利用一个静态样式值，可以只计算一次，用一个局部变量储存，然后利用这个局部变量进行相关操作。<br>4. 总之，当你在打算改变样式时，首先考虑一下渲染树的机制，并且评估一下你的操作会引发多少刷新渲染树的行为。例如，我们知道一个绝对定位的节点是会脱离文档流，所以当对此节点应用动画时不会对其他节点产生很大影响，当绝对定位的节点置于其他节点上层时，其他节点只会触发重绘，而不会触发回流。<br><br><br><br>## restyle到底是什么？<br>仔细的朋友会发现，到现在我们也没具体说restyle的情况，<font color="red">restyle指的是没有几何结构改变的渲染树变化。也就是说restyle和reflow是一个层次的概念，完成以后都会引发repaint!</font>
-
-</p><p><br></p>
-<h2 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h2><p>重新计算渲染树的行为被Mozilla称为回流-reflow，被其他浏览器称为layout；<br>将重新计算后的渲染树更新到屏幕的行为叫做重绘-repaint，或者redraw（in IE/DynaTrace）；</p>
-</head></html>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;首先，先吐槽一下weex学习社区的内容真的非常不全面，自学很难，优点是调试相对简单，暂时放一放，以后有空再看看。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;接下来进入正题，讲一讲昨天刚复习的有关&lt;font color=red&gt;浏览器页面渲染&lt;/font&gt;的知识点。&lt;/p&gt;
-&lt;p&gt;##repaint、reflow/relayout、restyle&lt;/p&gt;
-&lt;p&gt;这四个概念分别代表什么？先来看一张图，了解一下浏览器页面的渲染过程&lt;br&gt;&lt;img src=&quot;https://ganchengyuan1990.github.io/blog/img/render.png&quot; /&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="css" scheme="https://ganchengyuan1990.github.io/blog/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vuex初探</title>
-    <link href="https://ganchengyuan1990.github.io/blog/2017/01/17/vuex%E5%88%9D%E6%8E%A2/"/>
-    <id>https://ganchengyuan1990.github.io/blog/2017/01/17/vuex初探/</id>
-    <published>2017-01-17T02:27:29.000Z</published>
-    <updated>2017-02-04T01:44:19.577Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Vuex的作用是什么"><a href="#Vuex的作用是什么" class="headerlink" title="Vuex的作用是什么"></a>Vuex的作用是什么</h3><p>Vuex主要用来进行状态管理，我的理解就是当你的VUE项目大到一定程度以后，需要一个帮手来帮助你进行组件管理，尤其是多层次的组件进行信息交互时，如果没有这样一个工具，就得维护公共变量或者一层一层传递参数，这个过程是非常令人不愉悦的。</p>
-<h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> actions <span class="keyword">from</span> <span class="string">'./actions'</span>; <span class="comment">//改变状态都得通过这里的方法</span></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> getters <span class="keyword">from</span> <span class="string">'./getters'</span>; <span class="comment">//获取状态值的方法</span></div></pre></td></tr></table></figure>
-<h2 id="store对象"><a href="#store对象" class="headerlink" title="store对象"></a>store对象</h2><p>这个对象就是Vuex创建的实例对象，是重点需要学习的内容。</p>
-<a id="more"></a>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> store = &#123;</div><div class="line">	<span class="comment">//state对象维护具体状态值</span></div><div class="line">    state: &#123;</div><div class="line">        <span class="attr">isInitData</span>: <span class="literal">true</span>, <span class="comment">//首次刷新页面</span></div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * vuex 2.0 action should be await Vuex规定每个状态值的改变最后都要通过actions函数来操作，并且规定必须是异步，因此调取接口的操作应该都在这里</div><div class="line">     */</div><div class="line">    actions: &#123;</div><div class="line">        <span class="attr">fetchSearchDataAction</span>: <span class="function">(<span class="params">&#123; commit, dispatch &#125;, options</span>) =&gt;</span> &#123;</div><div class="line">            commit(<span class="string">'SET_TOP_LOADING'</span>, &#123; <span class="attr">type</span>: <span class="literal">true</span> &#125;)</div><div class="line">        &#125;,</div><div class="line"></div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * even vuex 2.0 mutations should be async  actions 只是一个架构性的概念，并不是必须的，说到底只是一个函数，你在里面想干嘛都可以，只要最后触发 mutation 就行。</div><div class="line">     */</div><div class="line">    mutations: &#123;</div><div class="line"></div><div class="line">        [types.COMBINE_DETAIL_LIST](state, res) &#123;</div><div class="line"></div><div class="line">            <span class="keyword">let</span> cloneMerchandiseList = [];</div><div class="line"></div><div class="line">            state.merchandiseList.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</div><div class="line"></div><div class="line">                    cloneMerchandiseList.push(<span class="built_in">Object</span>.assign(&#123;&#125;, item, res[item.sm_seq]));</div><div class="line"></div><div class="line">                &#125;)</div><div class="line">                <span class="comment">//combine 合并基础对象和详细属性,重现渲染列表</span></div><div class="line">            state.merchandiseList = cloneMerchandiseList;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    <span class="attr">getters</span>: &#123;</div><div class="line">        <span class="attr">listDownType</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">let</span> type = <span class="string">''</span></div><div class="line">            state.selectListData.filter(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</div><div class="line">                <span class="keyword">if</span>(item.isSelect)&#123;</div><div class="line">                    type = item.sortType</div><div class="line">                &#125;</div><div class="line">            &#125;)</div><div class="line">            <span class="keyword">return</span> type</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<font color="red">注：同步的意义在于这样每一个 mutation 执行完成后都可以对应到一个新的状态（和 reducer 一样），这样 devtools 就可以打个 snapshot 存下来，然后就可以随便 time-travel 了。</font>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Vuex的作用是什么&quot;&gt;&lt;a href=&quot;#Vuex的作用是什么&quot; class=&quot;headerlink&quot; title=&quot;Vuex的作用是什么&quot;&gt;&lt;/a&gt;Vuex的作用是什么&lt;/h3&gt;&lt;p&gt;Vuex主要用来进行状态管理，我的理解就是当你的VUE项目大到一定程度以后，需要一个帮手来帮助你进行组件管理，尤其是多层次的组件进行信息交互时，如果没有这样一个工具，就得维护公共变量或者一层一层传递参数，这个过程是非常令人不愉悦的。&lt;/p&gt;
-&lt;h3 id=&quot;引入&quot;&gt;&lt;a href=&quot;#引入&quot; class=&quot;headerlink&quot; title=&quot;引入&quot;&gt;&lt;/a&gt;引入&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; Vuex &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;vuex&#39;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; * &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; actions &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;./actions&#39;&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;//改变状态都得通过这里的方法&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; * &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; getters &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;./getters&#39;&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;//获取状态值的方法&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;store对象&quot;&gt;&lt;a href=&quot;#store对象&quot; class=&quot;headerlink&quot; title=&quot;store对象&quot;&gt;&lt;/a&gt;store对象&lt;/h2&gt;&lt;p&gt;这个对象就是Vuex创建的实例对象，是重点需要学习的内容。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Javascript" scheme="https://ganchengyuan1990.github.io/blog/tags/Javascript/"/>
-    
-      <category term="Vue" scheme="https://ganchengyuan1990.github.io/blog/tags/Vue/"/>
     
   </entry>
   

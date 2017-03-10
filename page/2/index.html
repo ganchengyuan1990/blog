@@ -218,6 +218,114 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-webpack入门-感想" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/02/23/webpack入门-感想/">webpack入门&amp;感想</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2017/02/23/webpack入门-感想/" class="archive-article-date">
+  	<time datetime="2017-02-23T02:09:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>也许你想在写代码的时候检查自己的js是否符合jshint的规范，那么隆重推荐preLoaders和postLoaders，loaders是webpack的最重要模块，用它来处理各种类型的文件。perLoaders顾名思义就是在loaders执行之前处理的，webpack的处理顺序是perLoaders - loaders - postLoaders。</p>
+<p>另外，这两天把服务器从apache迁移到了nginx，nginx的反向代理功能确实非常有用，现在已经把原本监听8080端口的NodeJs服务都反响代理到了80端口，这样一来我的HTTPS证书相当于在8080端口也能起效了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/02/23/webpack入门-感想/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Object-defineProperty怎么玩" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/02/21/Object-defineProperty怎么玩/">Object.defineProperty怎么玩</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2017/02/21/Object-defineProperty怎么玩/" class="archive-article-date">
+  	<time datetime="2017-02-21T01:21:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原文转载地址<a href="http://imweb.io/topic/56d40adc0848801a4ba198ce">http://imweb.io/topic/56d40adc0848801a4ba198ce</a></p>
+<p>Object.defineProperty ，顾名思义，为对象定义属性。在js中我们可以通过下面这几种方法定义属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// (1) define someOne property name</div><div class="line">someOne.name = &apos;cover&apos;;</div><div class="line"></div><div class="line">//or use (2) </div><div class="line"></div><div class="line">someOne[&apos;name&apos;] = &apos;cover&apos;;</div><div class="line"></div><div class="line">// or use (3) defineProperty</div><div class="line">Object.defineProperty(someOne, &apos;name&apos;, &#123;</div><div class="line">    value : &apos;cover&apos;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>从上面看，貌似使用Object.defineProperty很麻烦，那为啥存在这样的方法呢？<br>带着疑问，我们来看下 Object.defineProperty的定义。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/02/21/Object-defineProperty怎么玩/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-蒙托卡罗模拟算法计算面积" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -406,130 +514,6 @@
 
 
   
-    <article id="post-Cache-Storage如何可控" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/02/09/Cache-Storage如何可控/">Cache Storage如何可控</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/02/09/Cache-Storage如何可控/" class="archive-article-date">
-  	<time datetime="2017-02-09T01:40:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>昨天尝试给自己的Github Page使用了service worker工具，从而更好地利用和控制缓存，其中代码中有一段：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">event.respondWith(</div><div class="line"><span class="comment">//If request is already in cache, return it</span></div><div class="line">caches.match(request).then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span> (response) &#123;</div><div class="line">    <span class="keyword">return</span> response;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">//if request is not cached, add it to cache</span></div><div class="line">  <span class="keyword">return</span> fetch(request).then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">var</span> responseToCache = response.clone();</div><div class="line">    caches.open(cacheName).then(<span class="function">(<span class="params">cache</span>) =&gt;</span> &#123;</div><div class="line">        cache.put(request, responseToCache).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</div><div class="line">          <span class="built_in">console</span>.warn(request.url + <span class="string">': '</span> + err.message);</div><div class="line">        &#125;);</div><div class="line">      &#125;);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> response;</div><div class="line">  &#125;);</div><div class="line">&#125;)</div><div class="line">);</div></pre></td></tr></table></figure>
-<p>这段代码会判断request请求是否命中了缓存，如果是就直接使用缓存，response同理。</p>
-<p>那么，这个caches就成了关键。它是如何work的呢？其实这个caches就是Cache Storage，它存在全局变量window中，因此无需定义可直接调用。</p>
-<p>我们从一个简单的DEMO中来看它的使用方式：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">caches.delete(<span class="string">'c1'</span>);</div><div class="line">caches.delete(<span class="string">'c2'</span>);</div><div class="line"><span class="built_in">Promise</span>.all([</div><div class="line">  caches.open(<span class="string">'c1'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">cache</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> cache.put(<span class="string">'/hehe'</span>, <span class="keyword">new</span> Response(<span class="string">'aaa'</span>, &#123; <span class="attr">status</span>: <span class="number">200</span> &#125;));</div><div class="line">  &#125;),</div><div class="line">  caches.open(<span class="string">'c2'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">cache</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> cache.put(<span class="string">'/hehe'</span>, <span class="keyword">new</span> Response(<span class="string">'bbb'</span>, &#123; <span class="attr">status</span>: <span class="number">200</span> &#125;));</div><div class="line">  &#125;)</div><div class="line">]).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> caches.match(<span class="string">'/hehe'</span>);</div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> response.text();</div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">body</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(body);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>首先，在 caches 上调用 open 方法就可以异步地得到一个 Cache 对象的引用。在这个对象上我们可以把 Response 对象 put 进去（参数是一个 URL 和一个 Response 对象）、用 match 方法取出（传入一个 URL 取出对应的 Response 对象）。match 方法不仅可以在 Cache 上调用 CacheStorage 上也有 match 方法，比如上面例子就打开了两个 Cache，都写入一个叫 /hehe 的 URL。在写入操作完成之后，到外部的 CacheStorage 上调用 match 方法来匹配 /hehe，结果是随机的（没找到这个规则在哪里定义的）。<br>　　<br>虽然上面的例子中只对 Cache 对象 put 了一个数据，而 Cache 对象本身可以存放更多的 URL/Response 对。并且提供了 delete（用户删除）、keys（用于遍历）等方法。但是 Cache 并不像 localStorage 一样有 clear 方法，如果非要清空一个 Cache，可以直接在 CacheStorage 上把整个 Cache 给 delete 掉再重新 open。这套 API 和 ServiceWorker 一家的，它通常被用于 ServiceWorker 中，整个设计风格也和 ServiceWorker 一样都基于 Promise。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javacsript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/02/09/Cache-Storage如何可控/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-PWA初体验" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/02/07/PWA初体验/">PWA初体验</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/02/07/PWA初体验/" class="archive-article-date">
-  	<time datetime="2017-02-07T01:33:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>白屏</code>以及<code>离线不可用</code>，是Web App最大的体验问题。据说，PWA是解决这两大问题的曙光。</p>
-<p>那么，就很有必要来了解试用一下这玩意儿。</p>
-<p>OK, 程序员的好习惯之一是使用Github，搜索”pwa demo”</p>
-<p><img src="https://ganchengyuan1990.github.io/blog/img/time.gif" alt=""></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/02/07/PWA初体验/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="page-number" href="/blog/page/5/">5</a><a class="extend next" rel="next" href="/blog/page/3/">Next &raquo;</a>
@@ -567,6 +551,12 @@
 		ds.charset = 'UTF-8';
 		(document.getElementsByTagName('head')[0] 
 		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		ds.onload = function() {
+			debugger
+			if(document.querySelector('#ds-waiting')) {
+				document.querySelector('#ds-waiting').classList.add('hide_it');
+			}
+		}
 	})();
 	</script>
 	<!-- 多说公共JS代码 end -->
@@ -717,11 +707,11 @@ fetch(URL2).then(function(response2) {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javacsript</a>
+                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javacsript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -729,7 +719,11 @@ fetch(URL2).then(function(response2) {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">后端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -738,10 +732,6 @@ fetch(URL2).then(function(response2) {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
              
               <li class="article-tag-list-item">

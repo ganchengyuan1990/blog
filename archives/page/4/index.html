@@ -233,6 +233,82 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       	<div class="article-meta">
+	      	<a href="/blog/2017/01/23/跨域问题整理/" class="archive-article-date">
+  	<time datetime="2017-01-23T01:22:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-23</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/blog/2017/01/23/跨域问题整理/">ZT-跨域问题整理</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/blog/2017/01/22/localStorage缓存机制/" class="archive-article-date">
+  	<time datetime="2017-01-22T01:26:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-22</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/blog/2017/01/22/localStorage缓存机制/">ZT-localStorage缓存机制</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
 	      	<a href="/blog/2017/01/20/初识mongodb/" class="archive-article-date">
   	<time datetime="2017-01-20T01:14:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-20</time>
 </a>
@@ -341,86 +417,6 @@
   </div>
 </article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/blog/2017/01/18/html-render-paint/" class="archive-article-date">
-  	<time datetime="2017-01-18T03:05:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2017/01/18/html-render-paint/">html render &amp; paint（重排和重绘）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/blog/2017/01/17/vuex初探/" class="archive-article-date">
-  	<time datetime="2017-01-17T02:27:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2017/01/17/vuex初探/">vuex初探</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
   
     </div></section>
   
@@ -462,6 +458,12 @@
 		ds.charset = 'UTF-8';
 		(document.getElementsByTagName('head')[0] 
 		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		ds.onload = function() {
+			debugger
+			if(document.querySelector('#ds-waiting')) {
+				document.querySelector('#ds-waiting').classList.add('hide_it');
+			}
+		}
 	})();
 	</script>
 	<!-- 多说公共JS代码 end -->
@@ -612,11 +614,11 @@ fetch(URL2).then(function(response2) {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javacsript</a>
+                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javacsript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -624,7 +626,11 @@ fetch(URL2).then(function(response2) {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">后端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,10 +639,6 @@ fetch(URL2).then(function(response2) {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
              
               <li class="article-tag-list-item">

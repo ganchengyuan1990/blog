@@ -233,6 +233,60 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       	<div class="article-meta">
+	      	<a href="/blog/2017/03/10/2017-03-10总结/" class="archive-article-date">
+  	<time datetime="2017-03-10T03:34:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/blog/2017/03/10/2017-03-10总结/">2017/03/10总结</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/blog/2017/03/07/今日VUE小记/" class="archive-article-date">
+  	<time datetime="2017-03-07T01:24:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-07</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/blog/2017/03/07/今日VUE小记/">今日VUE小记</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
 	      	<a href="/blog/2017/02/27/写一个hexo新主题/" class="archive-article-date">
   	<time datetime="2017-02-27T10:30:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-27</time>
 </a>
@@ -308,82 +362,6 @@
   </div>
 </article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/blog/2017/02/17/蒙托卡罗模拟算法计算面积/" class="archive-article-date">
-  	<time datetime="2017-02-17T06:06:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2017/02/17/蒙托卡罗模拟算法计算面积/">蒙托卡罗模拟算法计算面积</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">其他</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/blog/2017/02/16/Weex首秀/" class="archive-article-date">
-  	<time datetime="2017-02-16T05:54:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2017/02/16/Weex首秀/">Weex首秀【置顶】</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Vue 置顶</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
   
     </div></section>
   
@@ -425,6 +403,12 @@
 		ds.charset = 'UTF-8';
 		(document.getElementsByTagName('head')[0] 
 		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		ds.onload = function() {
+			debugger
+			if(document.querySelector('#ds-waiting')) {
+				document.querySelector('#ds-waiting').classList.add('hide_it');
+			}
+		}
 	})();
 	</script>
 	<!-- 多说公共JS代码 end -->
@@ -575,11 +559,11 @@ fetch(URL2).then(function(response2) {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javacsript</a>
+                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javacsript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -587,7 +571,11 @@ fetch(URL2).then(function(response2) {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">后端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,10 +584,6 @@ fetch(URL2).then(function(response2) {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
              
               <li class="article-tag-list-item">
