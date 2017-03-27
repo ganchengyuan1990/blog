@@ -348,6 +348,123 @@
 
 
   
+    <article id="post-Ubantu新服务器搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/03/22/Ubantu新服务器搭建/">Ubantu新服务器搭建</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2017/03/22/Ubantu新服务器搭建/" class="archive-article-date">
+  	<time datetime="2017-03-22T07:00:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今日新开一个Ubantu服务器，先来学习。</p>
+<p>yum操作</p>
+<p>yum，是Yellow dog Updater, Modified 的简称，是杜克大学为了提高RPM 软件包安装性而开发的一种软件包管理器。起初是由yellow dog 这一发行版的开发者Terra Soft 研发，用python 写成，那时还叫做yup(yellow dog updater)，后经杜克大学的Linux@Duke 开发团队进行改进，遂有此名。yum 的宗旨是自动化地升级，安装/移除rpm 包，收集rpm 包的相关信息，检查依赖性并自动提示用户解决。yum 的关键之处是要有可靠的repository，顾名思义，这是软件的仓库，它可以是http 或ftp 站点，也可以是本地软件池，但必须包含rpm 的header，header 包括了rpm 包的各种信息，包括描述，功能，提供的文件，依赖性等。正是收集了这些header 并加以分析，才能自动化地完成余下的任务。</p>
+<p>nginx安装<br>这个比在windows系统下要麻烦得多，需要依次安装PCRE/zlib等依赖包。</p>
+<p>node.js<br>全局变量global</p>
+<hr>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/03/22/Ubantu新服务器搭建/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-VUE-REACT" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/03/14/VUE-REACT/">VUE&amp;REACT</a>
+    </h1>
+  
+
+        
+        <a href="/blog/2017/03/14/VUE-REACT/" class="archive-article-date">
+  	<time datetime="2017-03-14T01:18:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Vue中props的用法总结：</p>
+<ol>
+<li><p>父组件中传递props给子组件, <child  :order-time="canfig.orderTime"></child>，然后子组件中的props中可以收到props: [‘orderTime’]，当然这是单向传递的。</p>
+</li>
+<li><p>如果想让子组件修改的属性能够同步到父组件中，那么在父组件中的传递要改为<child  :order-time.sync="canfig.orderTime"></child>.</p>
+</li>
+</ol>
+<p>REACT中渲染页面：<br>1.JSX中用this.state的属性值渲染，reducer处理state后通过触发redux的mapStateToProps函数，赋新值给props，然后触发了react的生命周期函数componentWillReceiveProps，在里面重新去setState，从而re-render。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blog/2017/03/14/VUE-REACT/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017-03-10总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -416,126 +533,9 @@
 
 
   
-    <article id="post-今日VUE小记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/03/07/今日VUE小记/">今日VUE小记</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/03/07/今日VUE小记/" class="archive-article-date">
-  	<time datetime="2017-03-07T01:24:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近正在将自己的个人网页从VUE1.0升级到VUE2.0，这期间又学习到了一些零散的知识点，记录下来，内化为自己的只是储备。</p>
-<hr>
-<p>首先，VUEX并没有想象中那么复杂，需要注意的是state可以分模块命名，也就是说在不同模块下可存在取名同样的state，但是mutation/getters/actions是共享同一个命名空间的，虽然也可以在不同的modules里可以命名同一个mutation并且不报错，但是VUEX默认会连续访问这两个MUTATIONS，造成不必要的问题。</p>
-<p>另外，VUE本身提供了过渡状态管理组件transition，对应的过渡的-CSS-类名<br>会有 4 个(CSS)类名在 enter/leave 的过渡中切换</p>
-<ul>
-<li>v-enter: 定义进入过渡的开始状态。在元素被插入时生效，在下一个帧移除。</li>
-<li>v-enter-active: 定义进入过渡的结束状态。在元素被插入时生效，在 transition/animation 完成之后移除。</li>
-<li>v-leave: 定义离开过渡的开始状态。在离开过渡被触发时生效，在下一个帧移除。</li>
-<li>v-leave-active: 定义离开过渡的结束状态。在离开过渡被触发时生效，在 transition/animation 完成之后移除。</li>
-</ul>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/03/07/今日VUE小记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-写一个hexo新主题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/02/27/写一个hexo新主题/">写一个hexo新主题！</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/02/27/写一个hexo新主题/" class="archive-article-date">
-  	<time datetime="2017-02-27T10:30:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>从今天开始，写一个新的Hexo主题，学习一下ejs语法，并且熟悉webpack的工作流程。</p>
-<p>首先，找到了Base，就是Yilla，这个主题我非常喜欢，但是它还存在一些可以优化的地方，比如说：</p>
-<p>1.当我的域名为<a href="https://XXX.github.io/XXX的时候，模版支持不太友好，很多地方只能手动去改代码，否则就会有URL错误的情况产生，所以打算加上这方面的支持。">https://XXX.github.io/XXX的时候，模版支持不太友好，很多地方只能手动去改代码，否则就会有URL错误的情况产生，所以打算加上这方面的支持。</a></p>
-<p>2.想自己写一些附加功能，比如置顶文章。</p>
-<p>3.另外，我最近对NODEJS挺着迷的，并且我自己的网站<a href="https://jasongan.cn">https://jasongan.cn</a>刚刚支持了HTTPS协议，因此开始为博客写接口，形成一个以Github博客为前端，jasongan.cn为后台服务器的完整架构，开始向全栈进发！</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/02/27/写一个hexo新主题/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-
-
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/5/">5</a><a class="extend next" rel="next" href="/blog/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/6/">6</a><a class="extend next" rel="next" href="/blog/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -734,7 +734,7 @@ fetch(URL2).then(function(response2) {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vue 置顶</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -742,7 +742,7 @@ fetch(URL2).then(function(response2) {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vue 置顶</a>
               </li>
              
               <li class="article-tag-list-item">

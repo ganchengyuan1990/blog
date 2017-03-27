@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="时间追逐者">
 <meta property="og:description" content="个人理解，闭包的目的就是为了从外部读取内部函数的局部参数而设置的桥梁方法。
 12345678910111213141516171819202122232425function closure() &amp;#123;    var n = 1;    nAdd=function()&amp;#123;n+=1; &amp;#125;    function inner()&amp;#123;        alert(n)">
-<meta property="og:updated_time" content="2017-01-19T05:35:39.330Z">
+<meta property="og:updated_time" content="2017-03-23T10:05:40.664Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript闭包个人理解">
 <meta name="twitter:description" content="个人理解，闭包的目的就是为了从外部读取内部函数的局部参数而设置的桥梁方法。
@@ -242,6 +242,8 @@
       
         <p>个人理解，闭包的目的就是为了从外部读取内部函数的局部参数而设置的桥梁方法。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">closure</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> n = <span class="number">1</span>;</div><div class="line">    nAdd=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;n+=<span class="number">1</span>; &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(n)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> inner;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> result = closure();</div><div class="line">result();</div><div class="line"></div><div class="line">nAdd();</div><div class="line">result(); <span class="comment">// 1000</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> name = <span class="string">"The Window"</span>;</div><div class="line">　　<span class="keyword">var</span> object = &#123;</div><div class="line">　　　　<span class="attr">name</span> : <span class="string">"My Object"</span>,</div><div class="line">　　　　<span class="attr">getNameFunc</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">　　　　　　<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">　　　　　　　　<span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">　　　　　　&#125;;</div><div class="line">　　　　&#125;</div><div class="line">　　&#125;;</div><div class="line">alert(object.getNameFunc()());</div></pre></td></tr></table></figure>
+<p>闭包中局部变量是引用而不是拷贝，所以可以利用自执行函数，传入形参（数值传递）。</p>
+
       
 
       
@@ -571,7 +573,7 @@ fetch(URL2).then(function(response2) {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vue 置顶</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -579,7 +581,7 @@ fetch(URL2).then(function(response2) {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vue 置顶</a>
               </li>
              
               <li class="article-tag-list-item">
